@@ -57,17 +57,64 @@ void ScreenManager::battleMenu() {
 }
 
 void ScreenManager::inventoryMenu() {
+    cout << "Satchel:" << endl << endl;
 
+    cout << "List of Items" << endl << endl; //Would output the list of items in inventory object from Player
+
+    cout << "Equip Slots:" << endl;
+    cout << "| Item1 |" << "| Item2 |" << "| Item3 |" << endl << endl; //Change with actual equipped items
+    cout << "Enter item number (1-[numItems]) to view ithem or enter 0 to see your stats: ";
+                                //replace numItems with variable
+    //Get input from player and either output item info or change screens
+}
+
+void ScreenManager::playerStats() {
+    cout << "Your Current Statistics:" << endl << endl;
+    cout << "Maximum Health: " << endl; //Add variable
+    cout << "Maximum Magic: " << endl; //Add variable
+    cout << "Attack: " << endl; //Add variable
+    cout << "Defense: " << endl; //Add variable
+    cout << "Speed: " << endl; //Add variable
+    cout << "EXP: " << endl; //Add variable
+    cout << endl;
+    cout << "You can increase any statistic by 1 point by spending 10 EXP." << endl;
+    cout << "Enter which statistic you wish to increase (H,M,A,D,S) or enter (b) to go back to satchel: ";
+    //Get user input validation and apply change
+}
+
+void ScreenManager::battleMenu() {
+    cout << "Monsters block your path:" << endl << endl;
+    cout << "Enemies" << endl << endl; //Replace with list of enemies
+    cout << "--------------------------------------" << endl;
+    cout << "Health: 27/50     Magic: 35/50" << endl; //Replace with appropriate variables
+    cout << "--------------------------------------" << endl;
+    cout << "What would you like to do?" << endl << endl;
+    cout << "1. Attack an enemy" << endl;
+    cout << "2. Use an item" << endl;
+    cout << "3. Attempt to flee (return to previous room)" << endl << endl;
+    cout << "Enter your choice (1-3): ";
+    //Get user input validation, lots of output depending on choice
 }
 
 void ScreenManager::winScreen() {
-
+    cout << "CONGRATULATIONS!!!" << endl << endl;
+    cout << "You have overcome the trials and tribulations set before you and escaped with only your wits and what you could find!" << endl; 
+    cout << "But have you found all the secrets hidden in this dungeon or found every powerful item? Or maybe, the dungeon calls once more..."; 
+    cout << endl << endl;
+    cout << "Enter anything to exit: ";
+    //User input to exit
 }
 
 void ScreenManager::gameOver() {
-
+    cout << "GAME OVER" << endl << endl;
+    cout << "Your health has dropped to 0 and now your progress is lost to the dungeon once more..." << endl;
+    cout << "Can you find the courage to attempt to escape again?" << endl << endl;
+    cout << "Enter anything to exit: ";
+    //User input to exit
 }
 
 void ScreenManager::clearScreen() {
-
+    for (int i = 0; i < 100; i++) {
+        cout << "\n";
+    }
 }

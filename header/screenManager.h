@@ -10,6 +10,8 @@ class ScreenManager {
         void roomIdle();             //Takes in Room argument *FIX LATER*
         void battleMenu();           //Takes in Room argument *FIX LATER*
         void inventoryMenu();   //Takes in Inventory argument *FIX LATER*
+        void playerStats();
+        void battleMenu();
         void winScreen();
         void gameOver();
         void clearScreen();
