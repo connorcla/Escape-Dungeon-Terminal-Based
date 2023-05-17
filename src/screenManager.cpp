@@ -38,7 +38,7 @@ void ScreenManager::roomIdle() {
     //Add user input, choice validation and corresponding functions for appropriate choice
 }
 
-void ScreenManager::battleMenu() {
+void ScreenManager::mapMenu() {
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
     cout << "----------------------------------------------------------------------" << endl;
@@ -59,11 +59,11 @@ void ScreenManager::battleMenu() {
 void ScreenManager::inventoryMenu() {
     cout << "Satchel:" << endl << endl;
 
-    cout << "List of Items" << endl << endl; //Would output the list of items in inventory object from Player
+    cout << "[List of Items]" << endl << endl; //Would output the list of items in inventory object from Player
 
     cout << "Equip Slots:" << endl;
-    cout << "| Item1 |" << "| Item2 |" << "| Item3 |" << endl << endl; //Change with actual equipped items
-    cout << "Enter item number (1-[numItems]) to view ithem or enter 0 to see your stats: ";
+    cout << "| Item1 |     " << "| Item2 |" << "     | Item3 |" << endl << endl; //Change with actual equipped items
+    cout << "Enter item number (1-[numItems]) to view item or enter 0 to see your stats: ";
                                 //replace numItems with variable
     //Get input from player and either output item info or change screens
 }
@@ -84,7 +84,7 @@ void ScreenManager::playerStats() {
 
 void ScreenManager::battleMenu() {
     cout << "Monsters block your path:" << endl << endl;
-    cout << "Enemies" << endl << endl; //Replace with list of enemies
+    cout << "[Enemies]" << endl << endl; //Replace with list of enemies
     cout << "--------------------------------------" << endl;
     cout << "Health: 27/50     Magic: 35/50" << endl; //Replace with appropriate variables
     cout << "--------------------------------------" << endl;
