@@ -86,7 +86,7 @@ void ScreenManager::battleMenu() {
     cout << "Monsters block your path:" << endl << endl;
     cout << "[Enemies]" << endl << endl; //Replace with list of enemies
     cout << "--------------------------------------" << endl;
-    cout << "Health: 27/50     Magic: 35/50" << endl; //Replace with appropriate variables
+    cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
     cout << "--------------------------------------" << endl;
     cout << "What would you like to do?" << endl << endl;
     cout << "1. Attack an enemy" << endl;
