@@ -4,9 +4,13 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 add_subdirectory(googletest)
 
 add_executable(runOutputTests
-
   test/screenOutputTests.cpp
   src/screenManager.cpp
 )
 
-target_link_libraries(runOutputTests gmock gtest gtest_main)
+add_executable(runItemDatabaseTests
+  test/itemDatabaseTests.cpp
+  src/itemDatabase.cpp
+)
+
+target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
