@@ -3,7 +3,7 @@
 #include <string>
 
 class Item {
-    private:
+    protected:
         std::string name;
         std::string description;
         int property;
