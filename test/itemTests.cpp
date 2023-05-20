@@ -16,56 +16,56 @@ TEST(ReturnItemName, ReturnName0) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(0,0), allItems.returnItem(0,1), stoi(allItems.returnItem(0,2)), stoi(allItems.returnItem(0,3)));
     std::string name = testItem.getName();
-    EXPECT_EQ(name, "Health Potion I"); 
+    EXPECT_EQ(name, "Basic Sword"); 
 }
 
 TEST(ReturnItemName, ReturnName3) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
     std::string name = testItem.getName();
-    EXPECT_EQ(name, "Stone Sword"); 
+    EXPECT_EQ(name, "Flame Blade"); 
 }
 
 TEST(ReturnItemDescription, ReturnDescription0) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(0,0), allItems.returnItem(0,1), stoi(allItems.returnItem(0,2)), stoi(allItems.returnItem(0,3)));
     std::string des = testItem.displayDescription();
-    EXPECT_EQ(des, "A simple red potion that restores some health."); 
+    EXPECT_EQ(des, "A short blade that you woke up with. Looks like it can get the job done."); 
 }
 
 TEST(ReturnItemDescription, ReturnDescription3) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
     std::string des = testItem.displayDescription();
-    EXPECT_EQ(des, "A short blade made out of stone. It has worn down over time."); 
+    EXPECT_EQ(des, "A short blade with fiery runes engraved. It even gives off a little light."); 
 }
 
 TEST(ReturnItemProp, ReturnProperty0) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(0,0), allItems.returnItem(0,1), stoi(allItems.returnItem(0,2)), stoi(allItems.returnItem(0,3)));
     int prop = testItem.getProperty();
-    EXPECT_EQ(prop, 10); 
+    EXPECT_EQ(prop, 12); 
 }
 
 TEST(ReturnItemProp, ReturnProperty3) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
     int prop = testItem.getProperty();
-    EXPECT_EQ(prop, 10); 
+    EXPECT_EQ(prop, 25); 
 }
 
 TEST(ReturnItemID, ReturnID0) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(0,0), allItems.returnItem(0,1), stoi(allItems.returnItem(0,2)), stoi(allItems.returnItem(0,3)));
     int id = testItem.getID();
-    EXPECT_EQ(id, 0); 
+    EXPECT_EQ(id, 100); 
 }
 
 TEST(ReturnItemID, ReturnID3) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
     int id = testItem.getID();
-    EXPECT_EQ(id, 3); 
+    EXPECT_EQ(id, 103); 
 }
 
 
