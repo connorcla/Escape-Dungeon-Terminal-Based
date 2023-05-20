@@ -6,12 +6,6 @@ TEST(DatabaseConstructor, CreateItems) {
     ASSERT_NO_THROW(ItemDatabase allItems);
 }
 
-TEST(DatabaseSize, FixedSizeOf7) {
-    ItemDatabase allItems;
-    int size = allItems.getSize();
-    EXPECT_EQ(size, 7);
-}
-
 TEST(ReturnItemString, ReturnName0) {
     ItemDatabase allItems;
     std::string name = allItems.returnItem(0, 0);

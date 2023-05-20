@@ -13,4 +13,11 @@ add_executable(runItemDatabaseTests
   src/itemDatabase.cpp
 )
 
+add_executable(runItemTests
+  test/itemTests.cpp
+  src/item.cpp
+  src/itemDatabase.cpp
+)
+
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
+target_link_libraries(runItemTests gmock gtest gtest_main)
