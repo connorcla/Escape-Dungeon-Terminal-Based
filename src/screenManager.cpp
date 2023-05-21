@@ -39,6 +39,7 @@ void ScreenManager::roomIdle() {
 }
 
 void ScreenManager::mapMenu() {
+ //   string currRoom = 
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
     cout << "----------------------------------------------------------------------" << endl;

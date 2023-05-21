@@ -1,7 +1,12 @@
-#include<iostream>
+#include <iostream>
+#include "header/map.h"
 
 int main () {
+    Map mapTest;
+    int getCurrLocation;
 
-    std::cout << "Hello" << std::endl;
+    getCurrLocation = mapTest.getCurrRoom();
+    cout<<"Player is currently at Level "<<getCurrLocation<<endl;
+    
     return 0;
 }
