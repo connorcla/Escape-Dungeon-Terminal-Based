@@ -39,7 +39,10 @@ void ScreenManager::roomIdle() {
 }
 
 void ScreenManager::mapMenu() {
- //   string currRoom = 
+    Map map;
+    int MAPSIZE = 10;
+    int currLocation = map.getCurrRoom();
+
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
     cout << "----------------------------------------------------------------------" << endl;
@@ -55,6 +58,7 @@ void ScreenManager::mapMenu() {
     cout << "Enter (b) to stop viewing your map: ";
 
     // Add user input validation, navigation back to idle room
+    
 }
 
 void ScreenManager::inventoryMenu() {

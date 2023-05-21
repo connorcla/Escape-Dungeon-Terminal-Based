@@ -1,12 +1,10 @@
 #include <iostream>
-#include "header/map.h"
+//#include "header/map.h"
+#include "header/screenManager.h"
 
 int main () {
-    Map mapTest;
-    int getCurrLocation;
-
-    getCurrLocation = mapTest.getCurrRoom();
-    cout<<"Player is currently at Level "<<getCurrLocation<<endl;
+    ScreenManager screen;
+    screen.mapMenu();
     
     return 0;
 }

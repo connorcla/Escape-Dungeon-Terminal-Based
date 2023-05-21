@@ -7,6 +7,7 @@ add_subdirectory(googletest)
 
 add_executable(runMain
   main.cpp
+  src/screenManager.cpp
   src/map.cpp
   src/room.cpp
 )
