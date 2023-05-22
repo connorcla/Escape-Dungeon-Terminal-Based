@@ -39,14 +39,22 @@ void ScreenManager::roomIdle() {
 }
 
 void ScreenManager::mapMenu() {
-    Map map;
-    int MAPSIZE = 10;
+    Map map; //Instatiate Map class.
+    int MAPSIZE = 10; //Number of rooms (levels)
     int currLocation = map.getCurrRoom();
 
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
     cout << "----------------------------------------------------------------------" << endl;
-    cout << "| Start | Clear | Clear | Here |  ?  |  ?  |  ?  |  ?  |  ?  | Exit? |" << endl;
+    for(int room = 0; room < MAPSIZE; room++){
+        cout << "| ";
+        if(room == 0){ cout << "Start "; }
+        else if(room > 0 && room < currLocation){ cout << "Clear "; }
+        else if(room == currLocation){ cout << "Here "; }
+        else if(room >currLocation && room < (MAPSIZE-1)){ cout << " ?  "; }
+        else cout << "Exit? |"; 
+    }
+    cout << endl;
     cout << "----------------------------------------------------------------------" << endl;
     cout << endl;
     cout << "Start: Where you woke up and began your journey." << endl;
