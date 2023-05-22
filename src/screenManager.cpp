@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include "../header/screenManager.h"
+#include "../header/inventory.h"
 
 using std::cout;
 using std::endl;
@@ -57,14 +59,30 @@ void ScreenManager::mapMenu() {
 }
 
 void ScreenManager::inventoryMenu() {
+    //DELETE - Declared object for testing, will call inventory from Player
+    ItemDatabase allItems;
+    Inventory inv; 
+    inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inv.addItem(allItems.returnItem(1,0), allItems.returnItem(1,1), allItems.returnItem(1,2), allItems.returnItem(1,3));
+    inv.addItem(allItems.returnItem(2,0), allItems.returnItem(2,1), allItems.returnItem(2,2), allItems.returnItem(2,3));
+    inv.addItem(allItems.returnItem(3,0), allItems.returnItem(3,1), allItems.returnItem(3,2), allItems.returnItem(3,3));
+    inv.addItem(allItems.returnItem(4,0), allItems.returnItem(4,1), allItems.returnItem(4,2), allItems.returnItem(4,3));
+    inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
+    int size = inv.numItems();
+    //END OF DELETE
+
     cout << "Satchel:" << endl << endl;
 
-    cout << "[List of Items]" << endl << endl; //Would output the list of items in inventory object from Player
+    std::string list = inv.listInventory();
+    cout << list << endl << endl; //Would output the list of items in inventory object from Player
 
     cout << "Equip Slots:" << endl;
     cout << "| Item1 |     " << "| Item2 |" << "     | Item3 |" << endl << endl; //Change with actual equipped items
-    cout << "Enter item number (1-[numItems]) to view item or enter 0 to see your stats: ";
-                                //replace numItems with variable
+    cout << "Enter item number (1-" << size << ") to view item or enter 0 to see your stats: ";
+
+    std::string input = "";
+    std::cin >> input;
+    cout << endl;
     //Get input from player and either output item info or change screens
 }
 

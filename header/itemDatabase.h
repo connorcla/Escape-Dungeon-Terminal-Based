@@ -10,8 +10,8 @@ class ItemDatabase {
     public:
         ItemDatabase();
         ~ItemDatabase();
-        int getSize();
-        std::string returnItem(int, int);
+        int getSize() const;
+        std::string returnItem(int, int) const;
 };
 
 #endif

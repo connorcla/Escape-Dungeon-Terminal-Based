@@ -1,9 +1,13 @@
 #ifndef INVENTORY_HPP
 #define INVENTORY_HPP
+#include "../header/inventory.h"
+#include "../header/itemDatabase.h"
+#include "../header/item.h"
+#include "../header/weapon.h"
+#include "../header/equip.h"
+#include "../header/usable.h"
 #include <string>
 #include <vector>
-#include "../header/item.h"
-#include "../header/equip.h"
 
 class Inventory {
     private:
@@ -15,10 +19,11 @@ class Inventory {
         Inventory();
         ~Inventory();
         int numItems();
-        void addItem(Item*);
-        void removeItem(Item*);
-        std::string listInventory();
-        std::string displayItem(int);        
+        void addItem(std::string name, std::string des, std::string prop, std::string id);
+        void removeItem(int);
+        Item* returnItem(int);
+        std::string listInventory() const;
+        std::string displayItem(int) const;        
 };
 
 #endif

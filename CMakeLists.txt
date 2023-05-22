@@ -6,6 +6,12 @@ add_subdirectory(googletest)
 add_executable(runOutputTests
   test/screenOutputTests.cpp
   src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
 )
 
 add_executable(runItemDatabaseTests
@@ -19,5 +25,27 @@ add_executable(runItemTests
   src/itemDatabase.cpp
 )
 
+add_executable(runInventoryTests
+  test/inventoryTests.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
+)
+
+add_executable(runInventoryScreenTests
+  test/inventoryScreenTests.cpp
+  src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
+)
+
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
 target_link_libraries(runItemTests gmock gtest gtest_main)
+target_link_libraries(runInventoryTests gmock gtest gtest_main)

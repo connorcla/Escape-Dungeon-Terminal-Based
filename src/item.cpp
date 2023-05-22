@@ -19,18 +19,18 @@ Item::~Item() {
 
 }
 
-std::string Item::getName() {
+std::string Item::getName() const {
     return this->name;
 }
 
-std::string Item::displayDescription() {
+std::string Item::displayDescription() const {
     return this->description;
 }
 
-int Item::getProperty() {
+int Item::getProperty() const {
     return this->property;
 }
 
-int Item::getID() {
+int Item::getID() const {
     return this->id;
 }

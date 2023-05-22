@@ -12,10 +12,10 @@ class Item {
         Item();
         Item(std::string, std::string, int, int);
         ~Item();
-        std::string getName();
-        std::string displayDescription();
-        int getProperty();
-        int getID();
+        std::string getName() const;
+        std::string displayDescription() const;
+        int getProperty() const;
+        int getID() const;
 };
 
 #endif
