@@ -21,13 +21,13 @@ TEST(ReturnItemString, ReturnName3) {
 TEST(ReturnItemString, ReturnDescription0) {
     ItemDatabase allItems;
     std::string des = allItems.returnItem(0, 1);
-    EXPECT_EQ(des, "A short blade that you woke up with. Looks like it can get the job done."); 
+    EXPECT_EQ(des, "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12"); 
 }
 
 TEST(ReturnItemString, ReturnDescription3) {
     ItemDatabase allItems;
     std::string des = allItems.returnItem(3, 1);
-    EXPECT_EQ(des, "A short blade with fiery runes engraved. It even gives off a little light."); 
+    EXPECT_EQ(des, "A short blade with fiery runes engraved. It even gives off a little light. --- Damage: 25"); 
 }
 
 TEST(ReturnItemString, ReturnProperty0) {

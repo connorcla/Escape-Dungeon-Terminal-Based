@@ -30,14 +30,14 @@ TEST(ReturnItemDescription, ReturnDescription0) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(0,0), allItems.returnItem(0,1), stoi(allItems.returnItem(0,2)), stoi(allItems.returnItem(0,3)));
     std::string des = testItem.displayDescription();
-    EXPECT_EQ(des, "A short blade that you woke up with. Looks like it can get the job done."); 
+    EXPECT_EQ(des, "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12"); 
 }
 
 TEST(ReturnItemDescription, ReturnDescription3) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
     std::string des = testItem.displayDescription();
-    EXPECT_EQ(des, "A short blade with fiery runes engraved. It even gives off a little light."); 
+    EXPECT_EQ(des, "A short blade with fiery runes engraved. It even gives off a little light. --- Damage: 25"); 
 }
 
 TEST(ReturnItemProp, ReturnProperty0) {

@@ -13,6 +13,7 @@ class Inventory {
     private:
         std::vector<Item*> items;
         std::vector<Equip> equipped;
+        Weapon weapon;
         int maxItems;
         void sortItems(); //Sort items by name
     public:
