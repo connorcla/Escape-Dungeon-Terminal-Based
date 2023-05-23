@@ -1,5 +1,6 @@
 #ifndef SCREENMANAGER_HPP
 #define SCREENMANAGER_HPP
+#include "map.h"
 
 class ScreenManager {
     public:
