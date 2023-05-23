@@ -40,8 +40,8 @@ void ScreenManager::roomIdle() {
 
 void ScreenManager::mapMenu() {
     Map map; //Instatiate Map class.
-    int MAPSIZE = 10; //Number of rooms (levels)
-    int currLocation = map.getCurrRoom();
+    int MAPSIZE = 10; //Number of total rooms.
+    int currLocation = map.getCurrRoom(); //Returns the player's current room location.
 
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;

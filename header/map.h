@@ -12,6 +12,6 @@ class Map{
     private:
         vector<Room> rooms;
         const int NUMOFROOMS = 10;
-        int currRoom; 
+        unsigned int currRoom; 
 };
 #endif

@@ -5,10 +5,10 @@ using namespace std;
 
 Map::Map(){
     //Player starts at room 4, which is index 3 in the vector.
-    currRoom = 3;
+    currRoom = 1;
 
     //Throw an error if currRoom doesn't start at index 3.
-    if(currRoom != 3){ throw "Failed to initialize the current room."; }
+    if(currRoom != 1){ throw "Failed to initialize the current room."; }
 
     //Create an empty room;
     Room rm;
@@ -17,9 +17,6 @@ Map::Map(){
         rooms.push_back(rm);
         if(r == 0){
             rooms[r].setRmStatus("Start");
-        }
-        else if(r == 1 || r == 2){
-            rooms[r].setRmStatus("Clear");
         }
         else if(r == currRoom){
             rooms[r].setRmStatus("Here");
