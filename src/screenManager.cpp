@@ -1,7 +1,10 @@
 #include <iostream>
+#include <string>
 #include "../header/screenManager.h"
+#include "../header/inventory.h"
 
 using std::cout;
+using std::cin;
 using std::endl;
 
 ScreenManager::ScreenManager() {}
@@ -70,14 +73,101 @@ void ScreenManager::mapMenu() {
 }
 
 void ScreenManager::inventoryMenu() {
-    cout << "Satchel:" << endl << endl;
+    //DELETE - Declared object for testing, will call inventory from Player
+    ItemDatabase allItems;
+    Inventory inv; 
+    inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inv.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
+    inv.addItem(allItems.returnItem(2,0), allItems.returnItem(2,1), allItems.returnItem(2,2), allItems.returnItem(2,3));
+    inv.addItem(allItems.returnItem(3,0), allItems.returnItem(3,1), allItems.returnItem(3,2), allItems.returnItem(3,3));
+    inv.addItem(allItems.returnItem(4,0), allItems.returnItem(4,1), allItems.returnItem(4,2), allItems.returnItem(4,3));
+    inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
+    //END OF DELETE
 
-    cout << "[List of Items]" << endl << endl; //Would output the list of items in inventory object from Player
+    while(true) {
+        cout << "Satchel:" << endl;
 
-    cout << "Equip Slots:" << endl;
-    cout << "| Item1 |     " << "| Item2 |" << "     | Item3 |" << endl << endl; //Change with actual equipped items
-    cout << "Enter item number (1-[numItems]) to view item or enter 0 to see your stats: ";
-                                //replace numItems with variable
+        std::string list = inv.listInventory();
+        int size = inv.numItems();
+        cout << list << endl << endl; //Would output the list of items in inventory object from Player
+
+        cout << "Equipped Weapon:" << endl;
+        cout << "| Weapon |" << endl << endl;
+
+        cout << "Equip Slots:" << endl;
+        cout << "| Item1 |     " << "| Item2 |" << "     | Item3 |" << endl << endl; //Change with actual equipped items
+        cout << "Enter item number (1-" << size << ") to view item, 0 to see your stats, or (b) to go back: ";
+
+        std::string sInput;
+        char cInput;
+        cin >> sInput;
+        cInput = sInput[0];
+        cout << endl;
+        if(cInput == 'b')
+        {
+           return;
+        }
+        int numValue = cInput - 48;
+        if(!(numValue >= 0 && numValue <= inv.numItems()))
+        {
+            clearScreen();
+            cout << "Invalid input, please try again." << endl << endl;
+        }
+        else {
+            if(numValue == 0) {
+                playerStats();
+            }
+            else {
+                cout << inv.displayItem(numValue-1);
+                cout << endl;
+                if((inv.returnItem(numValue-1)->getID() / 100) == 1) {
+                    cout << "You can equip this item with (e), remove it with (r), or continue with anything else: ";
+                    cin >> sInput;
+                    cInput = sInput[0];
+                    cout << endl;
+                    clearScreen();
+                    if(cInput == 'e') {
+                        cout << "Weapon equipped!" << endl << endl;
+                        //Add equip logic for weapon later
+                    }
+                    else if(cInput == 'r') {
+                        inv.removeItem(numValue-1);
+                        cout << "Item removed." << endl << endl;
+                        //Make sure equipped items are also removed.
+                    }
+                }
+                else if((inv.returnItem(numValue-1)->getID() / 100) == 2) {
+                    cout << "You can equip this item with (e), remove it with (r), or continue with anything else: ";
+                    cin >> sInput;
+                    cInput = sInput[0];
+                    cout << endl;
+                    clearScreen();
+                    if(cInput == 'e') {
+                        cout << "Equipped!" << endl << endl;
+                        //Add equip logic for equipable items later
+                    }
+                    else if(cInput == 'r') {
+                        inv.removeItem(numValue-1);
+                        cout << "Item removed." << endl << endl;
+                        //Make sure equipped items are also removed.
+                    }
+                }
+                else if((inv.returnItem(numValue-1)->getID() / 100) == 3) {
+                    cout << "You can remove this item with (r), or continue with anything else: ";
+                    cin >> sInput;
+                    cInput = sInput[0];
+                    cout << endl << endl;
+                    clearScreen();
+                    if(cInput == 'r') {
+                        inv.removeItem(numValue-1);
+                        cout << "Item removed." << endl << endl;
+                    }
+                }
+            }
+        }
+    }
+    
+
     //Get input from player and either output item info or change screens
 }
 
@@ -92,6 +182,9 @@ void ScreenManager::playerStats() {
     cout << endl;
     cout << "You can increase any statistic by 1 point by spending 10 EXP." << endl;
     cout << "Enter which statistic you wish to increase (H,M,A,D,S) or enter (b) to go back to satchel: ";
+    char input;
+    std::cin >> input;
+    cout << endl;
     //Get user input validation and apply change
 }
 
