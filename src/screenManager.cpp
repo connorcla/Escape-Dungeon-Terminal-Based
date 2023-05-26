@@ -7,6 +7,14 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+char getCharInput() {
+    std::string sInput;
+    char cInput;
+    cin >> sInput;
+    cInput = sInput[0];
+    return cInput;
+}
+
 ScreenManager::ScreenManager() {}
 
 ScreenManager::~ScreenManager() {}
@@ -25,20 +33,56 @@ void ScreenManager::mainMenu() {
 
     cout << "Enter your name to begin: ";
     //cin >> player.Name; Set player's name here and begin
+    char waitInput = getCharInput(); //Replace with getting string for player name
+    cout << endl;
+
+    clearScreen();
+    roomIdle();
 }
 
 void ScreenManager::roomIdle() {
-    cout << "You find yourself in a damp room and nothing seems to be moving except the flicker of the torches on the walls." << endl << endl;
-    cout << "What would you like to do?" << endl << endl;
-    cout << "1. Look around the room for any items" << endl;
-    cout << "2. Examine the room" << endl;
-    cout << "3. View Inventory" << endl;
-    cout << "4. View Map" << endl;
-    cout << "5. Move to the next room" << endl;
-    cout << endl;
-    cout << "Enter your choice (1-5): ";
+    while(true) {
+        cout << "You find yourself in a damp room and nothing seems to be moving except the flicker of the torches on the walls." << endl << endl;
+        cout << "What would you like to do?" << endl << endl;
+        cout << "1. Look around the room for any items" << endl;
+        cout << "2. Examine the room" << endl;
+        cout << "3. View Inventory" << endl;
+        cout << "4. View Map" << endl;
+        cout << "5. Move to the next room" << endl;
+        cout << endl;
+        cout << "Enter your choice (1-5): ";
 
-    //Add user input, choice validation and corresponding functions for appropriate choice
+        //Add user input, choice validation and corresponding functions for appropriate choice
+        char choice = getCharInput();
+        int numChoice = choice - 48;
+        if(numChoice > 5 || numChoice < 1) {
+            cout << "Invalid Input: Please try again." << endl;
+            continue; 
+        }
+        else {
+            switch(numChoice) {
+                case 1:
+                    //Will get a random item from Room vector of Item*, add to inventory and text saying what the player recieved
+                    break;
+                case 2:
+                    //Output dialoge with the room description
+                    break;
+                case 3:
+                    clearScreen();
+                    inventoryMenu();
+                    break;
+                case 4:
+                    clearScreen();
+                    mapMenu();
+                    break;
+                case 5:
+                    //Increase room count, go to battle menu, start battle
+                    break;
+                default:
+                    cout << "An error occurred." << endl;
+            }
+        }
+    }
 }
 
 void ScreenManager::mapMenu() {
@@ -69,7 +113,16 @@ void ScreenManager::mapMenu() {
     cout << "Enter (b) to stop viewing your map: ";
 
     // Add user input validation, navigation back to idle room
-    
+    while (true) {
+        char cInput = getCharInput();
+        if(cInput == 'b') {
+            return;
+        }
+        else {
+            cout << "Invalid Input: Please try again." << endl;
+            cout << "Enter (b) to stop viewing your map: ";
+        }
+    }
 }
 
 void ScreenManager::inventoryMenu() {
@@ -98,10 +151,7 @@ void ScreenManager::inventoryMenu() {
         cout << "| Item1 |     " << "| Item2 |" << "     | Item3 |" << endl << endl; //Change with actual equipped items
         cout << "Enter item number (1-" << size << ") to view item, 0 to see your stats, or (b) to go back: ";
 
-        std::string sInput;
-        char cInput;
-        cin >> sInput;
-        cInput = sInput[0];
+        char cInput = getCharInput();
         cout << endl;
         if(cInput == 'b')
         {
@@ -122,8 +172,7 @@ void ScreenManager::inventoryMenu() {
                 cout << endl;
                 if((inv.returnItem(numValue-1)->getID() / 100) == 1) {
                     cout << "You can equip this item with (e), remove it with (r), or continue with anything else: ";
-                    cin >> sInput;
-                    cInput = sInput[0];
+                    cInput = getCharInput();
                     cout << endl;
                     clearScreen();
                     if(cInput == 'e') {
@@ -138,8 +187,7 @@ void ScreenManager::inventoryMenu() {
                 }
                 else if((inv.returnItem(numValue-1)->getID() / 100) == 2) {
                     cout << "You can equip this item with (e), remove it with (r), or continue with anything else: ";
-                    cin >> sInput;
-                    cInput = sInput[0];
+                    cInput = getCharInput();
                     cout << endl;
                     clearScreen();
                     if(cInput == 'e') {
@@ -154,8 +202,7 @@ void ScreenManager::inventoryMenu() {
                 }
                 else if((inv.returnItem(numValue-1)->getID() / 100) == 3) {
                     cout << "You can remove this item with (r), or continue with anything else: ";
-                    cin >> sInput;
-                    cInput = sInput[0];
+                    cInput = getCharInput();
                     cout << endl << endl;
                     clearScreen();
                     if(cInput == 'r') {

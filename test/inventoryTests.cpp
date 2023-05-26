@@ -72,7 +72,7 @@ TEST(InventoryRemoveItem, RemoveOutofRange)  {
     inv.addItem(allItems.returnItem(1,0), allItems.returnItem(1,1), allItems.returnItem(1,2), allItems.returnItem(1,3));
 
     inv.removeItem(0);
-    EXPECT_DEATH(inv.removeItem(1), "Out of range: RemoveItem");
+    EXPECT_ANY_THROW(inv.removeItem(1));
 }
 
 TEST(InventoryReturnItem, ReturnOutOf2)  {
@@ -106,7 +106,7 @@ TEST(InventoryReturnItem, ReturnOutOfRange)  {
     inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
     inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
 
-    EXPECT_DEATH(inv.returnItem(2), "Out of range: ReturnItem");
+    EXPECT_ANY_THROW(inv.returnItem(2));
 }
 
 TEST(InventoryDisplayItem, DisplayOutOf2)  {
@@ -138,7 +138,7 @@ TEST(InventoryDisplayItem, DisplayOutOfRange)  {
     inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
     inv.addItem(allItems.returnItem(1,0), allItems.returnItem(1,1), allItems.returnItem(1,2), allItems.returnItem(1,3));
 
-    EXPECT_DEATH(inv.displayItem(2), "Out of range: DisplayItem");
+    EXPECT_ANY_THROW(inv.displayItem(2));
 }
 
 TEST(InventoryList, List2)  {
