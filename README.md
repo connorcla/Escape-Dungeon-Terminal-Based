@@ -189,7 +189,7 @@ ________________________________________________________________________________
 
 
 ## Class Diagram
-![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagram.drawio.png)
+![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagramV2.png)
 
 ### Description of the UML CLass Diagram: 
 **ScreenManager class**
@@ -284,25 +284,22 @@ The Inventory class displays the players inventory, which will be sorted alphabe
 The startTurn function is implemented by taking the action from the argument Player and going through the list of sorted Entities, performing their actions in that specific order. The getPlayerInput will assist in prompting and printing choices for the player in battle and taking that input and applying it accordingly for actions, inventory, or fleeing.
 
  
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
+ ## SOLID Modifications
+ ![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagramV2.png)
  
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * You should also make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
+ ### Single Responsibility Principle
+
+The single responsibility principle is applied in this new class diagram by moving void display functions out of other classes such as the Map and Inventory classes, and only having the ScreenManager class solely handle any pure output to the screen. Instead of the output and cout statements being located in separate classes, these display functions now manipulate the data and return the needed information as strings which will be used in ScreenManager and output there. This helps in writing better code by only having one class manage outputting to the screen and gather the information from other classes called from that one class. This allows for more module implementation by only manipulating and returning data in called functions so if there is an error in output, then only one class needs to be analyzed and then go into manipulation functions from there after the place where the bug is in output has been identified. 
+
+ ### Liskov’s Substitution Principle
+
+Liskov’s substitution principle is applied in this new class diagram by better defining the abstract Enemy base class and its derived classes of specific Enemy types. During the function of the program a list of Enemies will contain the different types of Enemies that derive from the Enemy base class and will all be expected to act very similarly during function calls. The main function that needs to behave similarly between all derived classes is the action function from the base class which will take in the Player object as a parameter in order to affect it through damage, and return a string depending on the action performed and its flavor text. Even though the actions may yield different damage to the Player or different strings as descriptions of the actions, they should all function with the same input and output types and be replaceable with any one of the derived classes. This helps in better code by allowing derived classes to separate actions of different types of enemies from each other by still accessing the needed data manipulation and information from those actions in the same way.
+
+ ### Interface Segregation Principle
+
+The interface segregation principle was implemented by analyzing the similarities and functions in common between the base class of Entity and its derived classes of Player and Enemy. Before, the Player and Enemy classes had separate variables and getter functions for each of their specific names and exp values. This was done before because it was thought that these variables would be created and used in different and unique applications, however after further deliberation, the only purpose that the name and exp variables need is to store the specific values and need to get their values in order which would then be manipulated by another function. They serve the same purpose between both derived classes so it would make more sense to be in the base class. This is more of an inversion of the interface segregation principle as we are taking two separate variables among derived classes and combining them in the base class because the function is the same over the two classes. However, this does make the code better as we don’t have the same implementation of two variables over two derived classes when we could easily have one implementation in the base class which the two derived classes can still access. 
+
+
 
  
  > ## Final deliverable

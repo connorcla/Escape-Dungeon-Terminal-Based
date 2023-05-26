@@ -1,5 +1,3 @@
-#include <string>
-#include <vector>
 #include "../header/inventory.h"
 #include "../header/itemDatabase.h"
 #include "../header/item.h"
@@ -49,8 +47,8 @@ void Inventory::addItem(std::string name, std::string des, std::string prop, std
 }
 
 void Inventory::removeItem(int index) {
-    assert(index >= 0 && index <= (items.size()-1) && "Out of range: RemoveItem");
-    assert(!items.empty() && "Out of range: RemoveItem");
+    if(index < 0 || index > (items.size()-1)) {throw "Out of range: RemoveItem";}
+    if(items.empty()) {throw "Out of range: RemoveItem";}
 
     std::vector<Item*>::iterator it;
     it = items.begin();
@@ -60,8 +58,8 @@ void Inventory::removeItem(int index) {
 }
 
 Item* Inventory::returnItem(int index) {
-    assert(index >= 0 && index <= (items.size()-1) && "Out of range: ReturnItem");
-    assert(!items.empty() && "Out of range: ReturnItem");
+    if(index < 0 || index > (items.size()-1)) {throw "Out of range: ReturnItem";}
+    if(items.empty()) {throw "Out of range: ReturnItem";}
 
     return items.at(index);
 }
@@ -89,8 +87,8 @@ std::string Inventory::listInventory() const {
 }
 
 std::string Inventory::displayItem(int selectedItem) const {
-    assert(selectedItem >= 0 && selectedItem <= (items.size()-1) && "Out of range: DisplayItem");
-    assert(!items.empty() && "Out of range: DisplayItem");
+    if(selectedItem < 0 || selectedItem > (items.size()-1)) {throw "Out of range: DisplayItem";}
+    if(items.empty()) {throw "Out of range: DisplayItem";}
 
     std::string returnString = "";
     Item* item = items.at(selectedItem);
