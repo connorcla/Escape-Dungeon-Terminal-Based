@@ -14,6 +14,8 @@ add_executable(runOutputTests
   src/weapon.cpp
   src/usable.cpp
   src/equip.cpp 
+  src/map.cpp
+  src/room.cpp
 )
 
 add_executable(runItemDatabaseTests
@@ -46,22 +48,23 @@ add_executable(runInventoryScreenTests
   src/weapon.cpp
   src/usable.cpp
   src/equip.cpp 
+  src/map.cpp
+  src/room.cpp
 )
 
 add_executable(runMain
   main.cpp
   src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
   src/map.cpp
   src/room.cpp
 )
 
-add_executable(runOutputTests
-# test/screenOutputTests.cpp
-#  src/screenManager.cpp
-  test/mapTest.cpp
-  src/map.cpp
-  src/room.cpp
-)
 
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
 target_link_libraries(runItemTests gmock gtest gtest_main)

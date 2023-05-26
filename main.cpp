@@ -4,7 +4,7 @@
 
 int main () {
     ScreenManager screen;
-    screen.mapMenu();
+    screen.mainMenu();
     
     return 0;
 }
