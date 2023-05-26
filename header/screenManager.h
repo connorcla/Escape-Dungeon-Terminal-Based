@@ -16,6 +16,10 @@ class ScreenManager {
         void winScreen();
         void gameOver();
         void clearScreen();
+
+    private:
+        const unsigned MAPSIZE = 10; //Number of total rooms.
+        Map map;
 };
 
 #endif

@@ -28,6 +28,7 @@ void ScreenManager::mainMenu() {
 }
 
 void ScreenManager::roomIdle() {
+
     cout << "You find yourself in a damp room and nothing seems to be moving except the flicker of the torches on the walls." << endl << endl;
     cout << "What would you like to do?" << endl << endl;
     cout << "1. Look around the room for any items" << endl;
@@ -36,16 +37,12 @@ void ScreenManager::roomIdle() {
     cout << "4. View Map" << endl;
     cout << "5. Move to the next room" << endl;
     cout << endl;
-    cout << "Enter your choice (1-5): ";
-
+    cout << "Enter your choice (1-6): "; 
+        
     //Add user input, choice validation and corresponding functions for appropriate choice
 }
 
 void ScreenManager::mapMenu() {
-    Map map; //Instatiate Map class.
-    int MAPSIZE = 10; //Number of total rooms.
-    int currLocation = map.getCurrRoom(); //Returns the player's current room location.
-
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
     cout << "----------------------------------------------------------------------" << endl;
