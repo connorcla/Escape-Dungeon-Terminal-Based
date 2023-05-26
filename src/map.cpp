@@ -3,14 +3,12 @@
 #include <assert.h>
 using namespace std;
 
-Map::Map(){
+Map::Map() {
     //Player starts at room 4, which is index 3 in the vector.
     currRoom = 1;
-
-    //Throw an error if currRoom doesn't start at index 3.
+    
     if(currRoom != 1){ throw "Failed to initialize the current room."; }
-
-    //Create an empty room;
+    
     Room rm;
     
     for(int r = 0; r < NUMOFROOMS; r++){
@@ -30,12 +28,18 @@ Map::Map(){
     }
 }
 
-void Map::moveRooms(int moveTo){
-    //Move to next or previous room.
-    currRoom = (currRoom + moveTo);
+void Map::moveToNextRoom() {
+    currRoom++;
 }
 
-int Map::getCurrRoom() const{
-    //Returns the room that the player is currently in.
+void Map::fleeToPrevRoom() {
+    currRoom--;
+}
+
+unsigned int Map::getCurrRoom() const {
     return currRoom;
+}
+
+unsigned int Map::getNumOfRooms() const {
+    return NUMOFROOMS;
 }

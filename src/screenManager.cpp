@@ -28,7 +28,6 @@ void ScreenManager::mainMenu() {
 }
 
 void ScreenManager::roomIdle() {
-
     cout << "You find yourself in a damp room and nothing seems to be moving except the flicker of the torches on the walls." << endl << endl;
     cout << "What would you like to do?" << endl << endl;
     cout << "1. Look around the room for any items" << endl;
@@ -37,7 +36,7 @@ void ScreenManager::roomIdle() {
     cout << "4. View Map" << endl;
     cout << "5. Move to the next room" << endl;
     cout << endl;
-    cout << "Enter your choice (1-6): "; 
+    cout << "Enter your choice (1-5): "; 
         
     //Add user input, choice validation and corresponding functions for appropriate choice
 }
@@ -45,17 +44,9 @@ void ScreenManager::roomIdle() {
 void ScreenManager::mapMenu() {
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
-    cout << "----------------------------------------------------------------------" << endl;
-    for(int room = 0; room < MAPSIZE; room++){
-        cout << "| ";
-        if(room == 0){ cout << "Start "; }
-        else if(room > 0 && room < currLocation){ cout << "Clear "; }
-        else if(room == currLocation){ cout << "Here "; }
-        else if(room >currLocation && room < (MAPSIZE-1)){ cout << " ?  "; }
-        else cout << "Exit? |"; 
-    }
-    cout << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    
+    displayMap();
+
     cout << endl;
     cout << "Start: Where you woke up and began your journey." << endl;
     cout << "Clear: All enemies have been vanquished from there, there is no use going back." << endl;
@@ -67,6 +58,56 @@ void ScreenManager::mapMenu() {
 
     // Add user input validation, navigation back to idle room
     
+}
+
+void ScreenManager::displayMap(){
+    const unsigned int currntRoom = map.getCurrRoom();
+    const unsigned int NUMOFROOMS = map.getNumOfRooms();
+    cout << "----------------------------------------------------------------------" << endl;
+    for(int room = 0; room < NUMOFROOMS; room++){
+        cout << "| ";
+        if(room == 0){ cout << "Start "; }
+        else if(room > 0 && room < currntRoom){ cout << "Clear "; }
+        else if(room == currntRoom){ cout << "Here "; }
+        else if(room >currntRoom && room < (NUMOFROOMS-1)){ cout << " ?  "; }
+        else cout << "Exit? |"; 
+    }
+    cout << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+    
+}
+
+void ScreenManager::prevRoom() {
+    unsigned int choice;
+    displayMap();
+    cout << "You are now back in the previous room." << endl;
+    cout << "Hurry! Find the itmes and weapons you need to combat the monsters in the next room. " <<  endl;
+    do{
+        cout << "What would you like to do?" << endl << endl;
+        cout << "1. Look around the room for any items" << endl;
+        cout << "2. Examine the room" << endl;
+        cout << "3. View Inventory" << endl;
+        cout << "4. View Map" << endl;
+        cout << "5. Move to the next room" << endl;
+        cout << endl;
+        cout << "Enter your choice (1-5): "; 
+
+        cin >> choice;
+
+        while(choice != 1 && choice != 2 && choice != 3 && choice != 4  && choice != 5){
+            cout <<  "Invalid input! " << choice << " is not an option. Please try again." << endl;
+            cin >> choice;
+        }
+
+        switch(choice){
+            case 1: { } //look for items in the room
+            case 2: { } //examine the room
+            case 3: { } //view inventory
+            case 4: { } //view map
+            case 5: { } //move to the next room.
+        }
+
+    }while(choice != 5);
 }
 
 void ScreenManager::inventoryMenu() {
@@ -186,17 +227,43 @@ void ScreenManager::playerStats() {
 }
 
 void ScreenManager::battleMenu() {
-    cout << "Monsters block your path:" << endl << endl;
-    cout << "[Enemies]" << endl << endl; //Replace with list of enemies
-    cout << "--------------------------------------" << endl;
-    cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
-    cout << "--------------------------------------" << endl;
-    cout << "What would you like to do?" << endl << endl;
-    cout << "1. Attack an enemy" << endl;
-    cout << "2. Use an item" << endl;
-    cout << "3. Attempt to flee (return to previous room)" << endl << endl;
-    cout << "Enter your choice (1-3): ";
-    //Get user input validation, lots of output depending on choice
+    unsigned int choice;
+    do{
+        cout << "Monsters block your path:" << endl << endl;
+        cout << "[Enemies]" << endl << endl; //Replace with list of enemies
+        cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
+        cout << "--------------------------------------" << endl;
+        cout << "What would you like to do?" << endl << endl;
+        cout << "1. Attack an enemy" << endl;
+        cout << "2. Use an item" << endl;
+        cout << "3. Attempt to flee (return to previous room)" << endl << endl;
+        cout << "Enter your choice (1-3): ";
+
+        //Get user input validation, lots of output depending on choice
+        cin >> choice;
+
+        while(choice != 1 && choice != 2 && choice != 3){
+            cout <<  "Invalid input! " << choice << " is not an option. Please try again." << endl;
+            cin >> choice;
+        }
+
+        switch(choice){
+            case 1: { break; } //Attack enemy
+            case 2: { break; } //Use an item
+            case 3: {
+                    map.fleeToPrevRoom();
+                    prevRoom(); 
+                    map.moveToNextRoom();
+                    break;
+                }
+            default: { cout << "Error occurred in ScreenManager::battleMenu(). " << endl; }
+                 
+        }
+
+    }while(choice > 0 || 3 >= choice);
+    
 }
 
 void ScreenManager::winScreen() {

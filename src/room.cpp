@@ -2,20 +2,16 @@
 #include <vector>
 using namespace std;
 
-Room::Room(){}
+Room::Room() {}
 
-void Room::setRmStatus(string status){
+void Room::setRmStatus(string status) {
     rmStatus = status;
 }
 
-void Room::startBattle(){
-
-}
-
-string Room::getRoomInfo(){
+string Room::getRoomInfo() const {
     return rmInfo;
 }
 
-string Room::getRoomStatus(){
+string Room::getRoomStatus() const {
     return rmStatus;
 }
