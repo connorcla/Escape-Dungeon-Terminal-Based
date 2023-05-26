@@ -6,15 +6,14 @@
 #include <string>
 using namespace std;
 
-class Room{
+class Room {
     public:
         Room();
 
         void setRmStatus(string);
-        void startBattle();
 
-        string getRoomInfo();
-        string getRoomStatus();
+        string getRoomInfo() const;
+        string getRoomStatus() const;
 
     private:
 //        vector <Enemy> enemies;

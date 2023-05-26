@@ -86,23 +86,11 @@ void ScreenManager::roomIdle() {
 }
 
 void ScreenManager::mapMenu() {
-    Map map; //Instatiate Map class.
-    int MAPSIZE = 10; //Number of total rooms.
-    int currLocation = map.getCurrRoom(); //Returns the player's current room location.
-
     cout << "Current Map:" << endl;
     cout << "A map that you were gripping when you woke up." << endl;
-    cout << "----------------------------------------------------------------------" << endl;
-    for(int room = 0; room < MAPSIZE; room++){
-        cout << "| ";
-        if(room == 0){ cout << "Start "; }
-        else if(room > 0 && room < currLocation){ cout << "Clear "; }
-        else if(room == currLocation){ cout << "Here "; }
-        else if(room >currLocation && room < (MAPSIZE-1)){ cout << " ?  "; }
-        else cout << "Exit? |"; 
-    }
-    cout << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    
+    displayMap();
+
     cout << endl;
     cout << "Start: Where you woke up and began your journey." << endl;
     cout << "Clear: All enemies have been vanquished from there, there is no use going back." << endl;
@@ -123,6 +111,23 @@ void ScreenManager::mapMenu() {
             cout << "Enter (b) to stop viewing your map: ";
         }
     }
+}
+
+void ScreenManager::displayMap(){
+    const unsigned int currntRoom = map.getCurrRoom();
+    const unsigned int NUMOFROOMS = map.getNumOfRooms();
+    cout << "----------------------------------------------------------------------" << endl;
+    for(int room = 0; room < NUMOFROOMS; room++){
+        cout << "| ";
+        if(room == 0){ cout << "Start "; }
+        else if(room > 0 && room < currntRoom){ cout << "Clear "; }
+        else if(room == currntRoom){ cout << "Here "; }
+        else if(room >currntRoom && room < (NUMOFROOMS-1)){ cout << " ?  "; }
+        else cout << "Exit? |"; 
+    }
+    cout << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+    
 }
 
 void ScreenManager::inventoryMenu() {
@@ -236,17 +241,45 @@ void ScreenManager::playerStats() {
 }
 
 void ScreenManager::battleMenu() {
-    cout << "Monsters block your path:" << endl << endl;
-    cout << "[Enemies]" << endl << endl; //Replace with list of enemies
-    cout << "--------------------------------------" << endl;
-    cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
-    cout << "--------------------------------------" << endl;
-    cout << "What would you like to do?" << endl << endl;
-    cout << "1. Attack an enemy" << endl;
-    cout << "2. Use an item" << endl;
-    cout << "3. Attempt to flee (return to previous room)" << endl << endl;
-    cout << "Enter your choice (1-3): ";
-    //Get user input validation, lots of output depending on choice
+    unsigned int choice;
+    do{
+        cout << "Monsters block your path:" << endl << endl;
+        cout << "[Enemies]" << endl; //Replace with list of enemies
+        cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
+        cout << "--------------------------------------" << endl;
+        cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
+        cout << "--------------------------------------" << endl;
+        cout << "What would you like to do?" << endl << endl;
+        cout << "1. Attack an enemy" << endl;
+        cout << "2. Use an item" << endl;
+        cout << "3. Attempt to flee (return to previous room)" << endl << endl;
+        cout << "Enter your choice (1-3): ";
+
+        //Get user input validation, lots of output depending on choice
+        cin >> choice;
+
+        while(choice != 1 && choice != 2 && choice != 3){
+            cout <<  "Invalid input! " << choice << " is not an option. Please try again." << endl;
+            cin >> choice;
+        }
+
+        switch(choice){
+            case 1: { break; } //Attack enemy
+            case 2: { break; } //Use an item
+            case 3: {
+                    clearScreen();
+                    cout << "You are now back in the previous room." << endl;
+                    cout << "Hurry! Find the items and weapons you need to combat the monsters in the next room...." <<  endl;
+                    map.fleeToPrevRoom();
+                    displayMap();
+                    return;
+                }
+            default: { cout << "Error occurred in ScreenManager::battleMenu(). " << endl; }
+                 
+        }
+
+    }while(choice > 0 || 3 >= choice);
+    
 }
 
 void ScreenManager::winScreen() {

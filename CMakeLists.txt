@@ -65,7 +65,14 @@ add_executable(runMain
   src/room.cpp
 )
 
+add_executable(runRoomTests
+  test/roomTests.cpp
+  src/map.cpp
+  src/room.cpp
+)
 
+target_link_libraries(runRoomTests gmock gtest gtest_main)
+target_link_libraries(runMain gmock gtest gtest_main)
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
 target_link_libraries(runItemTests gmock gtest gtest_main)
 target_link_libraries(runInventoryTests gmock gtest gtest_main)

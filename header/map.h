@@ -3,15 +3,17 @@
 #include "../header/room.h"
 #include <vector>
 
-class Map{
+class Map {
     public:
         Map();
-        void moveRooms(int);
-        int getCurrRoom() const;
+        void moveToNextRoom();
+        void fleeToPrevRoom();
+        unsigned int getCurrRoom() const;
+        unsigned int getNumOfRooms() const;
 
     private:
         vector<Room> rooms;
-        const int NUMOFROOMS = 10;
+        const unsigned int NUMOFROOMS = 10;
         unsigned int currRoom; 
 };
 #endif
