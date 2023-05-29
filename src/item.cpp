@@ -34,3 +34,7 @@ int Item::getProperty() const {
 int Item::getID() const {
     return this->id;
 }
+
+void Item::incrStat(Player& player) {}
+
+void Item::decrStat(Player& player) {}

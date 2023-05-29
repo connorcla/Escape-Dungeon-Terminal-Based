@@ -22,4 +22,12 @@ Usable::~Usable() {
 
 }
 
+void Usable::incrStat(Player& player) {
+    player.updateStat(id, property);
+}
+
+void Usable::decrStat(Player& player) {
+    player.updateStat(id, -1 * property);
+}
+
 //void Usable::useItem(Player player) {}

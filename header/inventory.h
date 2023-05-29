@@ -1,19 +1,18 @@
 #ifndef INVENTORY_HPP
 #define INVENTORY_HPP
-#include "../header/inventory.h"
-#include "../header/itemDatabase.h"
-#include "../header/item.h"
-#include "../header/weapon.h"
-#include "../header/equip.h"
-#include "../header/usable.h"
+#include "item.h"
+#include "weapon.h"
+#include "equip.h"
+#include "usable.h"
+#include "player.h"
 #include <string>
 #include <vector>
 
 class Inventory {
     private:
         std::vector<Item*> items;
-        std::vector<Equip> equipped;
-        Weapon weapon;
+        std::vector<Item*> equipped;
+        Weapon* weapon;
         int maxItems;
         void sortItems(); //Sort items by name
     public:
@@ -25,6 +24,8 @@ class Inventory {
         Item* returnItem(int);
         std::string listInventory() const;
         std::string displayItem(int) const;        
+        void equipItem(int, Player&);
+        std::string outputEquipped() const;
 };
 
 #endif

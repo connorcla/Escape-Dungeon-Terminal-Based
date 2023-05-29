@@ -1,5 +1,6 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#ifndef ENTITY_HPP
+#define ENTITY_HPP
+#include <string>
 
 class Entity {
 public:
@@ -12,8 +13,12 @@ public:
     int getDefense() const;
     int getAttack() const;
     int getSpeed() const;
-    void setStats();
-private:
+    int getExp() const;
+    std::string getName() const;
+    void setStats(int, int, int, int, int, int, std::string);
+protected:
+    std::string name;
+    int exp;
     int max_health;
     int curr_health;
     int defense;

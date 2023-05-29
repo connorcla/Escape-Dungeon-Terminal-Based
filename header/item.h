@@ -1,5 +1,7 @@
 #ifndef ITEM_HPP
 #define ITEM_HPP
+
+#include "player.h"
 #include <string>
 
 class Item {
@@ -11,11 +13,13 @@ class Item {
     public:
         Item();
         Item(std::string, std::string, int, int);
-        ~Item();
+        virtual ~Item();
         std::string getName() const;
         std::string displayDescription() const;
         int getProperty() const;
         int getID() const;
+        virtual void incrStat(Player& player);
+        virtual void decrStat(Player& player);
 };
 
 #endif

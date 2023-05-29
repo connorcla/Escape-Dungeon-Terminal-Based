@@ -1,4 +1,4 @@
-#include "entity.h"
+#include "../header/entity.h"
 
 // Constructor
 Entity::Entity()
@@ -20,10 +20,18 @@ int Entity::getAttack() const {
 int Entity::getSpeed() const {
     return speed;
 }
-void Entity::setStats(int maxHealth, int currHealth, int defense, int attack, int speed) {
+int Entity::getExp() const {
+    return exp;
+}
+std::string Entity::getName() const {
+    return name;
+}
+void Entity::setStats(int maxHealth, int currHealth, int defense, int attack, int speed, int exp, std::string name) {
     this->max_health = maxHealth;
     this->curr_health = currHealth;
     this->defense = defense;
     this->attack = attack;
     this->speed = speed;
+    this->exp = exp;
+    this->name = name;
 }
