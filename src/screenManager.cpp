@@ -155,7 +155,7 @@ void ScreenManager::inventoryMenu() {
 
 
         cout << "Equipped Weapon:" << endl;
-        cout << "| Weapon |" << endl << endl;
+        cout << inventory.outputWeapon() << endl << endl;
 
         cout << "Equip Slots:" << endl;
         cout << inventory.outputEquipped() << endl << endl; //Change with actual equipped items
@@ -187,12 +187,11 @@ void ScreenManager::inventoryMenu() {
                     clearScreen();
                     if(cInput == 'e') {
                         cout << "Weapon equipped!" << endl << endl;
-                        //Add equip logic for weapon later
+                        inventory.equipWeapon(numValue-1,player);
                     }
                     else if(cInput == 'r') {
                         inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
-                        //Make sure equipped items are also removed.
                     }
                 }
                 else if((inventory.returnItem(numValue-1)->getID() / 100) == 2) {

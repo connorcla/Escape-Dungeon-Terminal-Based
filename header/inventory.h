@@ -12,7 +12,7 @@ class Inventory {
     private:
         std::vector<Item*> items;
         std::vector<Item*> equipped;
-        Weapon* weapon;
+        std::vector<Item*> weapon;
         int maxItems;
         void sortItems(); //Sort items by name
     public:
@@ -26,6 +26,8 @@ class Inventory {
         std::string displayItem(int) const;        
         void equipItem(int, Player&);
         std::string outputEquipped() const;
+        void equipWeapon(int, Player&);
+        std::string outputWeapon() const;
 };
 
 #endif

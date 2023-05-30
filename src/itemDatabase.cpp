@@ -4,10 +4,10 @@
 
 ItemDatabase::ItemDatabase() {
     //Weapons
-    allItems.push_back(singleItem("Basic Sword", "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12", "12", "100"));
-    allItems.push_back(singleItem("Stone Sword", "A short blade made out of stone. It has worn down over time. --- Damage: 10", "10", "101"));
-    allItems.push_back(singleItem("Iron Sword", "A short blade made of cold iron. A little dull but can cut through a lot. --- Damage: 18", "18", "102"));
-    allItems.push_back(singleItem("Flame Blade", "A short blade with fiery runes engraved. It even gives off a little light. --- Damage: 25", "25", "103"));
+    allItems.push_back(singleItem("Basic Sword", "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12", "12", "120"));
+    allItems.push_back(singleItem("Stone Sword", "A short blade made out of stone. It has worn down over time. --- Damage: 10", "10", "121"));
+    allItems.push_back(singleItem("Iron Sword", "A short blade made of cold iron. A little dull but can cut through a lot. --- Damage: 18", "18", "122"));
+    allItems.push_back(singleItem("Flame Blade", "A short blade with fiery runes engraved. It even gives off a little light. --- Damage: 25", "25", "123"));
 
     //Equips
     allItems.push_back(singleItem("Leather Armor", "Some thick armor made out of rough leather. --- Defense: +5", "5", "230"));

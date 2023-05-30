@@ -13,6 +13,10 @@ Inventory::~Inventory() {
         delete equipped.back();
         equipped.pop_back();
     }
+    while(!weapon.empty()) {
+        delete weapon.back();
+        weapon.pop_back();
+    }
 }
 
 void Inventory::sortItems() {
@@ -138,6 +142,33 @@ std::string Inventory::outputEquipped() const {
         char outputChar = numEquippedItems + 1 + 48;
         outputString = outputString + "| Empty Slot " + outputChar + " |     ";
         numEquippedItems++;
+    }
+    return outputString;
+}
+
+void Inventory::equipWeapon(int index, Player& player) {
+    std::vector<Item*>::iterator it;
+    if(weapon.size() == 1) {
+        items.push_back(weapon.at(0));
+        //Sort inventory again maybe
+        weapon.at(0)->decrStat(player);
+        it = weapon.begin();
+        weapon.erase(it);
+    }
+    weapon.push_back(items.at(index));
+    weapon.at(weapon.size()-1)->incrStat(player);
+    it = items.begin();
+    it = it + index;
+    items.erase(it);
+}
+
+std::string Inventory::outputWeapon() const {
+    std::string outputString = "";
+    if(weapon.size() == 0) {
+        outputString = outputString + "| Empty Weapon Slot |";
+    }
+    else {
+        outputString = outputString + "| " + weapon.at(0)->getName() + " |";
     }
     return outputString;
 }
