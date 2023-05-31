@@ -1,5 +1,8 @@
 #ifndef SCREENMANAGER_HPP
 #define SCREENMANAGER_HPP
+#include "itemDatabase.h"
+#include "player.h"
+#include "inventory.h"
 #include "map.h"
 
 class ScreenManager {
@@ -20,6 +23,9 @@ class ScreenManager {
         
     private:
         Map map;
+        Player player;
+        Inventory inventory;
+        ItemDatabase allItems;
 };
 
 #endif

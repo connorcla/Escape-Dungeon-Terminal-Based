@@ -2,19 +2,16 @@
 #define EQUIP_HPP
 #include <string>
 #include "../header/item.h"
+#include "../header/player.h"
 
 class Equip : public Item {
     private:
-        bool equipped;
-        int statChanged;
     public:
         Equip();
         Equip(std::string, std::string, int, int);
         ~Equip();
-        //void incrStat(Player player);
-        //void decrStat(Player player);
-        void equipItem();
-        void unequipItem();
+        virtual void incrStat(Player& player);
+        virtual void decrStat(Player& player);
 };
 
 #endif

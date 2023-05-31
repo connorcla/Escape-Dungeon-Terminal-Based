@@ -1,12 +1,4 @@
 #include "../header/inventory.h"
-#include "../header/itemDatabase.h"
-#include "../header/item.h"
-#include "../header/weapon.h"
-#include "../header/equip.h"
-#include "../header/usable.h"
-#include <string>
-#include <vector>
-#include <assert.h>
 
 Inventory::Inventory() {
     this->maxItems = 30;
@@ -16,6 +8,14 @@ Inventory::~Inventory() {
     while(!items.empty()) {
         delete items.back();
         items.pop_back();
+    }
+    while(!equipped.empty()) {
+        delete equipped.back();
+        equipped.pop_back();
+    }
+    while(!weapon.empty()) {
+        delete weapon.back();
+        weapon.pop_back();
     }
 }
 
@@ -73,7 +73,8 @@ std::string Inventory::listInventory() const {
     }
 
     for(unsigned int i = 0; i < items.size()-1; i++) {
-        returnString = returnString + items.at(i)->getName();
+        char index = i + 1 + 48;
+        returnString = returnString + "(" + index + ")" + items.at(i)->getName();
         returnString = returnString + ",  ";
         if(newLineCnt > 3) {
             returnString = returnString + "\n";
@@ -81,7 +82,8 @@ std::string Inventory::listInventory() const {
         }
         newLineCnt++;
     }
-    returnString = returnString + items.at(items.size()-1)->getName();
+    char lastIndex = items.size() + 48;
+    returnString = returnString + "(" + lastIndex + ")" + items.at(items.size()-1)->getName();
 
     return returnString;
 }
@@ -111,4 +113,62 @@ std::string Inventory::displayItem(int selectedItem) const {
     returnString = returnString + item->displayDescription();
 
     return returnString;
+}
+
+void Inventory::equipItem(int index, Player& player) {
+    std::vector<Item*>::iterator it;
+    if(equipped.size() == 3) {
+        items.push_back(equipped.at(0));
+        //Sort inventory again maybe
+        equipped.at(0)->decrStat(player);
+        it = equipped.begin();
+        equipped.erase(it);
+    }
+    equipped.push_back(items.at(index));
+    equipped.at(equipped.size()-1)->incrStat(player);
+    it = items.begin();
+    it = it + index;
+    items.erase(it);
+}
+
+std::string Inventory::outputEquipped() const {
+    std::string outputString = "";
+    unsigned int numEquippedItems = 0;
+    for(unsigned int i = 0; i < equipped.size(); i++) {
+        outputString = outputString + "| " + equipped.at(i)->getName() + " |     ";
+        numEquippedItems++;
+    }
+    for(unsigned int i = numEquippedItems; i < 3; i++) {
+        char outputChar = numEquippedItems + 1 + 48;
+        outputString = outputString + "| Empty Slot " + outputChar + " |     ";
+        numEquippedItems++;
+    }
+    return outputString;
+}
+
+void Inventory::equipWeapon(int index, Player& player) {
+    std::vector<Item*>::iterator it;
+    if(weapon.size() == 1) {
+        items.push_back(weapon.at(0));
+        //Sort inventory again maybe
+        weapon.at(0)->decrStat(player);
+        it = weapon.begin();
+        weapon.erase(it);
+    }
+    weapon.push_back(items.at(index));
+    weapon.at(weapon.size()-1)->incrStat(player);
+    it = items.begin();
+    it = it + index;
+    items.erase(it);
+}
+
+std::string Inventory::outputWeapon() const {
+    std::string outputString = "";
+    if(weapon.size() == 0) {
+        outputString = outputString + "| Empty Weapon Slot |";
+    }
+    else {
+        outputString = outputString + "| " + weapon.at(0)->getName() + " |";
+    }
+    return outputString;
 }

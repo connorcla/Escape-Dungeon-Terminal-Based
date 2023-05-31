@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
+#include "../header/inventory.h"
 #include "../header/item.h"
 #include "../header/itemDatabase.h"
+#include "../header/player.h"
 #include <string>
 
 TEST(ItemConstructor, DefaultItems) {

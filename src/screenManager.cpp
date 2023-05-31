@@ -32,9 +32,9 @@ void ScreenManager::mainMenu() {
     cout << "Reach the end before you are stopped?" << endl;
 
     cout << "Enter your name to begin: ";
-    //cin >> player.Name; Set player's name here and begin
-    char waitInput = getCharInput(); //Replace with getting string for player name
-    cout << endl;
+    std::string nameInput = "";
+    getline(std::cin, nameInput);
+    player.setName(nameInput);
 
     clearScreen();
     roomIdle();
@@ -55,6 +55,9 @@ void ScreenManager::roomIdle() {
         //Add user input, choice validation and corresponding functions for appropriate choice
         char choice = getCharInput();
         int numChoice = choice - 48;
+        if(numChoice == 0) {
+            return;             //FOR TESTING, QUICK QUIT REMOVE LATER
+        }
         if(numChoice > 5 || numChoice < 1) {
             cout << "Invalid Input: Please try again." << endl;
             continue; 
@@ -132,28 +135,30 @@ void ScreenManager::displayMap(){
 
 void ScreenManager::inventoryMenu() {
     //DELETE - Declared object for testing, will call inventory from Player
-    ItemDatabase allItems;
-    Inventory inv; 
-    inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
-    inv.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
-    inv.addItem(allItems.returnItem(2,0), allItems.returnItem(2,1), allItems.returnItem(2,2), allItems.returnItem(2,3));
-    inv.addItem(allItems.returnItem(3,0), allItems.returnItem(3,1), allItems.returnItem(3,2), allItems.returnItem(3,3));
-    inv.addItem(allItems.returnItem(4,0), allItems.returnItem(4,1), allItems.returnItem(4,2), allItems.returnItem(4,3));
-    inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
+    inventory.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inventory.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
+    inventory.addItem(allItems.returnItem(2,0), allItems.returnItem(2,1), allItems.returnItem(2,2), allItems.returnItem(2,3));
+    inventory.addItem(allItems.returnItem(3,0), allItems.returnItem(3,1), allItems.returnItem(3,2), allItems.returnItem(3,3));
+    inventory.addItem(allItems.returnItem(4,0), allItems.returnItem(4,1), allItems.returnItem(4,2), allItems.returnItem(4,3));
+    inventory.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
+    inventory.addItem(allItems.returnItem(6,0), allItems.returnItem(6,1), allItems.returnItem(6,2), allItems.returnItem(6,3));
+    inventory.addItem(allItems.returnItem(8,0), allItems.returnItem(8,1), allItems.returnItem(8,2), allItems.returnItem(8,3));
     //END OF DELETE
 
     while(true) {
         cout << "Satchel:" << endl;
 
-        std::string list = inv.listInventory();
-        int size = inv.numItems();
+        std::string list = inventory.listInventory();
+        int size = inventory.numItems();
         cout << list << endl << endl; //Would output the list of items in inventory object from Player
 
+
+
         cout << "Equipped Weapon:" << endl;
-        cout << "| Weapon |" << endl << endl;
+        cout << inventory.outputWeapon() << endl << endl;
 
         cout << "Equip Slots:" << endl;
-        cout << "| Item1 |     " << "| Item2 |" << "     | Item3 |" << endl << endl; //Change with actual equipped items
+        cout << inventory.outputEquipped() << endl << endl; //Change with actual equipped items
         cout << "Enter item number (1-" << size << ") to view item, 0 to see your stats, or (b) to go back: ";
 
         char cInput = getCharInput();
@@ -163,7 +168,7 @@ void ScreenManager::inventoryMenu() {
            return;
         }
         int numValue = cInput - 48;
-        if(!(numValue >= 0 && numValue <= inv.numItems()))
+        if(!(numValue >= 0 && numValue <= inventory.numItems()))
         {
             clearScreen();
             cout << "Invalid input, please try again." << endl << endl;
@@ -173,45 +178,43 @@ void ScreenManager::inventoryMenu() {
                 playerStats();
             }
             else {
-                cout << inv.displayItem(numValue-1);
+                cout << inventory.displayItem(numValue-1);
                 cout << endl;
-                if((inv.returnItem(numValue-1)->getID() / 100) == 1) {
-                    cout << "You can equip this item with (e), remove it with (r), or continue with anything else: ";
+                if((inventory.returnItem(numValue-1)->getID() / 100) == 1) {
+                    cout << "You can equip this weapon with (e), remove it with (r), or continue with anything else: ";
                     cInput = getCharInput();
                     cout << endl;
                     clearScreen();
                     if(cInput == 'e') {
                         cout << "Weapon equipped!" << endl << endl;
-                        //Add equip logic for weapon later
+                        inventory.equipWeapon(numValue-1,player);
                     }
                     else if(cInput == 'r') {
-                        inv.removeItem(numValue-1);
+                        inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
-                        //Make sure equipped items are also removed.
                     }
                 }
-                else if((inv.returnItem(numValue-1)->getID() / 100) == 2) {
+                else if((inventory.returnItem(numValue-1)->getID() / 100) == 2) {
                     cout << "You can equip this item with (e), remove it with (r), or continue with anything else: ";
                     cInput = getCharInput();
                     cout << endl;
                     clearScreen();
                     if(cInput == 'e') {
                         cout << "Equipped!" << endl << endl;
-                        //Add equip logic for equipable items later
+                        inventory.equipItem(numValue-1,player);
                     }
                     else if(cInput == 'r') {
-                        inv.removeItem(numValue-1);
+                        inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
-                        //Make sure equipped items are also removed.
                     }
                 }
-                else if((inv.returnItem(numValue-1)->getID() / 100) == 3) {
+                else if((inventory.returnItem(numValue-1)->getID() / 100) == 3) {
                     cout << "You can remove this item with (r), or continue with anything else: ";
                     cInput = getCharInput();
                     cout << endl << endl;
                     clearScreen();
                     if(cInput == 'r') {
-                        inv.removeItem(numValue-1);
+                        inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
                     }
                 }
@@ -224,13 +227,13 @@ void ScreenManager::inventoryMenu() {
 }
 
 void ScreenManager::playerStats() {
-    cout << "Your Current Statistics:" << endl << endl;
-    cout << "Maximum Health: " << endl; //Add variable
-    cout << "Maximum Magic: " << endl; //Add variable
-    cout << "Attack: " << endl; //Add variable
-    cout << "Defense: " << endl; //Add variable
-    cout << "Speed: " << endl; //Add variable
-    cout << "EXP: " << endl; //Add variable
+    cout << player.getName() << "\'s Current Statistics:" << endl << endl;
+    cout << "Maximum Health: " << player.getMaxHealth() << endl; //Add variable
+    cout << "Maximum Magic: " << player.getMaxMagic() << endl; //Add variable
+    cout << "Attack: " << player.getAttack() << endl; //Add variable
+    cout << "Defense: " << player.getDefense() << endl; //Add variable
+    cout << "Speed: " << player.getSpeed() << endl; //Add variable
+    cout << "EXP: " << player.getExp() << endl; //Add variable
     cout << endl;
     cout << "You can increase any statistic by 1 point by spending 10 EXP." << endl;
     cout << "Enter which statistic you wish to increase (H,M,A,D,S) or enter (b) to go back to satchel: ";

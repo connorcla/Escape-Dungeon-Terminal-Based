@@ -16,6 +16,8 @@ add_executable(runOutputTests
   src/equip.cpp 
   src/map.cpp
   src/room.cpp
+  src/entity.cpp
+  src/player.cpp
 )
 
 add_executable(runItemDatabaseTests
@@ -25,18 +27,32 @@ add_executable(runItemDatabaseTests
 
 add_executable(runItemTests
   test/itemTests.cpp
-  src/item.cpp
-  src/itemDatabase.cpp
-)
-
-add_executable(runInventoryTests
-  test/inventoryTests.cpp
+  src/screenManager.cpp
   src/itemDatabase.cpp
   src/item.cpp
   src/inventory.cpp
   src/weapon.cpp
   src/usable.cpp
   src/equip.cpp 
+  src/map.cpp
+  src/room.cpp
+  src/entity.cpp
+  src/player.cpp
+)
+
+add_executable(runInventoryTests
+  test/inventoryTests.cpp
+  src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
+  src/map.cpp
+  src/room.cpp
+  src/entity.cpp
+  src/player.cpp
 )
 
 add_executable(runInventoryScreenTests
@@ -50,6 +66,8 @@ add_executable(runInventoryScreenTests
   src/equip.cpp 
   src/map.cpp
   src/room.cpp
+  src/entity.cpp
+  src/player.cpp
 )
 
 add_executable(runMain
@@ -63,6 +81,8 @@ add_executable(runMain
   src/equip.cpp 
   src/map.cpp
   src/room.cpp
+  src/entity.cpp
+  src/player.cpp
 )
 
 add_executable(runRoomTests

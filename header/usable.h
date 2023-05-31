@@ -1,7 +1,8 @@
 #ifndef USABLE_HPP
 #define USABLE_HPP
 #include <string>
-#include "../header/item.h"
+#include "item.h"
+#include "player.h"
 
 class Usable : public Item {
     private:
@@ -10,7 +11,8 @@ class Usable : public Item {
         Usable();
         Usable(std::string, std::string, int, int);
         ~Usable();
-        //void useItem(Player player);
+        virtual void incrStat(Player& player);
+        virtual void decrStat(Player& player);
 };
 
 #endif
