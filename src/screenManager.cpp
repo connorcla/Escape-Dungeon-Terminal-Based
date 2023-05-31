@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include "../header/screenManager.h"
 #include "../header/inventory.h"
 
@@ -59,13 +61,37 @@ void ScreenManager::roomIdle() {
             return;             //FOR TESTING, QUICK QUIT REMOVE LATER
         }
         if(numChoice > 5 || numChoice < 1) {
+            clearScreen();
             cout << "Invalid Input: Please try again." << endl;
             continue; 
         }
         else {
+            int itemFoundChance = (rand() % 2);
             switch(numChoice) {
                 case 1:
-                    //Will get a random item from Room vector of Item*, add to inventory and text saying what the player recieved
+                    if(inventory.numItems() == 30) {
+                        clearScreen();
+                        cout << "Sorry your inventory is full. To gather more items, you will have to remove other items from your inventory first." << endl;
+                    }
+                    else {
+                        if(itemFoundChance == 0) {
+                            clearScreen();
+                            cout << "No luck at finding any items this time. Are there even any more items in here?" << endl;
+                        }
+                        else if(itemFoundChance == 1) {
+                            std::vector<std::string> itemFound = map.getItemFromCurrRoom();
+
+                            if(itemFound.at(0) == " ") {
+                                clearScreen();
+                                cout << "No luck at finding any items this time. Are there even any more items in here?" << endl;
+                            }
+                            else {
+                                clearScreen();
+                                cout << "You found a " << itemFound.at(0) << "! This has been added to your inventory." << endl;
+                                inventory.addItem(itemFound.at(0), itemFound.at(1), itemFound.at(2), itemFound.at(3));
+                            }
+                        }
+                    }
                     break;
                 case 2:
                     //Output dialoge with the room description
@@ -134,25 +160,12 @@ void ScreenManager::displayMap(){
 }
 
 void ScreenManager::inventoryMenu() {
-    //DELETE - Declared object for testing, will call inventory from Player
-    inventory.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
-    inventory.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
-    inventory.addItem(allItems.returnItem(2,0), allItems.returnItem(2,1), allItems.returnItem(2,2), allItems.returnItem(2,3));
-    inventory.addItem(allItems.returnItem(3,0), allItems.returnItem(3,1), allItems.returnItem(3,2), allItems.returnItem(3,3));
-    inventory.addItem(allItems.returnItem(4,0), allItems.returnItem(4,1), allItems.returnItem(4,2), allItems.returnItem(4,3));
-    inventory.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
-    inventory.addItem(allItems.returnItem(6,0), allItems.returnItem(6,1), allItems.returnItem(6,2), allItems.returnItem(6,3));
-    inventory.addItem(allItems.returnItem(8,0), allItems.returnItem(8,1), allItems.returnItem(8,2), allItems.returnItem(8,3));
-    //END OF DELETE
-
     while(true) {
         cout << "Satchel:" << endl;
 
         std::string list = inventory.listInventory();
         int size = inventory.numItems();
         cout << list << endl << endl; //Would output the list of items in inventory object from Player
-
-
 
         cout << "Equipped Weapon:" << endl;
         cout << inventory.outputWeapon() << endl << endl;
@@ -165,7 +178,8 @@ void ScreenManager::inventoryMenu() {
         cout << endl;
         if(cInput == 'b')
         {
-           return;
+            clearScreen();
+            return;
         }
         int numValue = cInput - 48;
         if(!(numValue >= 0 && numValue <= inventory.numItems()))
@@ -175,7 +189,9 @@ void ScreenManager::inventoryMenu() {
         }
         else {
             if(numValue == 0) {
+                clearScreen();
                 playerStats();
+                clearScreen();
             }
             else {
                 cout << inventory.displayItem(numValue-1);

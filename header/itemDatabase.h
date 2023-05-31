@@ -12,6 +12,7 @@ class ItemDatabase {
         ~ItemDatabase();
         int getSize() const;
         std::string returnItem(int, int) const;
+        std::vector<std::string> returnSingleItem(int index);
 };
 
 #endif
