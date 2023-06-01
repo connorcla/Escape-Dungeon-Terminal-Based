@@ -106,6 +106,10 @@ void ScreenManager::roomIdle() {
                     break;
                 case 5:
                     //Increase room count, go to battle menu, start battle
+                    map.moveToNextRoom();
+                    clearScreen();
+                    cout << "Moved to next room." << endl;
+                    //battleMenu();
                     break;
                 default:
                     cout << "An error occurred." << endl;
@@ -174,14 +178,25 @@ void ScreenManager::inventoryMenu() {
         cout << inventory.outputEquipped() << endl << endl; //Change with actual equipped items
         cout << "Enter item number (1-" << size << ") to view item, 0 to see your stats, or (b) to go back: ";
 
-        char cInput = getCharInput();
+        char cInput;
+        std::string input;
+        int numValue = 0;
+        cin >> input;
         cout << endl;
-        if(cInput == 'b')
+        if(input == "b")
         {
             clearScreen();
             return;
         }
-        int numValue = cInput - 48;
+        if(input.size() > 1) {
+            char cInput1 = input.at(0);
+            char cInput2 = input.at(1);
+            numValue = ((cInput1 - 48) * 10) + (cInput2 - 48);
+        }
+        else {
+            cInput = input.at(0);
+            numValue = cInput - 48;
+        }
         if(!(numValue >= 0 && numValue <= inventory.numItems()))
         {
             clearScreen();
