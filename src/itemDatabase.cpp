@@ -3,7 +3,7 @@
 #include "../header/itemDatabase.h"
 
 ItemDatabase::ItemDatabase() {
-//Weapons 
+//Weapons (0-13)
 allItems.push_back(singleItem("Basic Sword", "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12", "12", "120")); 
 allItems.push_back(singleItem("Stone Sword", "A short blade made out of stone. It has worn down over time. --- Damage: 10", "10", "121")); 
 allItems.push_back(singleItem("Iron Sword", "A short blade made of cold iron. A little dull but can cut through a lot. --- Damage: 18", "18", "122")); 
@@ -19,7 +19,7 @@ allItems.push_back(singleItem("Wand", "A standard tool to concentrate your magic
 allItems.push_back(singleItem("Necronomicon", "An ancient, malicious book. Its contents sap away your mental strength.--- Magic: 30", "30", "153"));
 allItems.push_back(singleItem("Thundercleave", "An electrical switch axe. Made from the usurper of thunder. --- Magic: 35", "35", "154"));
 
-//Equips 
+//Equips (14-29)
 allItems.push_back(singleItem("Dragon Force", "Take Bal\'s powers, bal!. --- Attack: 25", "25", "220"));
 allItems.push_back(singleItem("Cactus Costume", "Doubt you\'ll be hugged again, but you can always bring it to them. --- Attack: 14", "14", "221"));
 allItems.push_back(singleItem("Red Scarf", "The feeling of passion is seared into this scarf. --- Attack: 15", "15", "222"));
@@ -37,7 +37,7 @@ allItems.push_back(singleItem("Iron Boots", "Boots made out of thick iron. Incre
 allItems.push_back(singleItem("Gold Armor", "Heavy plating made of gold. These hits will still hurt a lot, but at least you\'ll look nice. --- Magic: 15", "15", "250"));
 allItems.push_back(singleItem("Dunce Cap", "A regular paper hat to wear. It does nothing, but you can\'t help but feel humiliated. --- Magic: -15", "-15", "251"));
 
-//Usables 
+//Usables (30-44)
 allItems.push_back(singleItem("Health Potion I", "A simple red potion that restores some health. --- Heal: 10", "10", "310")); 
 allItems.push_back(singleItem("Health Potion II", "A stronger red potion that restores health. --- Heal: 25", "25", "311")); 
 allItems.push_back(singleItem("Health Potion III", "A superb red potion that restores a good portion of health. --- Heal: 50", "50", "312"));

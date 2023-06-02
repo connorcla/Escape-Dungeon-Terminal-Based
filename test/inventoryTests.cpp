@@ -165,6 +165,69 @@ TEST(InventoryList, List6)  {
     EXPECT_EQ(list, "(1)Basic Sword,  (2)Stone Sword,  (3)Iron Sword,  (4)Flame Blade,  (5)Musket,  \n(6)Boxing Gloves");
 }
 
+TEST(InventoryEquip, Equip2) {
+    ItemDatabase allItems;
+    Inventory inv;
+    Player player;
+    inv.addItem(allItems.returnItem(14,0), allItems.returnItem(14,1), allItems.returnItem(14,2), allItems.returnItem(14,3));
+    inv.addItem(allItems.returnItem(15,0), allItems.returnItem(15,1), allItems.returnItem(15,2), allItems.returnItem(15,3));
+    inv.addItem(allItems.returnItem(16,0), allItems.returnItem(16,1), allItems.returnItem(16,2), allItems.returnItem(16,3));
+    inv.addItem(allItems.returnItem(17,0), allItems.returnItem(17,1), allItems.returnItem(17,2), allItems.returnItem(17,3));
+    inv.addItem(allItems.returnItem(18,0), allItems.returnItem(18,1), allItems.returnItem(18,2), allItems.returnItem(18,3));
+    inv.addItem(allItems.returnItem(19,0), allItems.returnItem(19,1), allItems.returnItem(19,2), allItems.returnItem(19,3));
+
+    inv.equipItem(2, player);
+    inv.equipItem(2, player);
+
+    EXPECT_EQ(inv.outputEquipped(), "| Red Scarf |     | Cursed Armor |     | Empty Slot 3 |     | Empty Slot 4 |     | Empty Slot 5 |     ");
+}
+
+TEST(InventoryEquip, Equip6) {
+    ItemDatabase allItems;
+    Inventory inv;
+    Player player;
+    inv.addItem(allItems.returnItem(14,0), allItems.returnItem(14,1), allItems.returnItem(14,2), allItems.returnItem(14,3));
+    inv.addItem(allItems.returnItem(15,0), allItems.returnItem(15,1), allItems.returnItem(15,2), allItems.returnItem(15,3));
+    inv.addItem(allItems.returnItem(16,0), allItems.returnItem(16,1), allItems.returnItem(16,2), allItems.returnItem(16,3));
+    inv.addItem(allItems.returnItem(17,0), allItems.returnItem(17,1), allItems.returnItem(17,2), allItems.returnItem(17,3));
+    inv.addItem(allItems.returnItem(18,0), allItems.returnItem(18,1), allItems.returnItem(18,2), allItems.returnItem(18,3));
+    inv.addItem(allItems.returnItem(19,0), allItems.returnItem(19,1), allItems.returnItem(19,2), allItems.returnItem(19,3));
+
+    inv.equipItem(0, player);
+    inv.equipItem(0, player);
+    inv.equipItem(0, player);
+    inv.equipItem(0, player);
+    inv.equipItem(0, player);
+    inv.equipItem(0, player);
+
+    EXPECT_EQ(inv.outputEquipped(), "| Cactus Costume |     | Red Scarf |     | Cursed Armor |     | Leather Armor |     | Iron Chainmail |     ");
+}
+
+TEST(InventoryEquip, Weapon1) {
+    ItemDatabase allItems;
+    Inventory inv;
+    Player player;
+    inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inv.addItem(allItems.returnItem(1,0), allItems.returnItem(1,1), allItems.returnItem(1,2), allItems.returnItem(1,3));
+
+    inv.equipWeapon(0, player);
+
+    EXPECT_EQ(inv.outputWeapon(), "| Basic Sword |");
+}
+
+TEST(InventoryEquip, Weapon2) {
+    ItemDatabase allItems;
+    Inventory inv;
+    Player player;
+    inv.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inv.addItem(allItems.returnItem(1,0), allItems.returnItem(1,1), allItems.returnItem(1,2), allItems.returnItem(1,3));
+
+    inv.equipWeapon(0, player);
+    inv.equipWeapon(0, player);
+
+    EXPECT_EQ(inv.outputWeapon(), "| Stone Sword |");
+}
+
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
