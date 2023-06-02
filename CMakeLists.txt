@@ -87,8 +87,17 @@ add_executable(runMain
 
 add_executable(runRoomTests
   test/roomTests.cpp
+  src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
   src/map.cpp
   src/room.cpp
+  src/entity.cpp
+  src/player.cpp
 )
 
 target_link_libraries(runRoomTests gmock gtest gtest_main)

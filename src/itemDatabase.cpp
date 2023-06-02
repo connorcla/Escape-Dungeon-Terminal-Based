@@ -35,6 +35,10 @@ std::string ItemDatabase::returnItem(int item, int returnProperty) const {
     return allItems.at(item).at(returnProperty);
 }
 
+std::vector<std::string> ItemDatabase::returnSingleItem(int index) {
+    return allItems.at(index);
+}
+
 std::vector<std::string> ItemDatabase::singleItem(std::string name, std::string des, std::string prop, std::string id) {
     std::vector<std::string> returnVector;
     returnVector.push_back(name);

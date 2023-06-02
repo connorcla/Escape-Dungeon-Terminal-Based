@@ -1,6 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 #include "../header/room.h"
+#include "item.h"
 #include <vector>
 
 class Map {
@@ -10,6 +11,7 @@ class Map {
         void fleeToPrevRoom();
         unsigned int getCurrRoom() const;
         unsigned int getNumOfRooms() const;
+        vector<string> getItemFromCurrRoom();
 
     private:
         vector<Room> rooms;

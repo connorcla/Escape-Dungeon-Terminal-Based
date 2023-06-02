@@ -73,8 +73,18 @@ std::string Inventory::listInventory() const {
     }
 
     for(unsigned int i = 0; i < items.size()-1; i++) {
-        char index = i + 1 + 48;
-        returnString = returnString + "(" + index + ")" + items.at(i)->getName();
+        char index1 = (i/10) + 48;
+        char index2 = (i%10) + 1 + 48;
+        if(index2 == ':') {
+            index2 = '0';
+            index1++;
+        }
+        std::string sIndex1;
+        sIndex1.push_back(index1);
+        if(sIndex1 == "0") {
+            sIndex1 = "";
+        }
+        returnString = returnString + "(" + sIndex1 + index2 + ")" + items.at(i)->getName();
         returnString = returnString + ",  ";
         if(newLineCnt > 3) {
             returnString = returnString + "\n";
@@ -82,8 +92,14 @@ std::string Inventory::listInventory() const {
         }
         newLineCnt++;
     }
-    char lastIndex = items.size() + 48;
-    returnString = returnString + "(" + lastIndex + ")" + items.at(items.size()-1)->getName();
+    char index1 = (items.size()/10) + 48;
+    char index2 = (items.size()%10) + 48;
+    std::string sIndex1;
+    sIndex1.push_back(index1);
+    if(sIndex1 == "0") {
+        sIndex1 = "";
+    }
+    returnString = returnString + "(" + sIndex1 + index2 + ")" + items.at(items.size()-1)->getName();
 
     return returnString;
 }
