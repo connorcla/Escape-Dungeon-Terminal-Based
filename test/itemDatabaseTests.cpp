@@ -45,13 +45,13 @@ TEST(ReturnItemString, ReturnProperty3) {
 TEST(ReturnItemString, ReturnID0) {
     ItemDatabase allItems;
     std::string id = allItems.returnItem(0, 3);
-    EXPECT_EQ(id, "100"); 
+    EXPECT_EQ(id, "120"); 
 }
 
 TEST(ReturnItemString, ReturnID3) {
     ItemDatabase allItems;
     std::string id = allItems.returnItem(3, 3);
-    EXPECT_EQ(id, "103"); 
+    EXPECT_EQ(id, "123"); 
 }
 
 

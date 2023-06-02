@@ -133,7 +133,7 @@ std::string Inventory::displayItem(int selectedItem) const {
 
 void Inventory::equipItem(int index, Player& player) {
     std::vector<Item*>::iterator it;
-    if(equipped.size() == 3) {
+    if(equipped.size() == 5) {
         items.push_back(equipped.at(0));
         //Sort inventory again maybe
         equipped.at(0)->decrStat(player);
@@ -154,7 +154,7 @@ std::string Inventory::outputEquipped() const {
         outputString = outputString + "| " + equipped.at(i)->getName() + " |     ";
         numEquippedItems++;
     }
-    for(unsigned int i = numEquippedItems; i < 3; i++) {
+    for(unsigned int i = numEquippedItems; i < 5; i++) {
         char outputChar = numEquippedItems + 1 + 48;
         outputString = outputString + "| Empty Slot " + outputChar + " |     ";
         numEquippedItems++;

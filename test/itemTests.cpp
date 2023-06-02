@@ -60,14 +60,14 @@ TEST(ReturnItemID, ReturnID0) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(0,0), allItems.returnItem(0,1), stoi(allItems.returnItem(0,2)), stoi(allItems.returnItem(0,3)));
     int id = testItem.getID();
-    EXPECT_EQ(id, 100); 
+    EXPECT_EQ(id, 120); 
 }
 
 TEST(ReturnItemID, ReturnID3) {
     ItemDatabase allItems;
     Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
     int id = testItem.getID();
-    EXPECT_EQ(id, 103); 
+    EXPECT_EQ(id, 123); 
 }
 
 

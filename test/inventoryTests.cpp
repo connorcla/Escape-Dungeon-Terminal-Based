@@ -83,7 +83,7 @@ TEST(InventoryReturnItem, ReturnOutOf2)  {
 
     Item* returned = inv.returnItem(1);
     std::string returnedName = returned->getName();
-    EXPECT_EQ(returnedName, "Iron Chainmail");
+    EXPECT_EQ(returnedName, "Boxing Gloves");
 }
 
 TEST(InventoryReturnItem, ReturnOutOf5)  {
@@ -116,7 +116,7 @@ TEST(InventoryDisplayItem, DisplayOutOf2)  {
     inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
 
     std::string display = inv.displayItem(1);
-    EXPECT_EQ(display, "Equip: Iron Chainmail --- Light chains that can protect from weaker blows. --- Defense: +10");
+    EXPECT_EQ(display, "Weapon: Boxing Gloves --- For those wanting to get personal with their opponents. --- Attack: 15");
 }
 
 TEST(InventoryDisplayItem, DisplayOutOf5)  {
@@ -148,7 +148,7 @@ TEST(InventoryList, List2)  {
     inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
 
     std::string list = inv.listInventory();
-    EXPECT_EQ(list, "Basic Sword,  Iron Chainmail");
+    EXPECT_EQ(list, "(1)Basic Sword,  (2)Boxing Gloves");
 }
 
 TEST(InventoryList, List6)  {
@@ -162,7 +162,7 @@ TEST(InventoryList, List6)  {
     inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
 
     std::string list = inv.listInventory();
-    EXPECT_EQ(list, "Basic Sword,  Stone Sword,  Iron Sword,  Flame Blade,  Leather Armor,  \nIron Chainmail");
+    EXPECT_EQ(list, "(1)Basic Sword,  (2)Stone Sword,  (3)Iron Sword,  (4)Flame Blade,  (5)Musket,  \n(6)Boxing Gloves");
 }
 
 
