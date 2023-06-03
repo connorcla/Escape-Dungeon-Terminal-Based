@@ -18,6 +18,12 @@ add_executable(runOutputTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runItemDatabaseTests
@@ -38,6 +44,12 @@ add_executable(runItemTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runInventoryTests
@@ -53,6 +65,12 @@ add_executable(runInventoryTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runInventoryScreenTests
@@ -68,6 +86,12 @@ add_executable(runInventoryScreenTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runMain
@@ -83,6 +107,12 @@ add_executable(runMain
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runRoomTests
@@ -98,6 +128,12 @@ add_executable(runRoomTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runMapTests
@@ -113,8 +149,14 @@ add_executable(runMapTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
-
+target_link_libraries(runMapTests gmock gtest gtest_main)
 target_link_libraries(runRoomTests gmock gtest gtest_main)
 target_link_libraries(runMapTests gmock gtest gtest_main)
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)

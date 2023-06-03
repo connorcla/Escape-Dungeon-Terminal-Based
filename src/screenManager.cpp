@@ -147,20 +147,19 @@ void ScreenManager::mapMenu() {
 }
 
 void ScreenManager::displayMap(){
-    const unsigned int currntRoom = map.getCurrRoom();
-    const unsigned int NUMOFROOMS = map.getNumOfRooms();
+    std::string roomStatus;
+    const unsigned NUMOFROOMS = map.getNumOfRooms();
+
+    cout << "Map:" << endl;
     cout << "----------------------------------------------------------------------" << endl;
     for(int room = 0; room < NUMOFROOMS; room++){
+        roomStatus = map.getRoomStatus(room);
         cout << "| ";
-        if(room == 0){ cout << "Start "; }
-        else if(room > 0 && room < currntRoom){ cout << "Clear "; }
-        else if(room == currntRoom){ cout << "Here "; }
-        else if(room >currntRoom && room < (NUMOFROOMS-1)){ cout << " ?  "; }
-        else cout << "Exit? |"; 
+        if(room != (NUMOFROOMS-1)){ cout << roomStatus; }
+        else{ cout << roomStatus << " |"; }
     }
     cout << endl;
-    cout << "----------------------------------------------------------------------" << endl;
-    
+    cout << "----------------------------------------------------------------------" << endl << endl;
 }
 
 void ScreenManager::inventoryMenu() {
