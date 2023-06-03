@@ -22,6 +22,7 @@ class Room{
         void setEnemiesBeforeLastRoom(const int);
         int getRandomNumber(int) const;
         Enemy* getEnemy(int);
+        string getEnemyName() const;
         
         //Item functions
         void generateItems(int);

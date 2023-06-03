@@ -22,7 +22,7 @@ Room::Room(int roomIndex) {
     generateItems(roomIndex);
 }
 
-Room::~Room(){
+Room::~Room() {
     //delete vector<Enemy> enemies
     //vector<Enemy>::iterator it = enemies.begin();
 }
@@ -45,7 +45,7 @@ void Room::generateEnemies(int roomIndex) {
     }
 }
 
-void Room::setEnemiesBeforeLastRoom(const int numOfEnemies){
+void Room::setEnemiesBeforeLastRoom(const int numOfEnemies) {
     assert(numOfEnemies > 0 && "ERROR! 'numOfEnemies' value cannot be less than 0 in Room::setEnemiesBeforeLastRoom().");
     unsigned int randomEnemy;
     
@@ -57,13 +57,22 @@ void Room::setEnemiesBeforeLastRoom(const int numOfEnemies){
     }
 }
 
-int Room::getRandomNumber(int counter) const{
+int Room::getRandomNumber(int counter) const {
     int randomNumber = rand();
     randomNumber = ((randomNumber/counter) % 4) + 1;
     return randomNumber;//This should return a number between 1 to 4.
 }
 
-Enemy* Room::getEnemy(int randEnemy){
+void Room::setRmStatus(string status) {
+    rmStatus = status;
+    assert(rmStatus != " " && "ERROR! The 'status' parameter in Room::setRmStatus() not correctly setting room status.");
+}
+
+void Room::startBattle() {
+
+}
+
+Enemy* Room::getEnemy(int randEnemy) {
     Enemy* enemy = nullptr;
     
     switch(randEnemy){
@@ -93,13 +102,9 @@ Enemy* Room::getEnemy(int randEnemy){
     return enemy;
 }
 
-void Room::setRmStatus(string status){
-    rmStatus = status;
-    assert(rmStatus != " " && "ERROR! The 'status' parameter in Room::setRmStatus() not correctly setting room status.");
-}
-
-void Room::startBattle(){
-
+string Room::getEnemyName() const {
+    string enemyName;
+    return enemyName;
 }
 
 string Room::getRmStatus() {

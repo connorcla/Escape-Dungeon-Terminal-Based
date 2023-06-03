@@ -275,10 +275,12 @@ void ScreenManager::playerStats() {
 
 void ScreenManager::battleMenu() {
     unsigned int choice;
+
     do{
         cout << "Monsters block your path:" << endl << endl;
         cout << "[Enemies]" << endl; //Replace with list of enemies
-        cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
+        //cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
+        displayEnemies();
         cout << "--------------------------------------" << endl;
         cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
         cout << "--------------------------------------" << endl;
@@ -313,6 +315,12 @@ void ScreenManager::battleMenu() {
 
     }while(choice > 0 || 3 >= choice);
     
+}
+
+void ScreenManager::displayEnemies() {
+    int enemyQuantity;//get number of enemies from Map->Room->"numOfenemies"
+    //Create a loop using enemyQuantity to iterate throuch all enemies inside the room.
+        //get each enemies health status by doing the followin
 }
 
 void ScreenManager::winScreen() {
