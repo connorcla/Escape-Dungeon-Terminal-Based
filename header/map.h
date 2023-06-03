@@ -7,10 +7,14 @@
 class Map {
     public:
         Map();
+        ~Map();
+
+        void generateRooms();
         void moveToNextRoom();
         void fleeToPrevRoom();
         unsigned int getCurrRoom() const;
         unsigned int getNumOfRooms() const;
+        string getRoomStatus(const unsigned);
         vector<string> getItemFromCurrRoom();
 
     private:

@@ -83,6 +83,13 @@ add_executable(runMain
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runRoomTests
@@ -98,8 +105,36 @@ add_executable(runRoomTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-)
 
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
+)
+add_executable(runMapTests
+  test/mapTest.cpp
+  src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
+  src/map.cpp
+  src/room.cpp
+  src/entity.cpp
+  src/player.cpp
+
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
+)
+target_link_libraries(runMapTests gmock gtest gtest_main)
 target_link_libraries(runRoomTests gmock gtest gtest_main)
 target_link_libraries(runMain gmock gtest gtest_main)
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)

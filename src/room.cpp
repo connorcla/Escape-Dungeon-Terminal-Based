@@ -1,12 +1,22 @@
 #include "../header/room.h"
+#include "../header/witch.h"
+#include "../header/spider.h"
+#include "../header/golem.h"
+#include "../header/skeleton.h"
+#include "../header/boss.h"
 #include <vector>
+#include <assert.h>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
 
-Room::Room(int randomQuantity) {
-    generateItems(randomQuantity);
+Room::Room() {}
+
+Room::Room(int roomIndex) {
+    assert(roomIndex >= 0 && "ERROR! 'roomIndex' cannot be a negative value in Room::Room().");
+    
+    generateItems(roomIndex);
 }
 
 Room::~Room(){
@@ -22,11 +32,7 @@ void Room::startBattle(){
 
 }
 
-string Room::getRoomInfo(){
-    return rmInfo;
-}
-
-string Room::getRoomStatus(){
+string Room::getRmStatus() {
     return rmStatus;
 }
 
