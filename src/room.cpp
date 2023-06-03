@@ -22,9 +22,13 @@ Room::Room(int roomIndex) {
     generateItems(roomIndex);
 }
 
-Room::~Room(){
-    //delete vector<Enemy> enemies
-    //vector<Enemy>::iterator it = enemies.begin();
+Room::~Room(){}
+
+void Room::deleteEnemies() {
+    while(!enemies.empty()) {
+        delete enemies.back();
+        enemies.pop_back();
+    }
 }
 
 void Room::generateEnemies(int roomIndex) {
@@ -100,6 +104,10 @@ void Room::setRmStatus(string status){
 
 void Room::setRoomInfo(string info) {
     rmInfo = info;
+}
+
+string Room::getRoomInfo() {
+    return rmInfo;
 }
 
 void Room::startBattle(){

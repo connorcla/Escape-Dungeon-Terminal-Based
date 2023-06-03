@@ -79,10 +79,10 @@ TEST(RoomTests, getItem) {
     Room room(2);
 
     vector<string> compareItem;
-    compareItem.push_back("Cloak");
-    compareItem.push_back("A hooded item that conceals your presence like a thief. --- Speed: 10");
+    compareItem.push_back("Stone Sword");
+    compareItem.push_back("A short blade made out of stone. It has worn down over time. --- Damage: 10");
     compareItem.push_back("10");
-    compareItem.push_back("241");
+    compareItem.push_back("121");
 
     EXPECT_EQ(compareItem, room.getItem());
 }

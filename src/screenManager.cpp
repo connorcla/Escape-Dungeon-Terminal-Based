@@ -24,8 +24,8 @@ ScreenManager::~ScreenManager() {}
 void ScreenManager::setUp() {
     //Change health potion I with correct index after merge
     inventory.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
-    inventory.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
-    inventory.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
+    inventory.addItem(allItems.returnItem(30,0), allItems.returnItem(30,1), allItems.returnItem(30,2), allItems.returnItem(30,3));
+    inventory.addItem(allItems.returnItem(30,0), allItems.returnItem(30,1), allItems.returnItem(30,2), allItems.returnItem(30,3));
     clearScreen();
     mainMenu();
 }
