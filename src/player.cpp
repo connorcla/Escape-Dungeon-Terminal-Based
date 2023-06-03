@@ -8,20 +8,15 @@ Player::Player() {
     this->speed = 20;
     this->exp = 0;
     this->name = "default";
-    this->max_magic = 50;
-    this->curr_magic = 50;
+    this->magic = 20;
 }
 
 Player::~Player() {
 
 }
 
-int Player::getMaxMagic() const {
-    return max_magic;
-}
-
-int Player::getCurrMagic() const {
-    return curr_magic;
+int Player::getMagic() const {
+    return magic;
 }
 
 void Player::setName(std::string name) {
@@ -44,7 +39,7 @@ void Player::updateStat(int idNum, int updatedValue) {
             speed += updatedValue;
             break;
         case 5:
-            curr_magic += updatedValue;
+            magic += updatedValue;
             break;
     }
 }

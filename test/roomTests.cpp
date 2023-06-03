@@ -79,10 +79,10 @@ TEST(RoomTests, getItem) {
     Room room(2);
 
     vector<string> compareItem;
-    compareItem.push_back("Health Potion II");
-    compareItem.push_back("A stronger red potion that restores health. --- Heal: 25");
-    compareItem.push_back("25");
-    compareItem.push_back("311");
+    compareItem.push_back("Cloak");
+    compareItem.push_back("A hooded item that conceals your presence like a thief. --- Speed: 10");
+    compareItem.push_back("10");
+    compareItem.push_back("241");
 
     EXPECT_EQ(compareItem, room.getItem());
 }

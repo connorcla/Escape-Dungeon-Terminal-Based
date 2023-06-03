@@ -18,7 +18,6 @@ add_executable(runOutputTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -45,7 +44,6 @@ add_executable(runItemTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -67,7 +65,6 @@ add_executable(runInventoryTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -89,7 +86,6 @@ add_executable(runInventoryScreenTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -111,7 +107,6 @@ add_executable(runMain
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -133,7 +128,6 @@ add_executable(runRoomTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -141,6 +135,7 @@ add_executable(runRoomTests
   src/skeleton.cpp
   src/boss.cpp
 )
+
 add_executable(runMapTests
   test/mapTest.cpp
   src/screenManager.cpp
@@ -154,7 +149,6 @@ add_executable(runMapTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
-
   src/enemy.cpp
   src/witch.cpp
   src/spider.cpp
@@ -164,7 +158,7 @@ add_executable(runMapTests
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 target_link_libraries(runRoomTests gmock gtest gtest_main)
-target_link_libraries(runMain gmock gtest gtest_main)
+target_link_libraries(runMapTests gmock gtest gtest_main)
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
 target_link_libraries(runItemTests gmock gtest gtest_main)
 target_link_libraries(runInventoryTests gmock gtest gtest_main)

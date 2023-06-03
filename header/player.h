@@ -5,8 +5,7 @@
 
 class Player : public Entity {
 private:
-    int max_magic;
-    int curr_magic;
+    int magic;
 
 public:
     // Constructor
@@ -14,8 +13,7 @@ public:
     ~Player();
 
     // Getters and setters
-    int getMaxMagic() const;
-    int getCurrMagic() const;
+    int getMagic() const;
     void setName(std::string);
     void updateStat(int, int);
 };
