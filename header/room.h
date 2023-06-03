@@ -25,6 +25,7 @@ class Room{
         vector<string> getItem();
 
         void setRmStatus(string);
+        void setRoomInfo(string);
         void startBattle();
         string getRoomInfo();
         string getRoomStatus();

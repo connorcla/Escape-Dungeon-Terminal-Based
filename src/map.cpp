@@ -5,8 +5,8 @@ using namespace std;
 
 Map::Map() {
     //Player starts at room 4, which is index 3 in the vector.
-    currRoom = 1;
-    if(currRoom != 1){ throw "Failed to initialize the current room."; }
+    currRoom = 0;
+    if(currRoom != 0){ throw "Failed to initialize the current room."; }
     
     int randomEnemies;
    
@@ -15,18 +15,29 @@ Map::Map() {
     
         rooms.push_back(rm);
         if(r == 0){
-            rooms[r].setRmStatus("Start");
+            rooms.at(r).setRmStatus("Start");
         }
         else if(r == currRoom){
-            rooms[r].setRmStatus("Here");
+            rooms.at(r).setRmStatus("Here");
         }
         else if(r != (NUMOFROOMS-1)){
-            rooms[r].setRmStatus("?");
+            rooms.at(r).setRmStatus("?");
         }
         else{
-            rooms[r].setRmStatus("Exit?");
+            rooms.at(r).setRmStatus("Exit?");
         }
     }
+
+    rooms.at(0).setRoomInfo("You just woke up in this room. There is only a dim light from a door frame which appears to be the only way forward.");
+    rooms.at(1).setRoomInfo("A very stone cold room with patterns of bricks lining the floor illuminated by dim torches spanning the walls.\nThe only other thing the light reflects off of in the room are chains that hang in certain marked places.");
+    rooms.at(2).setRoomInfo("Setting foot into this room, you feel a light touch underneath your feet. This room is lined and overflowing with vegetation.\nEven though this greenry is a nicer sight, the shadows of the swaying plants cause movement in the corner of your eye.");
+    rooms.at(3).setRoomInfo("A cold breeze covers the entire room and appears like it is coming from the ceiling.\nSlight shimmers of ice plaster the walls making them shine more than usual.");
+    rooms.at(4).setRoomInfo("On closer inspection, the torches appear to not be lit with actual fire.\nOne of the torches has wires coming out of it and the flame is flickering in an unusual way.\nThese rooms look more and more manufactured as each next door opens.");
+    rooms.at(5).setRoomInfo("This room is dimmer than the last few but there is an abyss black in the center of the room.\nOn closer inspection, the void of light in the center of the room is a large hole.\nBetter not get any closer to it.");
+    rooms.at(6).setRoomInfo("Separate pieces of furniture are sprawled across the expansive room. The furniture is very elaborate but very unorderly around the room.\nIt looks like a very nice place to stay, but you better not stay too long.");
+    rooms.at(7).setRoomInfo("A wave of heat rushes past your entire body. Just standing in this room seems to drain some of your energy.\nInstead of torches lining the walls, a thin layer of heat emits from a slit between the walls and the ceiling.");
+    rooms.at(8).setRoomInfo("Very similar to the room you woke up in, nothing appears to be left in the room except a few scattered items.\nThere is only a dim light coming from what appears to be the exit.\nBut, a sense of dread is emitting from it. What lies beyond the door?");
+    rooms.at(9).setRoomInfo("How did you get here? Well anyway, thanks for playing our game! - Kal C");
 }
 
 
@@ -36,6 +47,10 @@ void Map::moveToNextRoom() {
 
 void Map::fleeToPrevRoom() {
     currRoom--;
+}
+
+string Map::getCurrInfo() {
+    return rooms.at(currRoom).getRoomInfo();
 }
 
 unsigned int Map::getCurrRoom() const {

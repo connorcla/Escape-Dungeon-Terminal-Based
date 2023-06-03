@@ -18,6 +18,10 @@ void Room::setRmStatus(string status){
     rmStatus = status;
 }
 
+void Room::setRoomInfo(string info) {
+    rmInfo = info;
+}
+
 void Room::startBattle(){
 
 }
