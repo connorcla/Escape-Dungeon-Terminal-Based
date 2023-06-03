@@ -22,8 +22,12 @@ ScreenManager::ScreenManager() {}
 ScreenManager::~ScreenManager() {}
 
 void ScreenManager::setUp() {
-    //Initialize Player object and any map stuff needed
-    
+    //Change health potion I with correct index after merge
+    inventory.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inventory.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
+    inventory.addItem(allItems.returnItem(9,0), allItems.returnItem(9,1), allItems.returnItem(9,2), allItems.returnItem(9,3));
+    clearScreen();
+    mainMenu();
 }
 
 void ScreenManager::mainMenu() {
@@ -44,7 +48,7 @@ void ScreenManager::mainMenu() {
 
 void ScreenManager::roomIdle() {
     while(true) {
-        cout << "You find yourself in a damp room and nothing seems to be moving except the flicker of the torches on the walls." << endl << endl;
+        cout << "You find yourself in a dim room and nothing seems to be moving except the flicker of the torches on the walls." << endl << endl;
         cout << "What would you like to do?" << endl << endl;
         cout << "1. Look around the room for any items" << endl;
         cout << "2. Examine the room" << endl;
@@ -94,7 +98,11 @@ void ScreenManager::roomIdle() {
                     }
                     break;
                 case 2:
-                    //Output dialoge with the room description
+                    cout << endl;
+                    cout << map.getCurrInfo() << endl << endl;
+                    cout << "Enter anything to continue: ";
+                    getCharInput();
+                    clearScreen();
                     break;
                 case 3:
                     clearScreen();
@@ -137,6 +145,7 @@ void ScreenManager::mapMenu() {
     while (true) {
         char cInput = getCharInput();
         if(cInput == 'b') {
+            clearScreen();
             return;
         }
         else {
@@ -151,7 +160,7 @@ void ScreenManager::displayMap(){
     const unsigned NUMOFROOMS = map.getNumOfRooms();
 
     cout << "Map:" << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------------" << endl;
     for(int room = 0; room < NUMOFROOMS; room++){
         roomStatus = map.getRoomStatus(room);
         cout << "| ";
@@ -159,7 +168,7 @@ void ScreenManager::displayMap(){
         else{ cout << roomStatus << " |"; }
     }
     cout << endl;
-    cout << "----------------------------------------------------------------------" << endl << endl;
+    cout << "-------------------------------------------------------------------------------" << endl << endl;
 }
 
 void ScreenManager::inventoryMenu() {

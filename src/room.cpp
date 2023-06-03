@@ -98,6 +98,10 @@ void Room::setRmStatus(string status){
     assert(rmStatus != " " && "ERROR! The 'status' parameter in Room::setRmStatus() not correctly setting room status.");
 }
 
+void Room::setRoomInfo(string info) {
+    rmInfo = info;
+}
+
 void Room::startBattle(){
 
 }
