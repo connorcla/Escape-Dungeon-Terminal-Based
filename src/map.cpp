@@ -4,30 +4,33 @@
 using namespace std;
 
 Map::Map() {
-    //Player starts at room 4, which is index 3 in the vector.
-    currRoom = 0;
-    if(currRoom != 0){ throw "Failed to initialize the current room."; }
-    
-    int randomEnemies;
-   
-    for(int r = 0; r < NUMOFROOMS; r++){ 
-        Room rm(r);
+    currRoom = 1;
+    assert(currRoom == 1 && "ERROR! 'currRoom' not assigned to correct value in Map::Map().'");
+    generateRooms();
+}
+
+Map::~Map() {}
+
+void Map::generateRooms(){
+    assert(NUMOFROOMS == 10 && "ERROR! 'NUMOFROOMS' is not properly initialized in Map::generateRooms().");
+
+    for(int room = 0; room < NUMOFROOMS; room++){ 
+        Room rm(room);
     
         rooms.push_back(rm);
-        if(r == 0){
-            rooms.at(r).setRmStatus("Start");
+        if(room == 0){
+            rooms[room].setRmStatus("Start ");
         }
-        else if(r == currRoom){
-            rooms.at(r).setRmStatus("Here");
+        else if(room == currRoom){
+            rooms[room].setRmStatus("Here ");
         }
-        else if(r != (NUMOFROOMS-1)){
-            rooms.at(r).setRmStatus("?");
+        else if(room != (NUMOFROOMS-1)){
+            rooms[room].setRmStatus(" ?  ");
         }
         else{
-            rooms.at(r).setRmStatus("Exit?");
+            rooms[room].setRmStatus(" Exit? ");
         }
     }
-
     rooms.at(0).setRoomInfo("You just woke up in this room. There is only a dim light from a door frame which appears to be the only way forward.");
     rooms.at(1).setRoomInfo("A very stone cold room with patterns of bricks lining the floor illuminated by dim torches spanning the walls.\nThe only other thing the light reflects off of in the room are chains that hang in certain marked places.");
     rooms.at(2).setRoomInfo("Setting foot into this room, you feel a light touch underneath your feet. This room is lined and overflowing with vegetation.\nEven though this greenry is a nicer sight, the shadows of the swaying plants cause movement in the corner of your eye.");
@@ -40,13 +43,24 @@ Map::Map() {
     rooms.at(9).setRoomInfo("How did you get here? Well anyway, thanks for playing our game! - Kal C");
 }
 
-
 void Map::moveToNextRoom() {
-    currRoom++;
+
+    if(currRoom < 9){
+        rooms[currRoom].setRmStatus("Clear ");
+        currRoom++;
+        rooms[currRoom].setRmStatus("Here ");
+    }
+
+    assert(currRoom < 11 && "ERROR! 'currRoom' cannot reach further than 10th room. Check Map::moveToNextRoom().");
 }
 
 void Map::fleeToPrevRoom() {
-    currRoom--;
+    if(currRoom > 1){ 
+        rooms[currRoom].setRmStatus(" ?  ");
+        currRoom--;
+        rooms[currRoom].setRmStatus("Here "); 
+        }
+    assert(currRoom > 0 && "ERROR! 'currRoom' cannot be less than zero. Check Map::fleeToPrevRoom().");
 }
 
 string Map::getCurrInfo() {
@@ -59,6 +73,11 @@ unsigned int Map::getCurrRoom() const {
 
 unsigned int Map::getNumOfRooms() const {
     return NUMOFROOMS;
+}
+
+string Map::getRoomStatus(const unsigned room) {
+    string roomStatus = rooms[room].getRmStatus();
+    return roomStatus;
 }
 
 vector<string> Map::getItemFromCurrRoom() {

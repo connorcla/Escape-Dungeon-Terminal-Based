@@ -1,6 +1,6 @@
 #ifndef ROOM_H
 #define ROOM_H
-//#include "enemy.h"
+#include "enemy.h"
 #include "item.h"
 #include "itemDatabase.h"
 #include "weapon.h"
@@ -13,12 +13,15 @@ using namespace std;
 
 class Room{
     public:
+        Room();
         Room(int);
         ~Room();
+
         //Enemy functions
         void generateEnemies(int);
-        int vecIndxOfEnemy();
-        //Enemy* getEnemy(int);
+        void setEnemiesBeforeLastRoom(const int);
+        int getRandomNumber(int) const;
+        Enemy* getEnemy(int);
         
         //Item functions
         void generateItems(int);
@@ -27,14 +30,13 @@ class Room{
         void setRmStatus(string);
         void setRoomInfo(string);
         void startBattle();
-        string getRoomInfo();
-        string getRoomStatus();
+        string getRmStatus();
         
 
     private:
-        //vector <Enemy* > enemies;
+        vector <Enemy* > enemies;
         vector <vector<string>> items;
-        string rmStatus;//States either the room is "Clear" or not.
+        string rmStatus = " ";//States either the room is "Clear" or not.
         string rmInfo;
 };
 #endif
