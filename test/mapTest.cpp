@@ -6,16 +6,17 @@ TEST(Map_Tests, testConstructor){
     EXPECT_NO_THROW(Map mapTest);
 }
 
-TEST(Map_Tests, testMoveToNextRoom){
+TEST(Map_Tests, testGetItem) {
+    srand(0);
     Map mapTest;
-    mapTest.moveRooms(1);
-    EXPECT_EQ(mapTest.getCurrRoom(),2);
-}
+    
+    vector<string> compareItem;
+    compareItem.push_back("Cloak");
+    compareItem.push_back("A hooded item that conceals your presence like a thief. --- Speed: 10");
+    compareItem.push_back("10");
+    compareItem.push_back("241");
 
-TEST(Map_Tests, testMoveToPREVRoom){
-    Map mapTest;
-    mapTest.moveRooms(-1);
-    EXPECT_EQ(mapTest.getCurrRoom(),0);
+    EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
 
 int main(int argc, char **argv) {

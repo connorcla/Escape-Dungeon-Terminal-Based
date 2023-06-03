@@ -100,8 +100,23 @@ add_executable(runRoomTests
   src/player.cpp
 )
 
+add_executable(runMapTests
+  test/mapTest.cpp
+  src/screenManager.cpp
+  src/itemDatabase.cpp
+  src/item.cpp
+  src/inventory.cpp
+  src/weapon.cpp
+  src/usable.cpp
+  src/equip.cpp 
+  src/map.cpp
+  src/room.cpp
+  src/entity.cpp
+  src/player.cpp
+)
+
 target_link_libraries(runRoomTests gmock gtest gtest_main)
-target_link_libraries(runMain gmock gtest gtest_main)
+target_link_libraries(runMapTests gmock gtest gtest_main)
 target_link_libraries(runItemDatabaseTests gmock gtest gtest_main)
 target_link_libraries(runItemTests gmock gtest gtest_main)
 target_link_libraries(runInventoryTests gmock gtest gtest_main)
