@@ -5,6 +5,7 @@
 
 class Witch: public Enemy{
     public:
+        Witch();
         Witch(std::string,int,int,int,int,int,int);
         ~Witch();
         

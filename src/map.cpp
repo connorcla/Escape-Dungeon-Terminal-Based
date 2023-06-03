@@ -35,12 +35,22 @@ void Map::generateRooms(){
 }
 
 void Map::moveToNextRoom() {
-    if(currRoom != 10){ currRoom++; }
+
+    if(currRoom < 9){
+        rooms[currRoom].setRmStatus("Clear ");
+        currRoom++;
+        rooms[currRoom].setRmStatus("Here ");
+    }
+
     assert(currRoom < 11 && "ERROR! 'currRoom' cannot reach further than 10th room. Check Map::moveToNextRoom().");
 }
 
 void Map::fleeToPrevRoom() {
-    if(currRoom > 1){ currRoom--; }
+    if(currRoom > 1){ 
+        rooms[currRoom].setRmStatus(" ?  ");
+        currRoom--;
+        rooms[currRoom].setRmStatus("Here "); 
+        }
     assert(currRoom > 0 && "ERROR! 'currRoom' cannot be less than zero. Check Map::fleeToPrevRoom().");
 }
 

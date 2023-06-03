@@ -160,21 +160,6 @@ void ScreenManager::displayMap(){
     }
     cout << endl;
     cout << "----------------------------------------------------------------------" << endl << endl;
-    /*
-    const unsigned int currntRoom = map.getCurrRoom();
-    const unsigned int NUMOFROOMS = map.getNumOfRooms();
-    cout << "----------------------------------------------------------------------" << endl;
-    for(int room = 0; room < NUMOFROOMS; room++){
-        cout << "| ";
-        if(room == 0){ cout << "Start "; }
-        else if(room > 0 && room < currntRoom){ cout << "Clear "; }
-        else if(room == currntRoom){ cout << "Here "; }
-        else if(room >currntRoom && room < (NUMOFROOMS-1)){ cout << " ?  "; }
-        else cout << "Exit? |"; 
-    }
-    cout << endl;
-    cout << "----------------------------------------------------------------------" << endl;
-    */
 }
 
 void ScreenManager::inventoryMenu() {

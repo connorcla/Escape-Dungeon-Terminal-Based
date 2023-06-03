@@ -16,9 +16,12 @@ class Room{
         Room();
         Room(int);
         ~Room();
+
         //Enemy functions
         void generateEnemies(int);
-        //Enemy* getEnemy(int);
+        void setEnemiesBeforeLastRoom(const int);
+        int getRandomNumber(int) const;
+        Enemy* getEnemy(int);
         
         //Item functions
         void generateItems(int);
@@ -32,7 +35,7 @@ class Room{
     private:
         vector <Enemy* > enemies;
         vector <vector<string>> items;
-        string rmStatus;//States either the room is "Clear" or not.
+        string rmStatus = " ";//States either the room is "Clear" or not.
         string rmInfo;
 };
 #endif

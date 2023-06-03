@@ -18,6 +18,13 @@ add_executable(runOutputTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runItemDatabaseTests
@@ -38,6 +45,13 @@ add_executable(runItemTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runInventoryTests
@@ -53,6 +67,13 @@ add_executable(runInventoryTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runInventoryScreenTests
@@ -68,6 +89,13 @@ add_executable(runInventoryScreenTests
   src/room.cpp
   src/entity.cpp
   src/player.cpp
+
+  src/enemy.cpp
+  src/witch.cpp
+  src/spider.cpp
+  src/golem.cpp
+  src/skeleton.cpp
+  src/boss.cpp
 )
 
 add_executable(runMain

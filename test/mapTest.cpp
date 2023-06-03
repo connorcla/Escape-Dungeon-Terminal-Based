@@ -22,10 +22,28 @@ TEST(MapTests, testMoveToPREVRoom){
     EXPECT_NO_THROW(mapTest.fleeToPrevRoom());
 }
 
-TEST(MapTests, testGetCurrRoom){
+TEST(MapTests, testGetCurrRoom_DefaultConstructor){
     Map mapTest;
     int currentRoom = mapTest.getCurrRoom();
     EXPECT_EQ(currentRoom, 1);
+}
+
+TEST(MapTests, getCurrRoom_After_MovingToNextRoom){
+    Map mapTest;
+    mapTest.moveToNextRoom();
+
+    EXPECT_EQ(mapTest.getCurrRoom(),2);
+}
+
+TEST(MapTests, getCurrRoom_After_FleeingtoPevRoom){
+    Map mapTest;
+
+    //Increments 'currRoom' value by 1. From previous test, 'currRoom' value is proven to be 2 at this point.
+    mapTest.moveToNextRoom();
+    //Derements 'currRoom' value by 1. The 'currRoom' value should now be back to 1.
+    mapTest.fleeToPrevRoom();
+    
+    EXPECT_EQ(mapTest.getCurrRoom(),1);
 }
 
 TEST(MapTests, testNumOfRooms){
