@@ -105,11 +105,10 @@ void ScreenManager::roomIdle() {
                     mapMenu();
                     break;
                 case 5:
-                    //Increase room count, go to battle menu, start battle
                     map.moveToNextRoom();
                     clearScreen();
                     cout << "Moved to next room." << endl;
-                    //battleMenu();
+                    battleMenu();
                     break;
                 default:
                     cout << "An error occurred." << endl;
@@ -318,8 +317,11 @@ void ScreenManager::battleMenu() {
 }
 
 void ScreenManager::displayEnemies() {
-    int enemyQuantity;//get number of enemies from Map->Room->"numOfenemies"
+    //get number of enemies from Map->Room->"numOfenemies"
+    int enemyQuantity = map.getEnemyQuantity();
+    cout<<"\n\n\t\tThere are "<<enemyQuantity<<" enemies in Room #"<< map.getCurrRoom() << endl;
     //Create a loop using enemyQuantity to iterate throuch all enemies inside the room.
+
         //get each enemies health status by doing the followin
 }
 

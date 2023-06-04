@@ -62,6 +62,11 @@ unsigned int Map::getNumOfRooms() const {
     return NUMOFROOMS;
 }
 
+unsigned int Map::getEnemyQuantity() const{
+    //Get the number of enemies at the current room locaiton:
+    return rooms[currRoom].getNumOfEnemies();
+}
+
 string Map::getRoomStatus(const unsigned room) {
     string roomStatus = rooms[room].getRmStatus();
     return roomStatus;

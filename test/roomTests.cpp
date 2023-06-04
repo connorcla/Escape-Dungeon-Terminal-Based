@@ -74,6 +74,16 @@ TEST(RoomTests, getRMStatus){
     EXPECT_EQ(room.getRmStatus(),currStatus);
 }
 
+TEST(RoomTests, getNumOfEnemiesGTZero){
+    Room room(1);
+    EXPECT_GT(room.getNumOfEnemies(),0);
+}
+
+TEST(RoomTests, getNumOfEnemiesLTFive){
+    Room room(1);
+    EXPECT_LT(room.getNumOfEnemies(),5);
+}
+
 TEST(RoomTests, getItem) {
     srand(0);
     Room room(2);

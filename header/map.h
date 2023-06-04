@@ -14,6 +14,7 @@ class Map {
         void fleeToPrevRoom();
         unsigned int getCurrRoom() const;
         unsigned int getNumOfRooms() const;
+        unsigned int getEnemyQuantity() const;
         string getRoomStatus(const unsigned);
         vector<string> getItemFromCurrRoom();
 

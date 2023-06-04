@@ -19,22 +19,22 @@ TEST(Map_Tests, testGetItem) {
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
 
-TEST(MapTests, testGenerateRooms){
+TEST(MapTests, GenerateRooms){
     Map mapTest;
     EXPECT_NO_THROW(mapTest.generateRooms());
 }
 
-TEST(MapTests, testMoveToNextRoom){
+TEST(MapTests, MoveToNextRoom){
     Map mapTest;
     EXPECT_NO_THROW(mapTest.moveToNextRoom());
 }
 
-TEST(MapTests, testMoveToPREVRoom){
+TEST(MapTests, MoveToPREVRoom){
     Map mapTest;
     EXPECT_NO_THROW(mapTest.fleeToPrevRoom());
 }
 
-TEST(MapTests, testGetCurrRoom_DefaultConstructor){
+TEST(MapTests, GetCurrRoom_DefaultConstructor){
     Map mapTest;
     int currentRoom = mapTest.getCurrRoom();
     EXPECT_EQ(currentRoom, 1);
@@ -58,15 +58,25 @@ TEST(MapTests, getCurrRoom_After_FleeingtoPevRoom){
     EXPECT_EQ(mapTest.getCurrRoom(),1);
 }
 
-TEST(MapTests, testNumOfRooms){
+TEST(MapTests, NumOfRooms){
     Map mapTest;
     EXPECT_EQ(mapTest.getNumOfRooms(),10);
 }
 
-TEST(MapTests, testGetRoomStatus){
+TEST(MapTests, GetRoomStatus){
     Map mapTest;
     string roomStatus = mapTest.getRoomStatus(1);
     EXPECT_EQ(roomStatus, "Here ");
+}
+
+TEST(MapTests, getEnemyQuantityGTZero){
+    Map mapTest;
+    EXPECT_GT(mapTest.getEnemyQuantity(),0);
+}
+
+TEST(MapTests, getEnemyQuantityLTFive){
+    Map mapTest;
+    EXPECT_LT(mapTest.getEnemyQuantity(),5);
 }
 
 //TEST(MapTests, testGetItemFromCurrRoom){}

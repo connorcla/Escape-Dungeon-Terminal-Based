@@ -31,7 +31,6 @@ void Room::generateEnemies(int roomIndex) {
     assert(roomIndex >= 0 && "ERROR! 'roomIndex' cannot be less than zero in Room::generateEnemies().");
     int room = roomIndex + 1;
     const int lastRoom = 10;
-    int enemyQuantity;
 
     if(room != lastRoom){
         enemyQuantity = getRandomNumber(room);
@@ -39,6 +38,7 @@ void Room::generateEnemies(int roomIndex) {
         
     } 
     else{
+        enemyQuantity = 1;
         int bossValue = 5;
         Enemy* boss = getEnemy(bossValue);
         enemies.push_back(boss);
@@ -102,13 +102,17 @@ Enemy* Room::getEnemy(int randEnemy) {
     return enemy;
 }
 
-string Room::getEnemyName() const {
+string Room::getEnemyName(int x) const {
     string enemyName;
     return enemyName;
 }
 
 string Room::getRmStatus() {
     return rmStatus;
+}
+
+unsigned int Room::getNumOfEnemies() const {
+    return enemyQuantity;
 }
 
 void Room::generateItems(int randomQuantity) {
