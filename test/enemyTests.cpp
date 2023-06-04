@@ -18,6 +18,7 @@ TEST(WitchTests, getName){
     Enemy* villan = new Witch("Witch",1,2,3,4,5,6,7);
 
     EXPECT_EQ(villan->getName(), name);
+    delete villan;
 }
 
 TEST(WitchTests, getMaxHealth){
@@ -25,6 +26,7 @@ TEST(WitchTests, getMaxHealth){
     Enemy* villan = new Witch("Witch",1,health,3,4,5,6,7);
 
     EXPECT_EQ(villan->getMaxHealth(), health);
+    delete villan;
 }
 
 TEST(WitchTests, getCurrHealth){
@@ -32,6 +34,7 @@ TEST(WitchTests, getCurrHealth){
     Enemy* villan = new Witch("Witch",1,health,3,4,5,6,7);
 
     EXPECT_EQ(villan->getCurrHealth(), health);
+    delete villan;
 }
 
 TEST(WitchTests, getDefense){
@@ -39,6 +42,7 @@ TEST(WitchTests, getDefense){
     Enemy* villan = new Witch("Witch",1,2,3,defense,5,6,7);
 
     EXPECT_EQ(villan->getDefense(), defense);
+    delete villan;
 }
 
 TEST(WitchTests, getAttack){
@@ -46,6 +50,7 @@ TEST(WitchTests, getAttack){
     Enemy* villan = new Witch("Witch",1,2,attack,4,5,6,7);
 
     EXPECT_EQ(villan->getAttack(), attack);
+    delete villan;
 }
 
 TEST(WitchTests, getSpeed){
@@ -53,6 +58,7 @@ TEST(WitchTests, getSpeed){
     Enemy* villan = new Witch("Witch",1,2,3,4,speed,6,7);
     
     EXPECT_EQ(villan->getSpeed(), speed);
+    delete villan;
 }
 
 TEST(WitchTests, getExp){
@@ -60,6 +66,7 @@ TEST(WitchTests, getExp){
     Enemy* villan = new Witch("Witch",exp,2,3,4,5,6,7);
 
     EXPECT_EQ(villan->getExp(), exp);
+    delete villan;
 }
 
 TEST(WitchTests, Action){
@@ -68,6 +75,7 @@ TEST(WitchTests, Action){
     string empty = " ";
 
     EXPECT_NE(villan->action(player), empty);
+    delete villan;
 }
 
 /*
@@ -89,6 +97,7 @@ TEST(SpiderTests, getName){
     Enemy* villan = new Spider("Spider",1,2,3,4,5);
 
     EXPECT_EQ(villan->getName(), name);
+    delete villan;
 }
 
 TEST(SpiderTests, getMaxHealth){
@@ -96,6 +105,7 @@ TEST(SpiderTests, getMaxHealth){
     Enemy* villan = new Spider("Spider",1,health,3,4,5);
 
     EXPECT_EQ(villan->getMaxHealth(), health);
+    delete villan;
 }
 
 TEST(SpiderTests, getCurrHealth){
@@ -103,6 +113,7 @@ TEST(SpiderTests, getCurrHealth){
     Enemy* villan = new Spider("Spider",1,health,3,4,5);
 
     EXPECT_EQ(villan->getCurrHealth(), health);
+    delete villan;
 }
 
 TEST(SpiderTests, getDefense){
@@ -110,6 +121,7 @@ TEST(SpiderTests, getDefense){
     Enemy* villan = new Spider("Spider",1,2,3,defense,5);
 
     EXPECT_EQ(villan->getDefense(), defense);
+    delete villan;
 }
 
 TEST(SpiderTests, getAttack){
@@ -117,6 +129,7 @@ TEST(SpiderTests, getAttack){
     Enemy* villan = new Spider("Spider",1,2,attack,4,5);
 
     EXPECT_EQ(villan->getAttack(), attack);
+    delete villan;
 }
 
 TEST(SpiderTests, getSpeed){
@@ -124,6 +137,7 @@ TEST(SpiderTests, getSpeed){
     Enemy* villan = new Spider("Spider",1,2,3,4,speed);
 
     EXPECT_EQ(villan->getSpeed(), speed);
+    delete villan;
 }
 
 TEST(SpiderTests, getExp){
@@ -131,6 +145,16 @@ TEST(SpiderTests, getExp){
     Enemy* villan = new Spider("Spider",exp,2,3,4,5);
 
     EXPECT_EQ(villan->getExp(), exp);
+    delete villan;
+}
+
+TEST(SpiderTests, Action){
+    Enemy* villan = new Spider("Spider",1,2,3,4,5);
+    Player player;
+    string empty = "";
+
+    EXPECT_NE(villan->action(player), empty);
+    delete villan;
 }
 
 
@@ -144,6 +168,7 @@ TEST(GolemTests, getName){
     Enemy* villan = new Golem("Golem",1,2,3,4,5);
 
     EXPECT_EQ(villan->getName(), name);
+    delete villan;
 }
 
 TEST(GolemTests, getMaxHealth){
@@ -151,6 +176,7 @@ TEST(GolemTests, getMaxHealth){
     Enemy* villan = new Golem("Golem",1,health,3,4,5);
 
     EXPECT_EQ(villan->getMaxHealth(), health);
+    delete villan;
 }
 
 TEST(GolemTests, getCurrHealth){
@@ -158,6 +184,7 @@ TEST(GolemTests, getCurrHealth){
     Enemy* villan = new Golem("Golem",1,health,3,4,5);
 
     EXPECT_EQ(villan->getCurrHealth(), health);
+    delete villan;
 }
 
 TEST(GolemTests, getDefense){
@@ -165,6 +192,7 @@ TEST(GolemTests, getDefense){
     Enemy* villan = new Golem("Golem",1,2,3,defense,5);
 
     EXPECT_EQ(villan->getDefense(), defense);
+    delete villan;
 }
 
 TEST(GolemTests, getAttack){
@@ -172,6 +200,7 @@ TEST(GolemTests, getAttack){
     Enemy* villan = new Golem("Golem",1,2,attack,4,5);
 
     EXPECT_EQ(villan->getAttack(), attack);
+    delete villan;
 }
 
 TEST(GolemTests, getSpeed){
@@ -179,6 +208,7 @@ TEST(GolemTests, getSpeed){
     Enemy* villan = new Golem("Golem",1,2,3,4,speed);
 
     EXPECT_EQ(villan->getSpeed(), speed);
+    delete villan;
 }
 
 TEST(GolemTests, getExp){
@@ -186,6 +216,16 @@ TEST(GolemTests, getExp){
     Enemy* villan = new Golem("Golem",exp,2,3,4,5);
 
     EXPECT_EQ(villan->getExp(), exp);
+    delete villan;
+}
+
+TEST(GolemTests, Action){
+    Enemy* villan = new Golem("Golem",1,2,3,4,5);
+    Player player;
+    string empty = "";
+
+    EXPECT_NE(villan->action(player), empty);
+    delete villan;
 }
 
 /*********** Skeleton Tests **********/
@@ -198,6 +238,7 @@ TEST(SkeletonTests, getName){
     Enemy* villan = new Skeleton("Skeleton",1,2,3,4,5);
 
     EXPECT_EQ(villan->getName(), name);
+    delete villan;
 }
 
 TEST(SkeletonTests, getMaxHealth){
@@ -205,6 +246,7 @@ TEST(SkeletonTests, getMaxHealth){
     Enemy* villan = new Skeleton("Skeleton",1,health,3,4,5);
 
     EXPECT_EQ(villan->getMaxHealth(), health);
+    delete villan;
 }
 
 TEST(SkeletonTests, getCurrHealth){
@@ -212,6 +254,7 @@ TEST(SkeletonTests, getCurrHealth){
     Enemy* villan = new Skeleton("Skeleton",1,health,3,4,5);
 
     EXPECT_EQ(villan->getCurrHealth(), health);
+    delete villan;
 }
 
 TEST(SkeletonTests, getDefense){
@@ -219,6 +262,7 @@ TEST(SkeletonTests, getDefense){
     Enemy* villan = new Skeleton("Skeleton",1,2,3,defense,5);
 
     EXPECT_EQ(villan->getDefense(), defense);
+    delete villan;
 }
 
 TEST(SkeletonTests, getAttack){
@@ -226,6 +270,7 @@ TEST(SkeletonTests, getAttack){
     Enemy* villan = new Skeleton("Skeleton",1,2,attack,4,5);
 
     EXPECT_EQ(villan->getAttack(), attack);
+    delete villan;
 }
 
 TEST(SkeletonTests, getSpeed){
@@ -233,6 +278,7 @@ TEST(SkeletonTests, getSpeed){
     Enemy* villan = new Skeleton("Skeleton",1,2,3,4,speed);
 
     EXPECT_EQ(villan->getSpeed(), speed);
+    delete villan;
 }
 
 TEST(SkeletonTests, getExp){
@@ -240,13 +286,22 @@ TEST(SkeletonTests, getExp){
     Enemy* villan = new Skeleton("Skeleton",exp,2,3,4,5);
 
     EXPECT_EQ(villan->getExp(), exp);
+    delete villan;
 }
 
+TEST(SkeletonTests, Action){
+    Enemy* villan = new Skeleton("Skeleton",1,2,3,4,5);
+    Player player;
+    string empty = "";
+
+    EXPECT_NE(villan->action(player), empty);
+    delete villan;
+
+}
 
 /*********** Boss Tests **********/
 TEST(BossTests, testConstructor){
     EXPECT_NO_THROW(Enemy* villan = new Boss("Boss",1,2,3,4,5,6));
-	//delete villan;
 }
 
 TEST(BossTests, getName){
@@ -303,6 +358,15 @@ TEST(BossTests, getExp){
 
     EXPECT_EQ(villan->getExp(), exp);
 	 delete villan;
+}
+
+TEST(BossTests, Action){
+    Enemy* villan = new Boss("Boss",1,2,3,4,5,6);
+    Player player;
+    string empty = "";
+
+    EXPECT_NE(villan->action(player), empty);
+    delete villan;
 }
 
 /*
