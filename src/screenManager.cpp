@@ -320,13 +320,13 @@ void ScreenManager::displayEnemies() {
     //get number of enemies from Map->Room->"numOfenemies"
     int enemyQuantity = map.getEnemyQuantity();
     string enemyName;
-    int enemyMAXHealth = 100;
+    int enemyMAXHealth;
     int enemyCURRNTHealth;
     
     for(int enemy = 0; enemy < enemyQuantity; enemy++){
         enemyName = map.getEnemyName(enemy);
         enemyCURRNTHealth = map.getEnemyCURRNTHealthStatus(enemy);
-        
+        enemyMAXHealth = map.getEnemyMAXHealthStatus(enemy);
         cout << enemyName << "["<< enemyCURRNTHealth<<"/" << enemyMAXHealth << "]";
         
         if(enemy != (enemyQuantity-1)){ cout <<"    "; }
