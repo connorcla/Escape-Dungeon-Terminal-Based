@@ -1,3 +1,6 @@
+#ifndef INVENTORYTESTS_H
+#define INVENTORYTESTS_H
+
 #include "gtest/gtest.h"
 #include "../header/inventory.h"
 #include "../header/itemDatabase.h"
@@ -228,8 +231,4 @@ TEST(InventoryEquip, Weapon2) {
     EXPECT_EQ(inv.outputWeapon(), "| Stone Sword |");
 }
 
-
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+#endif

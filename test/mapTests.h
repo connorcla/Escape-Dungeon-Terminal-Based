@@ -1,3 +1,6 @@
+#ifndef MAPTESTS_H
+#define MAPTESTS_H
+
 #include "../header/map.h"
 #include "gtest/gtest.h"
 using namespace std;
@@ -11,10 +14,10 @@ TEST(Map_Tests, testGetItem) {
     Map mapTest;
     
     vector<string> compareItem;
-    compareItem.push_back("Fool's Gold Armor");
-    compareItem.push_back("Not only will these hits still hurt, but you look like an inadequate. --- Defense: -15");
-    compareItem.push_back("-15");
-    compareItem.push_back("235");
+    compareItem.push_back("Stone Sword");
+    compareItem.push_back("A short blade made out of stone. It has worn down over time. --- Damage: 10");
+    compareItem.push_back("10");
+    compareItem.push_back("121");
 
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
@@ -31,20 +34,21 @@ TEST(MapTests, MoveToNextRoom){
 
 TEST(MapTests, MoveToPREVRoom){
     Map mapTest;
+    mapTest.moveToNextRoom();
     EXPECT_NO_THROW(mapTest.fleeToPrevRoom());
 }
 
 TEST(MapTests, GetCurrRoom_DefaultConstructor){
     Map mapTest;
     int currentRoom = mapTest.getCurrRoom();
-    EXPECT_EQ(currentRoom, 1);
+    EXPECT_EQ(currentRoom, 0);
 }
 
 TEST(MapTests, getCurrRoom_After_MovingToNextRoom){
     Map mapTest;
     mapTest.moveToNextRoom();
 
-    EXPECT_EQ(mapTest.getCurrRoom(),2);
+    EXPECT_EQ(mapTest.getCurrRoom(),1);
 }
 
 TEST(MapTests, getCurrRoom_After_FleeingtoPevRoom){
@@ -65,8 +69,8 @@ TEST(MapTests, getNumOfRooms){
 
 TEST(MapTests, getRoomStatus){
     Map mapTest;
-    string roomStatus = mapTest.getRoomStatus(1);
-    EXPECT_EQ(roomStatus, "Here ");
+    string roomStatus = mapTest.getRoomStatus(0);
+    EXPECT_EQ(roomStatus, "Start ");
 }
 
 TEST(MapTests, getEnemyQuantityGTZero){
@@ -86,7 +90,4 @@ TEST(MapTests, getEnemyCURRNTHealthStatus){
 
 //TEST(MapTests, testGetItemFromCurrRoom){}
 
-int main(int argc, char **argv) {
-::testing::InitGoogleTest(&argc, argv);
-return RUN_ALL_TESTS();
-}
+#endif

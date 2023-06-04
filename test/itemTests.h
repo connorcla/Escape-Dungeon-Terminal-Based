@@ -1,3 +1,6 @@
+#ifndef ITEMTESTS_H
+#define ITEMTESTS_H
+
 #include "../header/inventory.h"
 #include "../header/item.h"
 #include "../header/itemDatabase.h"
@@ -70,8 +73,4 @@ TEST(ReturnItemID, ReturnID3) {
     EXPECT_EQ(id, 123); 
 }
 
-
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+#endif

@@ -1,3 +1,6 @@
+#ifndef ENEMYTESTS_H
+#define ENEMYTESTS_H
+
 #include "../header/enemy.h"
 #include "../header/witch.h"
 #include "../header/spider.h"
@@ -377,3 +380,5 @@ TEST(EnemyTests, getMagic){
     EXPECT_EQ(villan->getMagic(), magic);
 }
 */
+
+#endif

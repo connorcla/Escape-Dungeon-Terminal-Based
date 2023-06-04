@@ -1,3 +1,6 @@
+#ifndef ROOMTESTS_H
+#define ROOMTESTS_H
+
 #include "../header/room.h"
 #include "../header/enemy.h"
 #include "../header/witch.h"
@@ -120,4 +123,4 @@ TEST(RoomTests, getItem) {
     EXPECT_EQ(compareItem, room.getItem());
 }
 
-
+#endif

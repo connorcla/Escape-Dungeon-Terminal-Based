@@ -123,10 +123,6 @@ string Room::getRoomInfo() {
     return rmInfo;
 }
 
-void Room::startBattle(){
-  
-}
-
 string Room::getRmStatus() {
     return rmStatus;
 }
