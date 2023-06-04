@@ -35,7 +35,6 @@ void Room::generateEnemies(int roomIndex) {
     assert(roomIndex >= 0 && "ERROR! 'roomIndex' cannot be less than zero in Room::generateEnemies().");
     int room = roomIndex + 1;
     const int lastRoom = 10;
-    int enemyQuantity;
 
     if(room != lastRoom){
         enemyQuantity = getRandomNumber(room);
@@ -43,13 +42,14 @@ void Room::generateEnemies(int roomIndex) {
         
     } 
     else{
+        enemyQuantity = 1;
         int bossValue = 5;
         Enemy* boss = getEnemy(bossValue);
         enemies.push_back(boss);
     }
 }
 
-void Room::setEnemiesBeforeLastRoom(const int numOfEnemies){
+void Room::setEnemiesBeforeLastRoom(const int numOfEnemies) {
     assert(numOfEnemies > 0 && "ERROR! 'numOfEnemies' value cannot be less than 0 in Room::setEnemiesBeforeLastRoom().");
     unsigned int randomEnemy;
     
@@ -61,34 +61,43 @@ void Room::setEnemiesBeforeLastRoom(const int numOfEnemies){
     }
 }
 
-int Room::getRandomNumber(int counter) const{
+int Room::getRandomNumber(int counter) const {
     int randomNumber = rand();
     randomNumber = ((randomNumber/counter) % 4) + 1;
     return randomNumber;//This should return a number between 1 to 4.
 }
 
-Enemy* Room::getEnemy(int randEnemy){
+void Room::setRmStatus(string status) {
+    rmStatus = status;
+    assert(rmStatus != " " && "ERROR! The 'status' parameter in Room::setRmStatus() not correctly setting room status.");
+}
+
+void Room::startBattle() {
+
+}
+
+Enemy* Room::getEnemy(int randEnemy) {
     Enemy* enemy = nullptr;
     
     switch(randEnemy){
             case 1:{ 
-                enemy = new Witch("Witch",1,2,3,4,5,6); 
+                enemy = new Witch("Witch",5,10,5,5,5,10,5); 
                 break;
                 }
             case 2:{ 
-                enemy = new Spider("Spider",1,2,3,4,5);
+                enemy = new Spider("Spider",10,20,10,10,10);
                 break;
             }
             case 3:{ 
-                enemy = new Golem("Golem",1,2,3,4,5);
+                enemy = new Golem("Golem",20,30,20,20,20);
                 break;
             }
             case 4:{ 
-                enemy = new Skeleton("Skeleton",1,2,3,4,5);
+                enemy = new Skeleton("Skeleton",30,40,30,30,30);
                 break;
             }
             case 5:{
-                enemy = new Boss("Boss",1,2,3,4,5,6);
+                enemy = new Boss("Boss",40,50,40,40,40,15);
                 break;
             }
             default: break;
@@ -97,9 +106,13 @@ Enemy* Room::getEnemy(int randEnemy){
     return enemy;
 }
 
-void Room::setRmStatus(string status){
-    rmStatus = status;
-    assert(rmStatus != " " && "ERROR! The 'status' parameter in Room::setRmStatus() not correctly setting room status.");
+string Room::getEnemyName(const int enemyIndex) const {
+    string enemyName = " ";
+
+    if(enemyQuantity != 0){
+        enemyName = enemies[enemyIndex]->getName();
+    }
+    return enemyName;
 }
 
 void Room::setRoomInfo(string info) {
@@ -111,11 +124,35 @@ string Room::getRoomInfo() {
 }
 
 void Room::startBattle(){
-
+  
 }
 
 string Room::getRmStatus() {
     return rmStatus;
+}
+
+unsigned int Room::getNumOfEnemies() const {
+    return enemyQuantity;
+}
+
+unsigned int Room::getEnemyCURRNTHealth(const int enemyIndex) const {
+    int currntHealth = 0;
+
+    if(enemyQuantity != 0){
+        currntHealth = enemies[enemyIndex]->getCurrHealth();
+    }
+
+    return currntHealth;
+}
+
+unsigned int Room::getEnemyMAXHealth(const int enemyIndex) const {
+    int maxHealth = 0;
+
+    if(enemyQuantity != 0){
+        maxHealth = enemies[enemyIndex]->getMaxHealth();
+    }
+
+    return maxHealth;
 }
 
 void Room::generateItems(int randomQuantity) {

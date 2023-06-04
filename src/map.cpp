@@ -60,7 +60,7 @@ void Map::moveToNextRoom() {
         rooms[currRoom].setRmStatus("Here ");
     }
 
-    assert(currRoom < 11 && "ERROR! 'currRoom' cannot reach further than 10th room. Check Map::moveToNextRoom().");
+    assert(currRoom < 10 && "ERROR! 'currRoom' cannot reach further than 10th room. Check Map::moveToNextRoom().");
 }
 
 void Map::fleeToPrevRoom() {
@@ -84,9 +84,44 @@ unsigned int Map::getNumOfRooms() const {
     return NUMOFROOMS;
 }
 
+unsigned int Map::getEnemyQuantity() const{
+    //Get the number of enemies at the current room locaiton:
+    return rooms[currRoom].getNumOfEnemies();
+}
+
+unsigned int Map::getEnemyCURRNTHealthStatus(const int enemyIndex) const {
+    int enemyCurrHealth = 0;
+    
+    if(currRoom < 9){
+        enemyCurrHealth  = rooms[currRoom].getEnemyCURRNTHealth(enemyIndex);
+    }
+
+    return enemyCurrHealth;
+}
+
+unsigned int Map::getEnemyMAXHealthStatus(const int enemyIndex) const {
+    int enemyMAXHealth = 0;
+    
+    if(currRoom < 9){
+        enemyMAXHealth = rooms[currRoom].getEnemyMAXHealth(enemyIndex);
+    }
+
+    return enemyMAXHealth;
+}
+
 string Map::getRoomStatus(const unsigned room) {
     string roomStatus = rooms[room].getRmStatus();
     return roomStatus;
+}
+
+string Map::getEnemyName(const int enemyIndex) const{
+    string enemyName = " ";
+
+    if(currRoom < 9){
+        enemyName = rooms[currRoom].getEnemyName(enemyIndex);
+    }
+
+    return enemyName;
 }
 
 vector<string> Map::getItemFromCurrRoom() {

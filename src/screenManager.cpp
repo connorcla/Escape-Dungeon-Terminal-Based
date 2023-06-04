@@ -113,11 +113,10 @@ void ScreenManager::roomIdle() {
                     mapMenu();
                     break;
                 case 5:
-                    //Increase room count, go to battle menu, start battle
                     map.moveToNextRoom();
                     clearScreen();
                     cout << "Moved to next room." << endl;
-                    //battleMenu();
+                    battleMenu();
                     break;
                 default:
                     cout << "An error occurred." << endl;
@@ -284,10 +283,12 @@ void ScreenManager::playerStats() {
 
 void ScreenManager::battleMenu() {
     unsigned int choice;
+
     do{
         cout << "Monsters block your path:" << endl << endl;
         cout << "[Enemies]" << endl; //Replace with list of enemies
-        cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
+        //cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
+        displayEnemies();
         cout << "--------------------------------------" << endl;
         cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
         cout << "--------------------------------------" << endl;
@@ -322,6 +323,24 @@ void ScreenManager::battleMenu() {
 
     }while(choice > 0 || 3 >= choice);
     
+}
+
+void ScreenManager::displayEnemies() {
+    //get number of enemies from Map->Room->"numOfenemies"
+    int enemyQuantity = map.getEnemyQuantity();
+    string enemyName;
+    int enemyMAXHealth;
+    int enemyCURRNTHealth;
+    
+    for(int enemy = 0; enemy < enemyQuantity; enemy++){
+        enemyName = map.getEnemyName(enemy);
+        enemyCURRNTHealth = map.getEnemyCURRNTHealthStatus(enemy);
+        enemyMAXHealth = map.getEnemyMAXHealthStatus(enemy);
+        cout << enemyName << "["<< enemyCURRNTHealth<<"/" << enemyMAXHealth << "]";
+        
+        if(enemy != (enemyQuantity-1)){ cout <<"    "; }
+    }
+    cout << endl;
 }
 
 void ScreenManager::winScreen() {

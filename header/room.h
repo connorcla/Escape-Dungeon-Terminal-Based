@@ -20,25 +20,30 @@ class Room{
         //Enemy functions
         void generateEnemies(int);
         void setEnemiesBeforeLastRoom(const int);
+        void deleteEnemies();
         int getRandomNumber(int) const;
         Enemy* getEnemy(int);
-        void deleteEnemies();
+        unsigned int getNumOfEnemies() const;
+        unsigned int getEnemyCURRNTHealth(const int) const; 
+        unsigned int getEnemyMAXHealth(const int) const;
+        string getEnemyName(const int) const;
         
         //Item functions
         void generateItems(int);
         vector<string> getItem();
-
+        
+        //Room specific functions
         void setRmStatus(string);
         void setRoomInfo(string);
         void startBattle();
-        string getRmStatus();
+        string getRmStatus();  
         string getRoomInfo();
-        
 
     private:
         vector <Enemy* > enemies;
         vector <vector<string>> items;
-        string rmStatus = " ";//States either the room is "Clear" or not.
+        string rmStatus = " ";
         string rmInfo;
+        int enemyQuantity;
 };
 #endif
