@@ -13,12 +13,14 @@ using namespace std;
 
 /*********** Witch Tests **********/
 TEST(WitchTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Witch("Witch",1,2,3,4,5,6,7));
+    Enemy* villan = nullptr;
+    EXPECT_NO_THROW(villan = new Witch("Witch",1,2,3,4,5,6));
+    delete villan;
 }
 
 TEST(WitchTests, getName){
     string name = "Witch";
-    Enemy* villan = new Witch("Witch",1,2,3,4,5,6,7);
+    Enemy* villan = new Witch("Witch",1,2,3,4,5,6);
 
     EXPECT_EQ(villan->getName(), name);
     delete villan;
@@ -26,7 +28,7 @@ TEST(WitchTests, getName){
 
 TEST(WitchTests, getMaxHealth){
     int health = 20;
-    Enemy* villan = new Witch("Witch",1,health,3,4,5,6,7);
+    Enemy* villan = new Witch("Witch",1,health,3,4,5,6);
 
     EXPECT_EQ(villan->getMaxHealth(), health);
     delete villan;
@@ -34,7 +36,7 @@ TEST(WitchTests, getMaxHealth){
 
 TEST(WitchTests, getCurrHealth){
     int health = 20;
-    Enemy* villan = new Witch("Witch",1,health,3,4,5,6,7);
+    Enemy* villan = new Witch("Witch",1,health,3,4,5,6);
 
     EXPECT_EQ(villan->getCurrHealth(), health);
     delete villan;
@@ -42,7 +44,7 @@ TEST(WitchTests, getCurrHealth){
 
 TEST(WitchTests, getDefense){
     int defense = 20;
-    Enemy* villan = new Witch("Witch",1,2,3,defense,5,6,7);
+    Enemy* villan = new Witch("Witch",1,2,3,defense,5,6);
 
     EXPECT_EQ(villan->getDefense(), defense);
     delete villan;
@@ -50,7 +52,7 @@ TEST(WitchTests, getDefense){
 
 TEST(WitchTests, getAttack){
     int attack = 5;
-    Enemy* villan = new Witch("Witch",1,2,attack,4,5,6,7);
+    Enemy* villan = new Witch("Witch",1,2,attack,4,5,6);
 
     EXPECT_EQ(villan->getAttack(), attack);
     delete villan;
@@ -58,7 +60,7 @@ TEST(WitchTests, getAttack){
 
 TEST(WitchTests, getSpeed){
     int speed = 5;
-    Enemy* villan = new Witch("Witch",1,2,3,4,speed,6,7);
+    Enemy* villan = new Witch("Witch",1,2,3,4,speed,6);
     
     EXPECT_EQ(villan->getSpeed(), speed);
     delete villan;
@@ -66,14 +68,14 @@ TEST(WitchTests, getSpeed){
 
 TEST(WitchTests, getExp){
     int exp = 3;
-    Enemy* villan = new Witch("Witch",exp,2,3,4,5,6,7);
+    Enemy* villan = new Witch("Witch",exp,2,3,4,5,6);
 
     EXPECT_EQ(villan->getExp(), exp);
     delete villan;
 }
 
 TEST(WitchTests, Action){
-    Enemy* villan = new Witch("Witch",1,2,3,4,5,6,7);
+    Enemy* villan = new Witch("Witch",1,2,3,4,5,6);
     Player player;
     string empty = " ";
 
@@ -92,7 +94,9 @@ TEST(EnemyTests, getMagic){
 
 /*********** Spider Tests **********/
 TEST(SpiderTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Spider("Spider",1,2,3,4,5));
+    Enemy* villan = nullptr;
+    EXPECT_NO_THROW(villan = new Spider("Spider",1,2,3,4,5));
+    delete villan;
 }
 
 TEST(SpiderTests, getName){
@@ -163,7 +167,9 @@ TEST(SpiderTests, Action){
 
 /********** Golem Tests ***********/
 TEST(GolemTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Golem("Golem",1,2,3,4,5));
+    Enemy* villan = nullptr;
+    EXPECT_NO_THROW(villan = new Golem("Golem",1,2,3,4,5));
+    delete villan;
 }
 
 TEST(GolemTests, getName){
@@ -233,7 +239,9 @@ TEST(GolemTests, Action){
 
 /*********** Skeleton Tests **********/
 TEST(SkeletonTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Skeleton("Skeleton",1,2,3,4,5));
+    Enemy* villan = nullptr;
+    EXPECT_NO_THROW(villan = new Skeleton("Skeleton",1,2,3,4,5));
+    delete villan;
 }
 
 TEST(SkeletonTests, getName){
@@ -304,7 +312,9 @@ TEST(SkeletonTests, Action){
 
 /*********** Boss Tests **********/
 TEST(BossTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Boss("Boss",1,2,3,4,5,6));
+    Enemy* villan = nullptr;
+    EXPECT_NO_THROW(villan = new Boss("Boss",1,2,3,4,5,6));
+    delete villan;
 }
 
 TEST(BossTests, getName){

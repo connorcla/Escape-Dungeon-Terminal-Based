@@ -116,7 +116,7 @@ void ScreenManager::roomIdle() {
                     map.moveToNextRoom();
                     clearScreen();
                     cout << "Moved to next room." << endl;
-                    battleMenu();
+                    //battleMenu();
                     break;
                 default:
                     cout << "An error occurred." << endl;

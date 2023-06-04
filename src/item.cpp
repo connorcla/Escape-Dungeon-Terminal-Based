@@ -35,6 +35,10 @@ int Item::getID() const {
     return this->id;
 }
 
+bool Item::operator<(Item& other) {
+    return this->name < other.name;
+}
+
 void Item::incrStat(Player& player) {}
 
 void Item::decrStat(Player& player) {}
