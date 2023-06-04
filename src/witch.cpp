@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string>
 
-Witch::Witch(std::string enemyName, int expVal, int health, int offense, int guard, int pace, int spells) {
+Witch::Witch(std::string enemyName, int expVal, int health, int offense, int guard, int pace, int spells, int actions) {
     name = enemyName;
     exp = expVal;
     curr_health = max_health = health;
@@ -10,6 +10,7 @@ Witch::Witch(std::string enemyName, int expVal, int health, int offense, int gua
     defense = guard;
     speed = pace; 
     magic = spells;
+    numActions = actions;
 }
 
 Witch::~Witch() {}
@@ -20,7 +21,7 @@ std::string Witch::action(Player& player) {
     int statToUpdate = 0;
     int variance = 0;
     
-    std::string returnString = "";
+    std::string returnString = " ";
     std::ostringstream str1;
     std::string outputNum = "";
 

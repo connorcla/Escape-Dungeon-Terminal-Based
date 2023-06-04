@@ -77,7 +77,7 @@ Enemy* Room::getEnemy(int randEnemy) {
     
     switch(randEnemy){
             case 1:{ 
-                enemy = new Witch("Witch",5,10,5,5,5,10); 
+                enemy = new Witch("Witch",5,10,5,5,5,10,5); 
                 break;
                 }
             case 2:{ 
