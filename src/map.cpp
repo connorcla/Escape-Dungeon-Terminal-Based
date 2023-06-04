@@ -42,7 +42,7 @@ void Map::moveToNextRoom() {
         rooms[currRoom].setRmStatus("Here ");
     }
 
-    assert(currRoom < 11 && "ERROR! 'currRoom' cannot reach further than 10th room. Check Map::moveToNextRoom().");
+    assert(currRoom < 10 && "ERROR! 'currRoom' cannot reach further than 10th room. Check Map::moveToNextRoom().");
 }
 
 void Map::fleeToPrevRoom() {
