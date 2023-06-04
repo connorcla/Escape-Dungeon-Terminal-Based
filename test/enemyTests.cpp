@@ -3,6 +3,7 @@
 #include "../header/spider.h"
 #include "../header/golem.h"
 #include "../header/skeleton.h"
+#include "../header/boss.h"
 #include "gtest/gtest.h"
 using namespace std;
 
@@ -232,3 +233,74 @@ TEST(SkeletonTests, getExp){
     EXPECT_EQ(villan->getExp(), exp);
 }
 
+
+/*********** Boss Tests **********/
+TEST(BossTests, testConstructor){
+    EXPECT_NO_THROW(Enemy* villan = new Boss("Boss",1,2,3,4,5,6));
+	//delete villan;
+}
+
+TEST(BossTests, getName){
+    string name = "Boss";
+    Enemy* villan = new Boss("Boss",1,2,3,4,5,6);
+
+    EXPECT_EQ(villan->getName(), name);
+	 delete villan;
+}
+
+TEST(BossTests, getMaxHealth){
+    int health = 20;
+    Enemy* villan = new Boss("Boss",1,health,3,4,5,6);
+
+    EXPECT_EQ(villan->getMaxHealth(), health);
+	 delete villan;
+}
+
+TEST(BossTests, getCurrHealth){
+    int health = 20;
+    Enemy* villan = new Boss("Boss",1,health,3,4,5,6);
+
+    EXPECT_EQ(villan->getCurrHealth(), health);
+	 delete villan;
+}
+
+TEST(BossTests, getDefense){
+    int defense = 20;
+    Enemy* villan = new Boss("Boss",1,2,3,defense,5,6);
+
+    EXPECT_EQ(villan->getDefense(), defense);
+	 delete villan;
+}
+
+TEST(BossTests, getAttack){
+    int attack = 5;
+    Enemy* villan = new Boss("Boss",1,2,attack,4,5,6);
+
+    EXPECT_EQ(villan->getAttack(), attack);
+	 delete villan;
+}
+
+TEST(BossTests, getSpeed){
+    int speed = 5;
+    Enemy* villan = new Boss("Boss",1,2,3,4,speed,6);
+
+    EXPECT_EQ(villan->getSpeed(), speed);
+	 delete villan;
+}
+
+TEST(BossTests, getExp){
+    int exp = 3;
+    Enemy* villan = new Boss("Boss",exp,2,3,4,5,6);
+
+    EXPECT_EQ(villan->getExp(), exp);
+	 delete villan;
+}
+
+/*
+TEST(EnemyTests, getMagic){
+    int magic = 2;
+    Enemy* villan = new Boss("Boss",1,2,3,4,5,magic);
+
+    EXPECT_EQ(villan->getMagic(), magic);
+}
+*/
