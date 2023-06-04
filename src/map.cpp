@@ -4,12 +4,16 @@
 using namespace std;
 
 Map::Map() {
-    currRoom = 1;
-    assert(currRoom == 1 && "ERROR! 'currRoom' not assigned to correct value in Map::Map().'");
+    currRoom = 0;
+    assert(currRoom == 0 && "ERROR! 'currRoom' not assigned to correct value in Map::Map().'");
     generateRooms();
 }
 
-Map::~Map() {}
+Map::~Map() {
+    for(int room = 0; room < NUMOFROOMS; room++) {
+        rooms.at(room).deleteEnemies();
+    }
+}
 
 void Map::generateRooms(){
     assert(NUMOFROOMS == 10 && "ERROR! 'NUMOFROOMS' is not properly initialized in Map::generateRooms().");
@@ -45,7 +49,12 @@ void Map::generateRooms(){
 
 void Map::moveToNextRoom() {
 
-    if(currRoom < 9){
+    if(currRoom == 0) {
+        rooms[currRoom].setRmStatus("Start ");
+        currRoom++;
+        rooms[currRoom].setRmStatus("Here ");
+    }
+    else if(currRoom < 9){
         rooms[currRoom].setRmStatus("Clear ");
         currRoom++;
         rooms[currRoom].setRmStatus("Here ");
