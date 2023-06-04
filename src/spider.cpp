@@ -1,8 +1,6 @@
 #include "../header/spider.h"
 #include <string>
 
-Spider::Spider() {}
-
 Spider::Spider(std::string enemyName, int expVal, int health, int offense, int guard, int pace) {
     name = enemyName;
     exp = expVal;

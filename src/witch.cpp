@@ -1,8 +1,6 @@
 #include "../header/witch.h"
 #include <string>
 
-Witch::Witch() {}
-
 Witch::Witch(std::string enemyName, int expVal, int health, int offense, int guard, int pace, int spells) {
     name = enemyName;
     exp = expVal;

@@ -6,7 +6,7 @@ using namespace std;
 
 /*********** Witch Tests **********/
 TEST(WitchTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Witch());
+    EXPECT_NO_THROW(Enemy* villan = new Witch("Witch",1,2,3,4,5,6));
 }
 
 TEST(WitchTests, getName){
@@ -69,7 +69,7 @@ TEST(EnemyTests, getMagic){
 
 /*********** Spider Tests **********/
 TEST(SpiderTests, testConstructor){
-    EXPECT_NO_THROW(Enemy* villan = new Spider());
+    EXPECT_NO_THROW(Enemy* villan = new Spider("Spider",1,2,3,4,5));
 }
 
 TEST(SpiderTests, getName){

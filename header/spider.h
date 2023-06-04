@@ -5,7 +5,6 @@
 
 class Spider:public Enemy{
     public:
-        Spider();
         Spider(std::string,int,int,int,int,int);
         ~Spider();
         
