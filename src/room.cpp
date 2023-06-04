@@ -102,8 +102,13 @@ Enemy* Room::getEnemy(int randEnemy) {
     return enemy;
 }
 
-string Room::getEnemyName(int x) const {
-    string enemyName;
+string Room::getEnemyName(const int enemyIndex) const {
+    string enemyName = " ";
+
+    if(enemyQuantity != 0){
+        enemyName = enemies[enemyIndex]->getName();
+    }
+
     return enemyName;
 }
 
@@ -113,6 +118,26 @@ string Room::getRmStatus() {
 
 unsigned int Room::getNumOfEnemies() const {
     return enemyQuantity;
+}
+
+unsigned int Room::getEnemyCURRNTHealth(const int enemyIndex) const {
+    int currntHealth = 0;
+
+    if(enemyQuantity != 0){
+        currntHealth = enemies[enemyIndex]->getCurrHealth();
+    }
+
+    return currntHealth;
+}
+
+unsigned int Room::getEnemyMAXHealth(const int enemyIndex) const {
+    int maxHealth = 0;
+
+    if(enemyQuantity != 0){
+        maxHealth = enemies[enemyIndex]->getMaxHealth();
+    }
+
+    return maxHealth;
 }
 
 void Room::generateItems(int randomQuantity) {

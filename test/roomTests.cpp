@@ -84,6 +84,29 @@ TEST(RoomTests, getNumOfEnemiesLTFive){
     EXPECT_LT(room.getNumOfEnemies(),5);
 }
 
+TEST(RoomTests, getEnemyName){
+    Room room;
+    room.generateEnemies(9);
+    string emptyName = " ";
+    int firstEnemyIndex;
+
+    EXPECT_NE(room.getEnemyName(firstEnemyIndex), emptyName);
+}
+
+TEST(RoomTests, getCURRNTHealth){
+    Room room;
+    room.generateEnemies(4);
+
+    EXPECT_NE(room.getEnemyCURRNTHealth(0),0);
+}
+
+TEST(RoomTests, getMAXHealth){
+    Room room;
+    room.generateEnemies(3);
+
+    EXPECT_NE(room.getEnemyMAXHealth(0),0);
+}
+
 TEST(RoomTests, getItem) {
     srand(0);
     Room room(2);

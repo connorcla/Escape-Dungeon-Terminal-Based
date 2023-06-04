@@ -319,10 +319,19 @@ void ScreenManager::battleMenu() {
 void ScreenManager::displayEnemies() {
     //get number of enemies from Map->Room->"numOfenemies"
     int enemyQuantity = map.getEnemyQuantity();
-    cout<<"\n\n\t\tThere are "<<enemyQuantity<<" enemies in Room #"<< map.getCurrRoom() << endl;
-    //Create a loop using enemyQuantity to iterate throuch all enemies inside the room.
-
-        //get each enemies health status by doing the followin
+    string enemyName;
+    int enemyMAXHealth = 100;
+    int enemyCURRNTHealth;
+    
+    for(int enemy = 0; enemy < enemyQuantity; enemy++){
+        enemyName = map.getEnemyName(enemy);
+        enemyCURRNTHealth = map.getEnemyCURRNTHealthStatus(enemy);
+        
+        cout << enemyName << "["<< enemyCURRNTHealth<<"/" << enemyMAXHealth << "]";
+        
+        if(enemy != (enemyQuantity-1)){ cout <<"    "; }
+    }
+    cout << endl;
 }
 
 void ScreenManager::winScreen() {

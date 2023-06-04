@@ -8,7 +8,7 @@ class Spider:public Enemy{
         Spider(std::string,int,int,int,int,int);
         ~Spider();
         
-        virtual void action();
+        virtual std::string action(Player&);
 
     private:
 };

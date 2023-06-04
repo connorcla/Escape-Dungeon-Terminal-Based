@@ -13,6 +13,6 @@ Boss::Boss(std::string enemyName, int expVal, int health, int offense, int guard
 
 Boss::~Boss(){}
 
-void Boss::action(){
+std::string Boss::action(Player&){
     
 }

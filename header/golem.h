@@ -8,7 +8,7 @@ class Golem:public Enemy{
         Golem(std::string,int,int,int,int,int);
         ~Golem();
         
-        virtual void action();
+        virtual std::string action(Player&);
 
     private:
 };

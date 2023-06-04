@@ -67,9 +67,39 @@ unsigned int Map::getEnemyQuantity() const{
     return rooms[currRoom].getNumOfEnemies();
 }
 
+unsigned int Map::getEnemyCURRNTHealthStatus(const int enemyIndex) const {
+    int enemyCurrHealth = 0;
+    
+    if(currRoom < 9){
+        enemyCurrHealth  = rooms[currRoom].getEnemyCURRNTHealth(enemyIndex);
+    }
+
+    return enemyCurrHealth;
+}
+
+unsigned int Map::getEnemyMAXHealthStatus(const int enemyIndex) const {
+    int enemyMAXHealth = 0;
+    
+    if(currRoom < 9){
+        enemyMAXHealth = rooms[currRoom].getEnemyMAXHealth(enemyIndex);
+    }
+
+    return enemyMAXHealth;
+}
+
 string Map::getRoomStatus(const unsigned room) {
     string roomStatus = rooms[room].getRmStatus();
     return roomStatus;
+}
+
+string Map::getEnemyName(const int enemyIndex) const{
+    string enemyName = " ";
+
+    if(currRoom < 9){
+        enemyName = rooms[currRoom].getEnemyName(enemyIndex);
+    }
+
+    return enemyName;
 }
 
 vector<string> Map::getItemFromCurrRoom() {

@@ -58,12 +58,12 @@ TEST(MapTests, getCurrRoom_After_FleeingtoPevRoom){
     EXPECT_EQ(mapTest.getCurrRoom(),1);
 }
 
-TEST(MapTests, NumOfRooms){
+TEST(MapTests, getNumOfRooms){
     Map mapTest;
     EXPECT_EQ(mapTest.getNumOfRooms(),10);
 }
 
-TEST(MapTests, GetRoomStatus){
+TEST(MapTests, getRoomStatus){
     Map mapTest;
     string roomStatus = mapTest.getRoomStatus(1);
     EXPECT_EQ(roomStatus, "Here ");
@@ -77,6 +77,11 @@ TEST(MapTests, getEnemyQuantityGTZero){
 TEST(MapTests, getEnemyQuantityLTFive){
     Map mapTest;
     EXPECT_LT(mapTest.getEnemyQuantity(),5);
+}
+
+TEST(MapTests, getEnemyCURRNTHealthStatus){
+    Map map;
+    EXPECT_NE(map.getEnemyCURRNTHealthStatus(0),0);
 }
 
 //TEST(MapTests, testGetItemFromCurrRoom){}

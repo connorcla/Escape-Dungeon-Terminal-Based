@@ -12,6 +12,6 @@ Skeleton::Skeleton(std::string enemyName, int expVal, int health, int offense, i
 
 Skeleton::~Skeleton() {}
 
-void Skeleton::action(){
+std::string Skeleton::action(Player&){
     
 }

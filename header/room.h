@@ -29,9 +29,11 @@ class Room{
 
         void setRmStatus(string);
         void startBattle();
-        string getEnemyName(int) const;
-        string getRmStatus();
-        unsigned int getNumOfEnemies() const;   
+        unsigned int getNumOfEnemies() const;
+        unsigned int getEnemyCURRNTHealth(const int) const; 
+        unsigned int getEnemyMAXHealth(const int) const;
+        string getEnemyName(const int) const;
+        string getRmStatus();  
 
     private:
         vector <Enemy* > enemies;

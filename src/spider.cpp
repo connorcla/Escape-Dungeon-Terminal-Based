@@ -12,6 +12,6 @@ Spider::Spider(std::string enemyName, int expVal, int health, int offense, int g
 
 Spider::~Spider() {}
 
-void Spider::action() {
+std::string Spider::action(Player&){
 
 }

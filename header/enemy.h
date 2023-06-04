@@ -1,6 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include "entity.h"
+#include "player.h"
 #include <string>
 
 class Enemy: public Entity{
@@ -8,9 +9,9 @@ class Enemy: public Entity{
         Enemy();
         ~Enemy();
 
-        virtual void action()=0;
+       virtual std::string action(Player&)=0;
 
-    private:
+    protected:
         int numActions;
 };
 #endif

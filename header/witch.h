@@ -8,7 +8,7 @@ class Witch: public Enemy{
         Witch(std::string,int,int,int,int,int,int);
         ~Witch();
         
-        virtual void action();
+        virtual std::string action(Player&);
 
     private:
         int magic;

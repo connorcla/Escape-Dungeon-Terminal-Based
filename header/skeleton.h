@@ -8,7 +8,7 @@ class Skeleton:public Enemy{
         Skeleton(std::string,int,int,int,int,int);
         ~Skeleton();
         
-        virtual void action();
+        virtual std::string action(Player&);
 
     private:
 };

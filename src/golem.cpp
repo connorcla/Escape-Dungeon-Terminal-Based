@@ -11,6 +11,6 @@ Golem::Golem(std::string enemyName, int expVal, int health, int offense, int gua
 }
 Golem::~Golem() {}
 
-void Golem::action(){
-    
+std::string Golem::action(Player&){
+
 }
