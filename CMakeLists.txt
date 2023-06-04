@@ -29,7 +29,6 @@ add_executable(runMain
 
 add_executable(runAllTests
   test/runAllUnitTests.cpp
-  src/screenManager.cpp
   src/itemDatabase.cpp
   src/item.cpp
   src/inventory.cpp
