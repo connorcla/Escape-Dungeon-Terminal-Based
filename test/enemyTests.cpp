@@ -1,6 +1,8 @@
 #include "../header/enemy.h"
 #include "../header/witch.h"
 #include "../header/spider.h"
+#include "../header/golem.h"
+#include "../header/skeleton.h"
 #include "gtest/gtest.h"
 using namespace std;
 
@@ -117,6 +119,115 @@ TEST(SpiderTests, getSpeed){
 TEST(SpiderTests, getExp){
     int exp = 3;
     Enemy* villan = new Spider("Spider",exp,2,3,4,5);
+
+    EXPECT_EQ(villan->getExp(), exp);
+}
+
+
+/********** Golem Tests ***********/
+TEST(GolemTests, testConstructor){
+    EXPECT_NO_THROW(Enemy* villan = new Golem("Golem",1,2,3,4,5));
+}
+
+TEST(GolemTests, getName){
+    string name = "Golem";
+    Enemy* villan = new Golem("Golem",1,2,3,4,5);
+
+    EXPECT_EQ(villan->getName(), name);
+}
+
+TEST(GolemTests, getMaxHealth){
+    int health = 20;
+    Enemy* villan = new Golem("Golem",1,health,3,4,5);
+
+    EXPECT_EQ(villan->getMaxHealth(), health);
+}
+
+TEST(GolemTests, getCurrHealth){
+    int health = 20;
+    Enemy* villan = new Golem("Golem",1,health,3,4,5);
+
+    EXPECT_EQ(villan->getCurrHealth(), health);
+}
+
+TEST(GolemTests, getDefense){
+    int defense = 20;
+    Enemy* villan = new Golem("Golem",1,2,3,defense,5);
+
+    EXPECT_EQ(villan->getDefense(), defense);
+}
+
+TEST(GolemTests, getAttack){
+    int attack = 5;
+    Enemy* villan = new Golem("Golem",1,2,attack,4,5);
+
+    EXPECT_EQ(villan->getAttack(), attack);
+}
+
+TEST(GolemTests, getSpeed){
+    int speed = 5;
+    Enemy* villan = new Golem("Golem",1,2,3,4,speed);
+
+    EXPECT_EQ(villan->getSpeed(), speed);
+}
+
+TEST(GolemTests, getExp){
+    int exp = 3;
+    Enemy* villan = new Golem("Golem",exp,2,3,4,5);
+
+    EXPECT_EQ(villan->getExp(), exp);
+}
+
+/*********** Skeleton Tests **********/
+TEST(SkeletonTests, testConstructor){
+    EXPECT_NO_THROW(Enemy* villan = new Skeleton("Skeleton",1,2,3,4,5));
+}
+
+TEST(SkeletonTests, getName){
+    string name = "Skeleton";
+    Enemy* villan = new Skeleton("Skeleton",1,2,3,4,5);
+
+    EXPECT_EQ(villan->getName(), name);
+}
+
+TEST(SkeletonTests, getMaxHealth){
+    int health = 20;
+    Enemy* villan = new Skeleton("Skeleton",1,health,3,4,5);
+
+    EXPECT_EQ(villan->getMaxHealth(), health);
+}
+
+TEST(SkeletonTests, getCurrHealth){
+    int health = 20;
+    Enemy* villan = new Skeleton("Skeleton",1,health,3,4,5);
+
+    EXPECT_EQ(villan->getCurrHealth(), health);
+}
+
+TEST(SkeletonTests, getDefense){
+    int defense = 20;
+    Enemy* villan = new Skeleton("Skeleton",1,2,3,defense,5);
+
+    EXPECT_EQ(villan->getDefense(), defense);
+}
+
+TEST(SkeletonTests, getAttack){
+    int attack = 5;
+    Enemy* villan = new Skeleton("Skeleton",1,2,attack,4,5);
+
+    EXPECT_EQ(villan->getAttack(), attack);
+}
+
+TEST(SkeletonTests, getSpeed){
+    int speed = 5;
+    Enemy* villan = new Skeleton("Skeleton",1,2,3,4,speed);
+
+    EXPECT_EQ(villan->getSpeed(), speed);
+}
+
+TEST(SkeletonTests, getExp){
+    int exp = 3;
+    Enemy* villan = new Skeleton("Skeleton",exp,2,3,4,5);
 
     EXPECT_EQ(villan->getExp(), exp);
 }
