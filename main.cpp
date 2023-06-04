@@ -7,7 +7,7 @@
 int main () {
     srand(time(0));
     ScreenManager screen;
-    screen.mainMenu();
+    screen.setUp();
     
     return 0;
 }

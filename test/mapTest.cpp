@@ -11,10 +11,10 @@ TEST(Map_Tests, testGetItem) {
     Map mapTest;
     
     vector<string> compareItem;
-    compareItem.push_back("Cloak");
-    compareItem.push_back("A hooded item that conceals your presence like a thief. --- Speed: 10");
-    compareItem.push_back("10");
-    compareItem.push_back("241");
+    compareItem.push_back("Fool's Gold Armor");
+    compareItem.push_back("Not only will these hits still hurt, but you look like an inadequate. --- Defense: -15");
+    compareItem.push_back("-15");
+    compareItem.push_back("235");
 
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
