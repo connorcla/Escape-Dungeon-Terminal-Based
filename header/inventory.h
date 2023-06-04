@@ -7,6 +7,7 @@
 #include "player.h"
 #include <string>
 #include <vector>
+#include <algorithm>
 
 class Inventory {
     private:
@@ -14,6 +15,7 @@ class Inventory {
         std::vector<Item*> equipped;
         std::vector<Item*> weapon;
         int maxItems;
+        static bool compareItems(Item*, Item*);
         void sortItems(); //Sort items by name
     public:
         Inventory();

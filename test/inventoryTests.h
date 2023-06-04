@@ -165,7 +165,7 @@ TEST(InventoryList, List6)  {
     inv.addItem(allItems.returnItem(5,0), allItems.returnItem(5,1), allItems.returnItem(5,2), allItems.returnItem(5,3));
 
     std::string list = inv.listInventory();
-    EXPECT_EQ(list, "(1)Basic Sword,  (2)Stone Sword,  (3)Iron Sword,  (4)Flame Blade,  (5)Musket,  \n(6)Boxing Gloves");
+    EXPECT_EQ(list, "(1)Basic Sword,  (2)Boxing Gloves,  (3)Flame Blade,  (4)Iron Sword,  (5)Musket,  \n(6)Stone Sword");
 }
 
 TEST(InventoryEquip, Equip2) {
@@ -182,7 +182,7 @@ TEST(InventoryEquip, Equip2) {
     inv.equipItem(2, player);
     inv.equipItem(2, player);
 
-    EXPECT_EQ(inv.outputEquipped(), "| Red Scarf |     | Cursed Armor |     | Empty Slot 3 |     | Empty Slot 4 |     | Empty Slot 5 |     ");
+    EXPECT_EQ(inv.outputEquipped(), "| Dragon Force |     | Iron Chainmail |     | Empty Slot 3 |     | Empty Slot 4 |     | Empty Slot 5 |     ");
 }
 
 TEST(InventoryEquip, Equip6) {
@@ -203,7 +203,7 @@ TEST(InventoryEquip, Equip6) {
     inv.equipItem(0, player);
     inv.equipItem(0, player);
 
-    EXPECT_EQ(inv.outputEquipped(), "| Cactus Costume |     | Red Scarf |     | Cursed Armor |     | Leather Armor |     | Iron Chainmail |     ");
+    EXPECT_EQ(inv.outputEquipped(), "| Cursed Armor |     | Dragon Force |     | Iron Chainmail |     | Leather Armor |     | Red Scarf |     ");
 }
 
 TEST(InventoryEquip, Weapon1) {

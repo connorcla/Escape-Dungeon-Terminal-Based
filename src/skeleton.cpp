@@ -9,6 +9,7 @@ Skeleton::Skeleton(std::string enemyName, int expVal, int health, int offense, i
     attack = offense;
     defense = guard;
     speed = pace;
+    numActions = 5;
 }
 
 Skeleton::~Skeleton() {}

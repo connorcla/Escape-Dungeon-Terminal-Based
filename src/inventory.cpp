@@ -19,8 +19,12 @@ Inventory::~Inventory() {
     }
 }
 
+bool Inventory::compareItems(Item* item1, Item* item2) {
+    return (*item1 < *item2);
+}
+
 void Inventory::sortItems() {
-    
+    std::sort(items.begin(), items.end(), compareItems);
 }
 
 int Inventory::numItems() {
@@ -44,6 +48,7 @@ void Inventory::addItem(std::string name, std::string des, std::string prop, std
         returnItem = new Usable(name, des, property, idNum);
     }
     items.push_back(returnItem);
+    sortItems();
 }
 
 void Inventory::removeItem(int index) {
@@ -55,6 +60,7 @@ void Inventory::removeItem(int index) {
     it = it + index;
     delete items.at(index);
     items.erase(it);
+    sortItems();
 }
 
 Item* Inventory::returnItem(int index) {
@@ -145,6 +151,7 @@ void Inventory::equipItem(int index, Player& player) {
     it = items.begin();
     it = it + index;
     items.erase(it);
+    sortItems();
 }
 
 std::string Inventory::outputEquipped() const {
@@ -176,6 +183,7 @@ void Inventory::equipWeapon(int index, Player& player) {
     it = items.begin();
     it = it + index;
     items.erase(it);
+    sortItems();
 }
 
 std::string Inventory::outputWeapon() const {

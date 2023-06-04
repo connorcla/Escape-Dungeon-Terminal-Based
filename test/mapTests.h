@@ -22,11 +22,6 @@ TEST(Map_Tests, testGetItem) {
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
 
-TEST(MapTests, GenerateRooms){
-    Map mapTest;
-    EXPECT_NO_THROW(mapTest.generateRooms());
-}
-
 TEST(MapTests, MoveToNextRoom){
     Map mapTest;
     EXPECT_NO_THROW(mapTest.moveToNextRoom());

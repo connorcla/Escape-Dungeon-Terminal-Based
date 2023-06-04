@@ -20,6 +20,7 @@ class Item {
         int getID() const;
         virtual void incrStat(Player& player);
         virtual void decrStat(Player& player);
+        bool operator<(Item&);
 };
 
 #endif

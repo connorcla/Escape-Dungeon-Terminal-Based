@@ -8,12 +8,16 @@
 using namespace std;
 
 TEST(RoomTests, testConstructor){
-    EXPECT_NO_THROW(Room roomTest(1));
+    Room* roomPtr = nullptr;
+    EXPECT_NO_THROW(roomPtr = new Room(1));
+    roomPtr->deleteEnemies();
+    delete roomPtr;
 }
 
 TEST(RoomTests, generateEnemies){
     Room room;
     EXPECT_NO_THROW(room.generateEnemies(0));
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getRandomNumberLTFive){
@@ -30,6 +34,7 @@ TEST(RoomTests, getRandomNumberLTFive){
     }
 
     EXPECT_LT(room.getRandomNumber(1),5);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getRaondomNumberGTZero){
@@ -46,11 +51,13 @@ TEST(RoomTests, getRaondomNumberGTZero){
     }
 
     EXPECT_GT(room.getRandomNumber(10),0);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, setEnemiesBeforeLastRoom){
     Room room;
     EXPECT_NO_THROW(room.setEnemiesBeforeLastRoom(5));
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getEnemyNULLPTR){
@@ -58,12 +65,13 @@ TEST(RoomTests, getEnemyNULLPTR){
     Enemy* empty = nullptr;
     EXPECT_EQ(room.getEnemy(6),empty);
     delete empty;
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, setRMStatus){
     Room room;
     EXPECT_NO_THROW(room.setRmStatus("Clear "));
-
+    room.deleteEnemies();
 }
 
 //TEST(RoomTests, startBattle){ }
@@ -75,25 +83,29 @@ TEST(RoomTests, getRMStatus){
     room.setRmStatus("Clear ");
 
     EXPECT_EQ(room.getRmStatus(),currStatus);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getNumOfEnemiesGTZero){
     Room room(1);
     EXPECT_GT(room.getNumOfEnemies(),0);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getNumOfEnemiesLTFive){
     Room room(1);
     EXPECT_LT(room.getNumOfEnemies(),5);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getEnemyName){
     Room room;
     room.generateEnemies(9);
     string emptyName = " ";
-    int firstEnemyIndex;
+    int firstEnemyIndex = 0;
 
     EXPECT_NE(room.getEnemyName(firstEnemyIndex), emptyName);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getCURRNTHealth){
@@ -101,6 +113,7 @@ TEST(RoomTests, getCURRNTHealth){
     room.generateEnemies(4);
 
     EXPECT_NE(room.getEnemyCURRNTHealth(0),0);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getMAXHealth){
@@ -108,6 +121,7 @@ TEST(RoomTests, getMAXHealth){
     room.generateEnemies(3);
 
     EXPECT_NE(room.getEnemyMAXHealth(0),0);
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getItem) {
@@ -121,6 +135,7 @@ TEST(RoomTests, getItem) {
     compareItem.push_back("121");
 
     EXPECT_EQ(compareItem, room.getItem());
+    room.deleteEnemies();
 }
 
 #endif

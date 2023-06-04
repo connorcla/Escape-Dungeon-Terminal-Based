@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string>
 
-Witch::Witch(std::string enemyName, int expVal, int health, int offense, int guard, int pace, int spells, int actions) {
+Witch::Witch(std::string enemyName, int expVal, int health, int offense, int guard, int pace, int spells) {
     name = enemyName;
     exp = expVal;
     curr_health = max_health = health;
@@ -10,7 +10,7 @@ Witch::Witch(std::string enemyName, int expVal, int health, int offense, int gua
     defense = guard;
     speed = pace; 
     magic = spells;
-    numActions = actions;
+    numActions = 4;
 }
 
 Witch::~Witch() {}
