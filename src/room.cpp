@@ -77,23 +77,23 @@ Enemy* Room::getEnemy(int randEnemy) {
     
     switch(randEnemy){
             case 1:{ 
-                enemy = new Witch("Witch",1,2,3,4,5,6); 
+                enemy = new Witch("Witch",5,10,5,5,5,10); 
                 break;
                 }
             case 2:{ 
-                enemy = new Spider("Spider",1,2,3,4,5);
+                enemy = new Spider("Spider",10,20,10,10,10);
                 break;
             }
             case 3:{ 
-                enemy = new Golem("Golem",1,2,3,4,5);
+                enemy = new Golem("Golem",20,30,20,20,20);
                 break;
             }
             case 4:{ 
-                enemy = new Skeleton("Skeleton",1,2,3,4,5);
+                enemy = new Skeleton("Skeleton",30,40,30,30,30);
                 break;
             }
             case 5:{
-                enemy = new Boss("Boss",1,2,3,4,5,6);
+                enemy = new Boss("Boss",40,50,40,40,40,15);
                 break;
             }
             default: break;
