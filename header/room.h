@@ -8,6 +8,7 @@
 #include "equip.h"
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -27,6 +28,8 @@ class Room{
         unsigned int getEnemyCURRNTHealth(const int) const; 
         unsigned int getEnemyMAXHealth(const int) const;
         string getEnemyName(const int) const;
+        static bool compareEnemies(Enemy*, Enemy*);
+        void sortEnemies(); //Sort enemies by speed
         
         //Item functions
         void generateItems(int);

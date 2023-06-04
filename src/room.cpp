@@ -18,6 +18,7 @@ Room::Room(int roomIndex) {
     assert(roomIndex >= 0 && "ERROR! 'roomIndex' cannot be a negative value in Room::Room().");
     generateEnemies(roomIndex);
     generateItems(roomIndex);
+    sortEnemies();
 }
 
 Room::~Room(){}
@@ -68,6 +69,14 @@ int Room::getRandomNumber(int counter) const {
 void Room::setRmStatus(string status) {
     rmStatus = status;
     assert(rmStatus != " " && "ERROR! The 'status' parameter in Room::setRmStatus() not correctly setting room status.");
+}
+
+bool Room::compareEnemies(Enemy* enemy1, Enemy* enemy2) {
+    return (*enemy1 < *enemy2);
+}
+
+void Room::sortEnemies() {
+    std::sort(enemies.begin(), enemies.end(), compareEnemies);
 }
 
 void Room::startBattle() {
