@@ -19,10 +19,10 @@ class Room{
 
         //Enemy functions
         void generateEnemies(int);
-        void setEnemiesBeforeLastRoom(const int);
+        void setEnemiesBeforeLastRoom(const int, int);
         void deleteEnemies();
         int getRandomNumber(int) const;
-        Enemy* getEnemy(int);
+        Enemy* getEnemy(int, int);
         unsigned int getNumOfEnemies() const;
         unsigned int getEnemyCURRNTHealth(const int) const; 
         unsigned int getEnemyMAXHealth(const int) const;

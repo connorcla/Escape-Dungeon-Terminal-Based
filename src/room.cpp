@@ -10,8 +10,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#include <iostream>//DELTE THIS
-
 using namespace std;
 
 Room::Room() {}
@@ -38,25 +36,25 @@ void Room::generateEnemies(int roomIndex) {
 
     if(room != lastRoom){
         enemyQuantity = getRandomNumber(room);
-        setEnemiesBeforeLastRoom(enemyQuantity);
+        setEnemiesBeforeLastRoom(enemyQuantity, room);
         
     } 
     else{
         enemyQuantity = 1;
         int bossValue = 5;
-        Enemy* boss = getEnemy(bossValue);
+        Enemy* boss = getEnemy(bossValue, room);
         enemies.push_back(boss);
     }
 }
 
-void Room::setEnemiesBeforeLastRoom(const int numOfEnemies) {
+void Room::setEnemiesBeforeLastRoom(const int numOfEnemies, int roomIndex) {
     assert(numOfEnemies > 0 && "ERROR! 'numOfEnemies' value cannot be less than 0 in Room::setEnemiesBeforeLastRoom().");
     unsigned int randomEnemy;
     
     for(int enemy = 0; enemy < numOfEnemies; enemy++){
         randomEnemy = getRandomNumber(enemy+1);//This number should be different than enemyQuantity's number.
         
-        Enemy* villan = getEnemy(randomEnemy);
+        Enemy* villan = getEnemy(randomEnemy, roomIndex);
         enemies.push_back(villan);  
     }
 }
@@ -76,28 +74,29 @@ void Room::startBattle() {
 
 }
 
-Enemy* Room::getEnemy(int randEnemy) {
+Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
     Enemy* enemy = nullptr;
+    int variance = (indexScaler-1) * 5;
     
     switch(randEnemy){
             case 1:{ 
-                enemy = new Witch("Witch",5,10,5,5,5,10); 
+                enemy = new Witch("Witch",10+variance,30+variance,10+variance,15+variance,15+variance,30+variance); 
                 break;
                 }
             case 2:{ 
-                enemy = new Spider("Spider",10,20,10,10,10);
+                enemy = new Spider("Spider",10+variance,30+variance,15+variance,10+variance,25+variance);
                 break;
             }
             case 3:{ 
-                enemy = new Golem("Golem",20,30,20,20,20);
+                enemy = new Golem("Golem",10+variance,50+variance,7+variance,30+variance,10+variance);
                 break;
             }
             case 4:{ 
-                enemy = new Skeleton("Skeleton",30,40,30,30,30);
+                enemy = new Skeleton("Skeleton",10+variance,25+variance,20+variance,18+variance,20+variance);
                 break;
             }
             case 5:{
-                enemy = new Boss("Boss",40,50,40,40,40,15);
+                enemy = new Boss("Boss",100,100,50,50,50,15);
                 break;
             }
             default: break;

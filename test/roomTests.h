@@ -56,14 +56,14 @@ TEST(RoomTests, getRaondomNumberGTZero){
 
 TEST(RoomTests, setEnemiesBeforeLastRoom){
     Room room;
-    EXPECT_NO_THROW(room.setEnemiesBeforeLastRoom(5));
+    EXPECT_NO_THROW(room.setEnemiesBeforeLastRoom(5,1));
     room.deleteEnemies();
 }
 
 TEST(RoomTests, getEnemyNULLPTR){
     Room room;
     Enemy* empty = nullptr;
-    EXPECT_EQ(room.getEnemy(6),empty);
+    EXPECT_EQ(room.getEnemy(6,1),empty);
     delete empty;
     room.deleteEnemies();
 }
