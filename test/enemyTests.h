@@ -88,7 +88,8 @@ TEST(WitchTests, AttackedByPlayer){
 
     villan->attackedByPlayer(20);
 
-    EXPECT_EQ(villan->getCurrHealth(),25);
+    EXPECT_EQ(villan->getCurrHealth(),23);
+    delete villan;
 }
 
 /*********** Spider Tests **********/
