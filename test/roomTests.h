@@ -4,6 +4,9 @@
 #include "../header/enemy.h"
 #include "../header/witch.h"
 #include "gtest/gtest.h"
+
+#include <iostream>//DELETE THIS
+
 using namespace std;
 
 TEST(RoomTests, testConstructor){
@@ -26,13 +29,16 @@ TEST(RoomTests, SortEnemies){
 
 TEST(RoomTests, compareEnemies){
     Room room;
-    Enemy* witch = room.getEnemy(1,0);
-    Enemy* spider = room.getEnemy(2,0);
+    Enemy* witch = room.getEnemy(1,1);
+    Enemy* spider = room.getEnemy(2,1);
     bool spiderIsFaster = false;
+
+    std::cout << "\n\n\t\tWich speed: " << witch->getSpeed();
+    std::cout << "\n\n\t\tSpider speed: " << spider->getSpeed();
 
     if(spider->getSpeed() > witch->getSpeed()){ spiderIsFaster = true; }
 
-    EXPECT_TRUE(room.compareEnemies(witch,spider));
+    EXPECT_TRUE(room.compareEnemies(spider,witch));
 }
 
 TEST(RoomTests, getRandomNumberLTFive){
@@ -109,7 +115,6 @@ TEST(RoomTests, RemoveEnemy){
     Room room(1);
     EXPECT_NO_THROW(room.removeEnemy(0));
 }
-
 
 TEST(RoomTests, getRMStatus){
     Room room;

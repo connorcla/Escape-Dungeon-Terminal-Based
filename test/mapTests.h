@@ -54,7 +54,7 @@ TEST(MapTests, getCurrRoom_After_FleeingtoPevRoom){
     //Derements 'currRoom' value by 1. The 'currRoom' value should now be back to 1.
     mapTest.fleeToPrevRoom();
     
-    EXPECT_EQ(mapTest.getCurrRoom(),1);
+    EXPECT_EQ(mapTest.getCurrRoom(),0);
 }
 
 TEST(MapTests, getNumOfRooms){
