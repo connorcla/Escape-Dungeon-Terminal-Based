@@ -56,7 +56,7 @@ void ScreenManager::roomIdle() {
         cout << "4. View Map" << endl;
         cout << "5. Move to the next room" << endl;
         cout << endl;
-        cout << "Enter your choice (1-5): ";
+        cout << player.getName() << ": ";
 
         //Add user input, choice validation and corresponding functions for appropriate choice
         char choice = getCharInput();
@@ -116,7 +116,8 @@ void ScreenManager::roomIdle() {
                     map.moveToNextRoom();
                     clearScreen();
                     cout << "Moved to next room." << endl;
-                    //battleMenu();
+                    displayMap();
+                    battleMenu();
                     break;
                 default:
                     cout << "An error occurred." << endl;
@@ -158,7 +159,6 @@ void ScreenManager::displayMap(){
     std::string roomStatus;
     const unsigned NUMOFROOMS = map.getNumOfRooms();
 
-    cout << "Map:" << endl;
     cout << "-------------------------------------------------------------------------------" << endl;
     for(int room = 0; room < NUMOFROOMS; room++){
         roomStatus = map.getRoomStatus(room);
@@ -286,9 +286,9 @@ void ScreenManager::battleMenu() {
 
     do{
         cout << "Monsters block your path:" << endl << endl;
-        cout << "[Enemies]" << endl; //Replace with list of enemies
-        //cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
+        
         displayEnemies();
+        
         cout << "--------------------------------------" << endl;
         cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
         cout << "--------------------------------------" << endl;
@@ -296,18 +296,38 @@ void ScreenManager::battleMenu() {
         cout << "1. Attack an enemy" << endl;
         cout << "2. Use an item" << endl;
         cout << "3. Attempt to flee (return to previous room)" << endl << endl;
-        cout << "Enter your choice (1-3): ";
+        cout << player.getName() << ": ";
 
-        //Get user input validation, lots of output depending on choice
         cin >> choice;
 
         while(choice != 1 && choice != 2 && choice != 3){
-            cout <<  "Invalid input! " << choice << " is not an option. Please try again." << endl;
+            cout <<  "Invalid input! " << choice << " is not an option." << endl;
+            cout << "Please try again, " << player.getName() << ": ";
             cin >> choice;
         }
 
         switch(choice){
-            case 1: { break; } //Attack enemy
+            case 1: { //Attack enemy
+                    clearScreen();
+                    cout << "Enemies: " << endl;
+                    displayEnemies();
+
+                    int chooseEnemy;
+                    const unsigned int enemyQuantity = map.getEnemyQuantity();
+                    cout << endl << "Which enemy do you want to attack?" << endl << "(Example: Press '1' for " << map.getEnemyName(0) << ")" << endl;
+                    cout << player.getName() << ": ";
+                    cin >> chooseEnemy;
+
+                    while(0 >= chooseEnemy || chooseEnemy > enemyQuantity){
+                        cout << endl;
+                        cout << "Invalid input! " << chooseEnemy << " is not an option." << endl;
+                        cout << "Please try again, " << player.getName() << ": ";
+                        cin >> chooseEnemy;
+                    }
+
+                    map.fightScenario(player, (chooseEnemy-1));
+                    return; 
+                    }
             case 2: { break; } //Use an item
             case 3: {
                     clearScreen();
@@ -326,7 +346,6 @@ void ScreenManager::battleMenu() {
 }
 
 void ScreenManager::displayEnemies() {
-    //get number of enemies from Map->Room->"numOfenemies"
     int enemyQuantity = map.getEnemyQuantity();
     string enemyName;
     int enemyMAXHealth;
@@ -336,7 +355,7 @@ void ScreenManager::displayEnemies() {
         enemyName = map.getEnemyName(enemy);
         enemyCURRNTHealth = map.getEnemyCURRNTHealthStatus(enemy);
         enemyMAXHealth = map.getEnemyMAXHealthStatus(enemy);
-        cout << enemyName << "["<< enemyCURRNTHealth<<"/" << enemyMAXHealth << "]";
+        cout << "(" << (enemy+1) << ") " << enemyName << "["<< enemyCURRNTHealth<<"/" << enemyMAXHealth << "]";
         
         if(enemy != (enemyQuantity-1)){ cout <<"    "; }
     }

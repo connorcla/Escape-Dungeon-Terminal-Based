@@ -128,3 +128,12 @@ vector<string> Map::getItemFromCurrRoom() {
     return rooms.at(currRoom).getItem();
 
 }
+
+void Map::fightScenario(Player& player, int enemyIndex) {
+    const unsigned enemyQuantity = (rooms[currRoom].getNumOfEnemies() - 1);
+    if(0 > enemyIndex || enemyIndex > enemyQuantity){ throw "The 'enemyIndex' passed to Map::fightScenario() is valid."; }
+    
+    //rooms[currRoom].setBattle(player,enemyIndex)
+    
+    //assert(enemyIndex >= 0 && 4 >= enemyIndex && "ERROR! 'currRoom' has to be greater than 0 in Map::fightScenario().");
+}

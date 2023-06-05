@@ -1,7 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
-#include "../header/room.h"
+#include "room.h"
 #include "item.h"
+#include "player.h"
 #include <vector>
 
 class Map {
@@ -12,6 +13,7 @@ class Map {
         void generateRooms();
         void moveToNextRoom();
         void fleeToPrevRoom();
+        void fightScenario(Player&, int);
         unsigned int getCurrRoom() const;
         unsigned int getNumOfRooms() const;
         unsigned int getEnemyQuantity() const;

@@ -27,6 +27,7 @@ void Room::deleteEnemies() {
     while(!enemies.empty()) {
         delete enemies.back();
         enemies.pop_back();
+        enemyQuantity--;
     }
 }
 
@@ -76,16 +77,43 @@ bool Room::compareEnemies(Enemy* enemy1, Enemy* enemy2) {
 }
 
 void Room::sortEnemies() {
+    assert(enemies.empty() == false && "ERROR! Cannot sort enemies with an empty Enemy vector in Room::sortEnemies().");
     std::sort(enemies.begin(), enemies.end(), compareEnemies);
 }
 
-void Room::startBattle() {
+void Room::startBattle(Player& player, int enemyIndex) {
+    if(player.getSpeed() > enemies[enemyIndex]->getSpeed()){
+        //Player attacks first!
+        enemyDamage = enemies[enemyIndex]->getCurrHealth();
+        enemies[enemyIndex]->attackedByPlayer();
+        enemyDamage = enemyDamage - enemies[enemyIndex]->getCurrHealth();
 
+        //player.
+
+        if( == 0){
+            enemyQuantity--;
+            removeEnemy(enemyIndex);
+        }
+    }
+    else{
+        //Enemy attacks first!
+        enemies[enemyIndex]->action(player);
+    }
+}
+
+void Room::removeEnemy(const int enemyIndex){
+    std::vector<Enemy*>::iterator it;
+    it = enemies.begin();
+    it = it + enemyIndex;
+    delete enemies.at(enemyIndex);
+    enemies.erase(it);
+    sortEnemies();
 }
 
 Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
     Enemy* enemy = nullptr;
     int variance = (indexScaler-1) * 5;
+    //unsigned int defaultExp, defaultHealth, defaultAttack, defaultDefense, defaultSpeed, defaultMagic; 
     
     switch(randEnemy){
             case 1:{ 

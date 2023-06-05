@@ -21,15 +21,16 @@ class Room{
         //Enemy functions
         void generateEnemies(int);
         void setEnemiesBeforeLastRoom(const int, int);
+        void sortEnemies(); //Sort enemies by speed
+        void removeEnemy(const int);
         void deleteEnemies();
         int getRandomNumber(int) const;
-        Enemy* getEnemy(int, int);
         unsigned int getNumOfEnemies() const;
         unsigned int getEnemyCURRNTHealth(const int) const; 
         unsigned int getEnemyMAXHealth(const int) const;
         string getEnemyName(const int) const;
+        Enemy* getEnemy(int, int);
         static bool compareEnemies(Enemy*, Enemy*);
-        void sortEnemies(); //Sort enemies by speed
         
         //Item functions
         void generateItems(int);
@@ -38,7 +39,7 @@ class Room{
         //Room specific functions
         void setRmStatus(string);
         void setRoomInfo(string);
-        void startBattle();
+        void startBattle(Player&, int);
         string getRmStatus();  
         string getRoomInfo();
 

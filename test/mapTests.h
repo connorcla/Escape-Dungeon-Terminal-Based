@@ -1,7 +1,7 @@
 #ifndef MAPTESTS_H
 #define MAPTESTS_H
-
 #include "../header/map.h"
+#include "../header/player.h"//For testing FightScenaro() function
 #include "gtest/gtest.h"
 using namespace std;
 
@@ -9,7 +9,7 @@ TEST(MapTests, testConstructor){
     EXPECT_NO_THROW(Map mapTest);
 }
 
-TEST(Map_Tests, testGetItem) {
+TEST(MapTests, testGetItem) {
     srand(0);
     Map mapTest;
     
@@ -22,18 +22,18 @@ TEST(Map_Tests, testGetItem) {
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
 
-TEST(MapTests, MoveToNextRoom){
+TEST(MapTests, moveToNextRoom){
     Map mapTest;
     EXPECT_NO_THROW(mapTest.moveToNextRoom());
 }
 
-TEST(MapTests, MoveToPREVRoom){
+TEST(MapTests, moveToPREVRoom){
     Map mapTest;
     mapTest.moveToNextRoom();
     EXPECT_NO_THROW(mapTest.fleeToPrevRoom());
 }
 
-TEST(MapTests, GetCurrRoom_DefaultConstructor){
+TEST(MapTests, getCurrRoom_DefaultConstructor){
     Map mapTest;
     int currentRoom = mapTest.getCurrRoom();
     EXPECT_EQ(currentRoom, 0);
@@ -81,6 +81,15 @@ TEST(MapTests, getEnemyQuantityLTFive){
 TEST(MapTests, getEnemyCURRNTHealthStatus){
     Map map;
     EXPECT_NE(map.getEnemyCURRNTHealthStatus(0),0);
+}
+
+TEST(MapTests, fightScenario){
+    Map map;
+    Player player;
+    int enemyIndex = -1;
+
+    EXPECT_ANY_THROW(map.fightScenario(player, enemyIndex));
+    //EXPECT_NO_THROW(map.fightScenario(player, enemyIndex));
 }
 
 //TEST(MapTests, testGetItemFromCurrRoom){}

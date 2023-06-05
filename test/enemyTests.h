@@ -1,6 +1,5 @@
 #ifndef ENEMYTESTS_H
 #define ENEMYTESTS_H
-
 #include "../header/enemy.h"
 #include "../header/witch.h"
 #include "../header/spider.h"
@@ -81,6 +80,15 @@ TEST(WitchTests, Action){
 
     EXPECT_NE(villan->action(player), empty);
     delete villan;
+}
+
+TEST(WitchTests, AttackedByPlayer){
+    Enemy* villan = new Witch("Witch",10,30,10,15,15,30);
+    const int currEnemyHealth = villan->getCurrHealth();
+
+    villan->attackedByPlayer();
+
+    EXPECT_EQ(villan->getCurrHealth(),25);
 }
 
 /*
