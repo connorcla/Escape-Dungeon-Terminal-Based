@@ -64,12 +64,12 @@ void Map::moveToNextRoom() {
 }
 
 void Map::fleeToPrevRoom() {
-    if(currRoom > 1){ 
+    if(currRoom > 0){ 
         rooms[currRoom].setRmStatus(" ?  ");
         currRoom--;
         rooms[currRoom].setRmStatus("Here "); 
         }
-    assert(currRoom > 0 && "ERROR! 'currRoom' cannot be less than zero. Check Map::fleeToPrevRoom().");
+    assert(currRoom >= 0 && "ERROR! 'currRoom' cannot be less than zero. Check Map::fleeToPrevRoom().");
 }
 
 string Map::getCurrInfo() {
@@ -124,7 +124,14 @@ string Map::getEnemyName(const int enemyIndex) const{
     return enemyName;
 }
 
+int Map::getEnemySpeed(const int enemyIndex) const {
+    return rooms.at(currRoom).getEnemySpeed(enemyIndex);
+}
+
 vector<string> Map::getItemFromCurrRoom() {
     return rooms.at(currRoom).getItem();
+}
 
+vector<string> Map::itemBattle(Inventory& inventory, Player& player, int numValue) {
+    return rooms.at(currRoom).itemBattle(inventory, player, numValue);
 }

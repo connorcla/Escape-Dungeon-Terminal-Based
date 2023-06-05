@@ -19,6 +19,10 @@ int Player::getMagic() const {
     return magic;
 }
 
+void Player::setMagic(int magic) {
+    this->magic = magic;
+}
+
 void Player::setName(std::string name) {
     this->name = name;
 }
@@ -28,18 +32,33 @@ void Player::updateStat(int idNum, int updatedValue) {
     switch(statToBeUpdated) {
         case 1:
             curr_health += updatedValue;
+            if(curr_health < 0) {
+                curr_health = 0;
+            }
             break;
         case 2:
             attack += updatedValue;
+            if(attack < 1) {
+                attack = 1;
+            }
             break;
         case 3:
             defense += updatedValue;
+            if(defense < 1) {
+                defense = 1;
+            }
             break;
         case 4:
             speed += updatedValue;
+            if(speed < 1) {
+                speed = 1;
+            }
             break;
         case 5:
             magic += updatedValue;
+            if(magic < 1) {
+                magic = 1;
+            }
             break;
     }
 }

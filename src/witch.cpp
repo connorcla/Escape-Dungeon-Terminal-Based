@@ -31,6 +31,7 @@ std::string Witch::action(Player& player) {
             valueToUpdate = (-1 * magic) + variance;
             statToUpdate = 20;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The witch used a spell to decrease your attack by " + outputNum + " points.";
@@ -40,13 +41,14 @@ std::string Witch::action(Player& player) {
             valueToUpdate = (-1 * magic) + variance;
             statToUpdate = 50;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The witch cast spell to decrease your magic capabilities by " + outputNum + " points.";
             break;
         case 3:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * magic * 1.5) / (player.getMagic() / 10)) + variance;
+            valueToUpdate = ((-1 * magic * 0.5) / ((player.getMagic() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -56,7 +58,7 @@ std::string Witch::action(Player& player) {
             break;
         case 4:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * magic * 2) / (player.getMagic() / 10)) + variance;
+            valueToUpdate = ((-1 * magic) / ((player.getMagic() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;

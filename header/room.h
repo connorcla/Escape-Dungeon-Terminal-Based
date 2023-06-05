@@ -6,6 +6,7 @@
 #include "weapon.h"
 #include "usable.h"
 #include "equip.h"
+#include "inventory.h"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -28,6 +29,7 @@ class Room{
         unsigned int getEnemyCURRNTHealth(const int) const; 
         unsigned int getEnemyMAXHealth(const int) const;
         string getEnemyName(const int) const;
+        int getEnemySpeed(const int) const;
         static bool compareEnemies(Enemy*, Enemy*);
         void sortEnemies(); //Sort enemies by speed
         
@@ -39,6 +41,7 @@ class Room{
         void setRmStatus(string);
         void setRoomInfo(string);
         void startBattle();
+        vector<string> itemBattle(Inventory&, Player&, int);
         string getRmStatus();  
         string getRoomInfo();
 
