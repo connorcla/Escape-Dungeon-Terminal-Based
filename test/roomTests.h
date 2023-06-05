@@ -32,10 +32,7 @@ TEST(RoomTests, compareEnemies){
     Enemy* witch = room.getEnemy(1,1);
     Enemy* spider = room.getEnemy(2,1);
     bool spiderIsFaster = false;
-
-    std::cout << "\n\n\t\tWich speed: " << witch->getSpeed();
-    std::cout << "\n\n\t\tSpider speed: " << spider->getSpeed();
-
+    
     if(spider->getSpeed() > witch->getSpeed()){ spiderIsFaster = true; }
 
     EXPECT_TRUE(room.compareEnemies(spider,witch));
