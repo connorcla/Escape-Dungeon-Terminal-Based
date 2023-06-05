@@ -26,6 +26,7 @@ void ScreenManager::setUp() {
     inventory.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
     inventory.addItem(allItems.returnItem(30,0), allItems.returnItem(30,1), allItems.returnItem(30,2), allItems.returnItem(30,3));
     inventory.addItem(allItems.returnItem(30,0), allItems.returnItem(30,1), allItems.returnItem(30,2), allItems.returnItem(30,3));
+    inventory.equipWeapon(0, player);
     clearScreen();
     mainMenu();
 }
@@ -56,7 +57,7 @@ void ScreenManager::roomIdle() {
         cout << "4. View Map" << endl;
         cout << "5. Move to the next room" << endl;
         cout << endl;
-        cout << player.getName() << ": ";
+        cout << "Choose (1-5) " << player.getName() << ": ";
 
         //Add user input, choice validation and corresponding functions for appropriate choice
         char choice = getCharInput();
@@ -303,7 +304,7 @@ void ScreenManager::battleMenu() {
         cout << "1. Attack an enemy" << endl;
         cout << "2. Use an item" << endl;
         cout << "3. Attempt to flee (return to previous room)" << endl << endl;
-        cout << player.getName() << ": ";
+        cout << "Choose (1-3) " << player.getName() << ": ";
 
         cin >> choice;
         numChoice = choice - 48;
@@ -318,12 +319,16 @@ void ScreenManager::battleMenu() {
         std::vector<std::string> turnOutputs;
         switch(numChoice){
             case 1: { //Attack enemy
-                    clearScreen();
+                    cout << endl;
                     cout << "Enemies: " << endl;
                     displayEnemies();
                     attackMenu();
-                    clearScreen();
-                    if(map.getEnemyQuantity()==0){ cout << "CONGRATULATIONS " << player.getName() <<"!!! You've defeated all enemies in this room!" << endl; }
+                    if(map.getEnemyQuantity()==0) { 
+                        cout << "CONGRATULATIONS " << player.getName() <<"!!! You've defeated all enemies in this room!" << endl << endl; 
+                        player.setStats(player.getMaxHealth(), player.getCurrHealth(), savedPlayerStats.at(1), savedPlayerStats.at(0), savedPlayerStats.at(3), player.getExp(), player.getName());
+                        player.setMagic(savedPlayerStats.at(2));
+                        return;
+                    }
                     break; 
                      } 
             case 2: {
@@ -388,19 +393,26 @@ void ScreenManager::attackMenu(){
         cout << "All enemies defeated in this room. GOOD JOB! " << endl;
     }
     else{
-        int chooseEnemy;
+        char chooseEnemy;
+        int enemyChosen;
         cout << endl << "Which enemy do you want to attack?" << endl << "(Example: Press '1' for " << map.getEnemyName(0) << ")" << endl;
         cout << player.getName() << ": ";
         cin >> chooseEnemy;
+        enemyChosen = chooseEnemy - 48;
 
-        while(0 >= chooseEnemy || chooseEnemy > enemyQuantity){
+        while(0 >= enemyChosen || enemyChosen > enemyQuantity){
             cout << endl;
             cout << "Invalid input! " << chooseEnemy << " is not an option." << endl;
             cout << "Please try again, " << player.getName() << ": ";
             cin >> chooseEnemy;
+            enemyChosen = chooseEnemy - 48;
         }
 
-        map.fightScenario(player, (chooseEnemy-1));
+        std::vector<std::string> turnOutputs = map.fightScenario(inventory, player, (enemyChosen-1));
+        clearScreen();
+        for(unsigned int i = 0; i < turnOutputs.size(); i++) {
+            cout << turnOutputs.at(i) << endl;
+        }
     }
 }
 

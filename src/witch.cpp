@@ -28,7 +28,7 @@ std::string Witch::action(Player& player) {
     switch(actionTaken) {
         case 1:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (-1 * magic) + variance;
+            valueToUpdate = (-1 * magic * 0.25) + variance;
             statToUpdate = 20;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -38,7 +38,7 @@ std::string Witch::action(Player& player) {
             break;
         case 2:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (-1 * magic) + variance;
+            valueToUpdate = (-1 * magic * 0.25) + variance;
             statToUpdate = 50;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;

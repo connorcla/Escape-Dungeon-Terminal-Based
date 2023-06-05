@@ -4,7 +4,7 @@
 
 ItemDatabase::ItemDatabase() {
 //Weapons (0-13)
-allItems.push_back(singleItem("Basic Sword", "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12", "12", "120")); 
+allItems.push_back(singleItem("Basic Sword", "A short blade that you woke up with. Looks like it can get the job done. --- Damage: 12", "20", "120")); 
 allItems.push_back(singleItem("Stone Sword", "A short blade made out of stone. It has worn down over time. --- Damage: 10", "10", "121")); 
 allItems.push_back(singleItem("Iron Sword", "A short blade made of cold iron. A little dull but can cut through a lot. --- Damage: 18", "18", "122")); 
 allItems.push_back(singleItem("Flame Blade", "A short blade with fiery runes engraved. It even gives off a little light. --- Damage: 25", "25", "123")); 

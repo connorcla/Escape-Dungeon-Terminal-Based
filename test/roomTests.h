@@ -98,17 +98,19 @@ TEST(RoomTests, setRMStatus){
 TEST(RoomTests, StartBattle){ 
     Room room(1);
     Player player;
+    Inventory inventory;
     int enemyIndex = 0;
 
-    EXPECT_NO_THROW(room.startBattle(player,enemyIndex));
+    EXPECT_NO_THROW(room.startBattle(inventory, player,enemyIndex));
 }
 
 TEST(RoomTests, StartBattleOUTOFBOUNDS){ 
     Room room(1);
     Player player;
+    Inventory inventory;
     int enemyIndex = 6;
 
-    EXPECT_ANY_THROW(room.startBattle(player,enemyIndex));
+    EXPECT_ANY_THROW(room.startBattle(inventory, player,enemyIndex));
 }
 
 TEST(RoomTests, RemoveEnemy){ 

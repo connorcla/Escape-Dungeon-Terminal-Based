@@ -196,3 +196,7 @@ std::string Inventory::outputWeapon() const {
     }
     return outputString;
 }
+
+Item* Inventory::returnWeapon() const {
+    return weapon.at(0);
+}

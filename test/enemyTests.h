@@ -86,7 +86,7 @@ TEST(WitchTests, AttackedByPlayer){
     Enemy* villan = new Witch("Witch",10,30,10,15,15,30);
     const int currEnemyHealth = villan->getCurrHealth();
 
-    villan->attackedByPlayer();
+    villan->attackedByPlayer(20);
 
     EXPECT_EQ(villan->getCurrHealth(),25);
 }

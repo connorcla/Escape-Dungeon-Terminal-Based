@@ -135,11 +135,11 @@ vector<string> Map::getItemFromCurrRoom() {
     return rooms.at(currRoom).getItem();
 }
 
-void Map::fightScenario(Player& player, int enemyIndex) {
+vector<string> Map::fightScenario(Inventory& inventory, Player& player, int enemyIndex) {
     const unsigned enemyQuantity = (rooms[currRoom].getNumOfEnemies() - 1);
     if(0 > enemyIndex || enemyIndex > enemyQuantity){ throw "The 'enemyIndex' is out of limit bounds in Map::fightScenario()."; }
     
-    rooms[currRoom].startBattle(player,enemyIndex);
+    return rooms[currRoom].startBattle(inventory, player,enemyIndex);
 }
 
 

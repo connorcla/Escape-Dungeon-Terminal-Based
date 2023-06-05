@@ -13,7 +13,7 @@ class Map {
         void generateRooms();
         void moveToNextRoom();
         void fleeToPrevRoom();
-        void fightScenario(Player&, int);
+        vector<string> fightScenario(Inventory&, Player&, int);
         unsigned int getCurrRoom() const;
         unsigned int getNumOfRooms() const;
         unsigned int getEnemyQuantity() const;

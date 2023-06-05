@@ -86,9 +86,10 @@ TEST(MapTests, getEnemyCURRNTHealthStatus){
 TEST(MapTests, fightScenario){
     Map map;
     Player player;
+    Inventory inventory;
     int enemyIndex = -1;
 
-    EXPECT_ANY_THROW(map.fightScenario(player, enemyIndex));
+    EXPECT_ANY_THROW(map.fightScenario(inventory, player, enemyIndex));
     //EXPECT_NO_THROW(map.fightScenario(player, enemyIndex));
 }
 
