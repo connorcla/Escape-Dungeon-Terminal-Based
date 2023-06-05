@@ -8,6 +8,7 @@ class Boss: public Enemy{
         Boss(std::string,int,int,int,int,int,int);
         ~Boss();
         
+ //       virtual void attackedByPlayer();
         virtual std::string action(Player&);
         std::string displayDialogue();
         

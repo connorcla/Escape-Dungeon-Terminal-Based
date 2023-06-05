@@ -5,7 +5,7 @@ Player::Player() {
     this->curr_health = 50;
     this->defense = 20;
     this->attack = 20;
-    this->speed = 20;
+    this->speed = 40;
     this->exp = 0;
     this->name = "default";
     this->magic = 20;

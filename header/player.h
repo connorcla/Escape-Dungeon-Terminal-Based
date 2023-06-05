@@ -1,6 +1,5 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
-
 #include "entity.h"
 
 class Player : public Entity {

@@ -9,7 +9,6 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-
 using namespace std;
 
 Room::Room() {}
@@ -27,6 +26,7 @@ void Room::deleteEnemies() {
     while(!enemies.empty()) {
         delete enemies.back();
         enemies.pop_back();
+        enemyQuantity--;
     }
 }
 
@@ -76,11 +76,43 @@ bool Room::compareEnemies(Enemy* enemy1, Enemy* enemy2) {
 }
 
 void Room::sortEnemies() {
+    assert(enemies.empty() == false && "ERROR! Cannot sort enemies with an empty Enemy vector in Room::sortEnemies().");
     std::sort(enemies.begin(), enemies.end(), compareEnemies);
 }
 
-void Room::startBattle() {
+void Room::startBattle(Player& player, int enemyIndex) {
+    if(enemyIndex < 0 || enemyIndex > 4){ throw "ERROR! 'enemyIndex' cannot be out of limit bounds 0 & 4 in Room::startBattle()."; }
+    
+    if(player.getSpeed() > enemies[enemyIndex]->getSpeed()){
+        //Player attacks first!
+        enemies[enemyIndex]->attackedByPlayer();
+        int enemyDamage = enemies[enemyIndex]->getCurrHealth();
+        
+        assert(enemyDamage >= 0 && "ERROR! 'enemyDamage' cannot be less than 0 in Room::startBattle()." );
+        
+        if(enemyDamage == 0){
+            enemyQuantity--;
+            assert(enemyQuantity >= 0 && "ERROR! 'enemyQuantity' cannot be less than 0 in Room::startBattle().");
+            removeEnemy(enemyIndex);
+            //player has killed the enemy.
+        }
+    }
+    else{
+        //Enemy attacks first!
+        enemies[enemyIndex]->action(player);
+        
+    }
+}
 
+void Room::removeEnemy(const int enemyIndex){
+    assert(enemyIndex >= 0 && enemyIndex < 5 && "ERROR! 'enemyIndex' cannot be out of limit bounds 0 & 4 in Room::startBattle().");
+    
+    std::vector<Enemy*>::iterator it;
+    it = enemies.begin();
+    it = it + enemyIndex;
+    delete enemies.at(enemyIndex);
+    enemies.erase(it);
+    sortEnemies();
 }
 
 vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numValue) {
@@ -142,6 +174,7 @@ vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numVal
 Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
     Enemy* enemy = nullptr;
     int variance = (indexScaler-1) * 5;
+    //unsigned int defaultExp, defaultHealth, defaultAttack, defaultDefense, defaultSpeed, defaultMagic; 
     
     switch(randEnemy){
             case 1:{ 

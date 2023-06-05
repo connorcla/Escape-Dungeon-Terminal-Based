@@ -1,6 +1,9 @@
 #include "../header/map.h"
 #include <vector>
 #include <assert.h>
+
+#include <iostream> //DELETE THIS!!!
+
 using namespace std;
 
 Map::Map() {
@@ -131,6 +134,14 @@ int Map::getEnemySpeed(const int enemyIndex) const {
 vector<string> Map::getItemFromCurrRoom() {
     return rooms.at(currRoom).getItem();
 }
+
+void Map::fightScenario(Player& player, int enemyIndex) {
+    const unsigned enemyQuantity = (rooms[currRoom].getNumOfEnemies() - 1);
+    if(0 > enemyIndex || enemyIndex > enemyQuantity){ throw "The 'enemyIndex' is out of limit bounds in Map::fightScenario()."; }
+    
+    rooms[currRoom].startBattle(player,enemyIndex);
+}
+
 
 vector<string> Map::itemBattle(Inventory& inventory, Player& player, int numValue) {
     return rooms.at(currRoom).itemBattle(inventory, player, numValue);

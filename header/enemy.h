@@ -10,6 +10,7 @@ class Enemy: public Entity{
         ~Enemy();
 
        virtual std::string action(Player&)=0;
+       virtual void attackedByPlayer();
        bool operator>(Enemy&);
 
     protected:

@@ -1,6 +1,5 @@
 #ifndef ROOMTESTS_H
 #define ROOMTESTS_H
-
 #include "../header/room.h"
 #include "../header/enemy.h"
 #include "../header/witch.h"
@@ -18,6 +17,22 @@ TEST(RoomTests, generateEnemies){
     Room room;
     EXPECT_NO_THROW(room.generateEnemies(0));
     room.deleteEnemies();
+}
+
+TEST(RoomTests, SortEnemies){
+    Room room(1);
+    EXPECT_NO_THROW(room.sortEnemies());
+}
+
+TEST(RoomTests, compareEnemies){
+    Room room;
+    Enemy* witch = room.getEnemy(1,0);
+    Enemy* spider = room.getEnemy(2,0);
+    bool spiderIsFaster = false;
+
+    if(spider->getSpeed() > witch->getSpeed()){ spiderIsFaster = true; }
+
+    EXPECT_TRUE(room.compareEnemies(witch,spider));
 }
 
 TEST(RoomTests, getRandomNumberLTFive){
@@ -74,7 +89,27 @@ TEST(RoomTests, setRMStatus){
     room.deleteEnemies();
 }
 
-//TEST(RoomTests, startBattle){ }
+TEST(RoomTests, StartBattle){ 
+    Room room(1);
+    Player player;
+    int enemyIndex = 0;
+
+    EXPECT_NO_THROW(room.startBattle(player,enemyIndex));
+}
+
+TEST(RoomTests, StartBattleOUTOFBOUNDS){ 
+    Room room(1);
+    Player player;
+    int enemyIndex = 6;
+
+    EXPECT_ANY_THROW(room.startBattle(player,enemyIndex));
+}
+
+TEST(RoomTests, RemoveEnemy){ 
+    Room room(1);
+    EXPECT_NO_THROW(room.removeEnemy(0));
+}
+
 
 TEST(RoomTests, getRMStatus){
     Room room;
