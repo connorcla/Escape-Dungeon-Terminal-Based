@@ -89,9 +89,26 @@ TEST(RoomTests, setRMStatus){
     room.deleteEnemies();
 }
 
-//TEST(RoomTests, StartBattle){ }
+TEST(RoomTests, StartBattle){ 
+    Room room(1);
+    Player player;
+    int enemyIndex = 0;
 
-//TEST(RoomTests, RemoveEnemy){ }
+    EXPECT_NO_THROW(room.startBattle(player,enemyIndex));
+}
+
+TEST(RoomTests, StartBattleOUTOFBOUNDS){ 
+    Room room(1);
+    Player player;
+    int enemyIndex = 6;
+
+    EXPECT_ANY_THROW(room.startBattle(player,enemyIndex));
+}
+
+TEST(RoomTests, RemoveEnemy){ 
+    Room room(1);
+    EXPECT_NO_THROW(room.removeEnemy(0));
+}
 
 
 TEST(RoomTests, getRMStatus){

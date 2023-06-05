@@ -131,9 +131,9 @@ vector<string> Map::getItemFromCurrRoom() {
 
 void Map::fightScenario(Player& player, int enemyIndex) {
     const unsigned enemyQuantity = (rooms[currRoom].getNumOfEnemies() - 1);
-    if(0 > enemyIndex || enemyIndex > enemyQuantity){ throw "The 'enemyIndex' passed to Map::fightScenario() is valid."; }
+    if(0 > enemyIndex || enemyIndex > enemyQuantity){ throw "The 'enemyIndex' is out of limit bounds in Map::fightScenario()."; }
     
-    //rooms[currRoom].setBattle(player,enemyIndex)
+    rooms[currRoom].startBattle(player,enemyIndex);
     
     //assert(enemyIndex >= 0 && 4 >= enemyIndex && "ERROR! 'currRoom' has to be greater than 0 in Map::fightScenario().");
 }

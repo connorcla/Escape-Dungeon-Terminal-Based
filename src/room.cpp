@@ -82,26 +82,31 @@ void Room::sortEnemies() {
 }
 
 void Room::startBattle(Player& player, int enemyIndex) {
+    if(enemyIndex < 0 || enemyIndex > 4){ throw "ERROR! 'enemyIndex' cannot be out of limit bounds 0 & 4 in Room::startBattle()."; }
+    
     if(player.getSpeed() > enemies[enemyIndex]->getSpeed()){
         //Player attacks first!
-        enemyDamage = enemies[enemyIndex]->getCurrHealth();
         enemies[enemyIndex]->attackedByPlayer();
-        enemyDamage = enemyDamage - enemies[enemyIndex]->getCurrHealth();
-
-        //player.
-
-        if( == 0){
+        int enemyDamage = enemies[enemyIndex]->getCurrHealth();
+        
+        assert(enemyDamage >= 0 && "ERROR! 'enemyDamage' cannot be less than 0 in Room::startBattle()." );
+        
+        if(enemyDamage == 0){
             enemyQuantity--;
+            assert(enemyQuantity >= 0 && "ERROR! 'enemyQuantity' cannot be less than 0 in Room::startBattle().");
             removeEnemy(enemyIndex);
+            //player has killed the enemy.
         }
     }
     else{
         //Enemy attacks first!
         enemies[enemyIndex]->action(player);
+
     }
 }
 
 void Room::removeEnemy(const int enemyIndex){
+    assert(enemyIndex >= 0 && enemyIndex < 5 && "ERROR! 'enemyIndex' cannot be out of limit bounds 0 & 4 in Room::startBattle().");
     std::vector<Enemy*>::iterator it;
     it = enemies.begin();
     it = it + enemyIndex;
