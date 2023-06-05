@@ -32,7 +32,7 @@ std::string Boss::action(Player& player){
     switch(actionTaken) {
         case 1:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * magic) / (player.getMagic() / 10)) + variance;
+            valueToUpdate = ((-1 * magic) / ((player.getMagic() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -42,7 +42,7 @@ std::string Boss::action(Player& player){
             break;
         case 2:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack * 1.5) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack * 1.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -52,7 +52,7 @@ std::string Boss::action(Player& player){
             break;
         case 3:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * magic * 2) / (player.getMagic() / 10)) + variance;
+            valueToUpdate = ((-1 * magic * 2) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -62,7 +62,7 @@ std::string Boss::action(Player& player){
             break;
         case 4:
             variance = (rand() % 13) - 6;
-            valueToUpdate = (-1 * magic * 2) + variance;
+            valueToUpdate = (1 * magic * 2) + variance;
             this->attack += valueToUpdate;
             str1 << valueToUpdate;
             outputNum = str1.str();
@@ -73,6 +73,7 @@ std::string Boss::action(Player& player){
             valueToUpdate = (-1 * magic * 0.5) + variance;
             statToUpdate = 30;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The dark lord's magic focuses on you, lowering your defenses by " + outputNum + " points.";

@@ -31,7 +31,7 @@ std::string Spider::action(Player& player){
     switch(actionTaken) {
         case 1:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -41,7 +41,7 @@ std::string Spider::action(Player& player){
             break;
         case 2:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack * 1.5) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack * 1.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -54,6 +54,7 @@ std::string Spider::action(Player& player){
             valueToUpdate = (-1 * attack * 0.5) + variance;
             statToUpdate = 40;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The spider shot webs at you in attempt to slow you down and decreased speed by " + outputNum + " points.";

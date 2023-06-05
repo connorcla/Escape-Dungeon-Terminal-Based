@@ -22,7 +22,9 @@ class Map {
         string getCurrInfo(); 
         string getRoomStatus(const unsigned);
         string getEnemyName(const int) const;
+        int getEnemySpeed(const int) const;
         vector<string> getItemFromCurrRoom();
+        vector<string> itemBattle(Inventory&, Player&, int);
 
     private:
         vector<Room> rooms;

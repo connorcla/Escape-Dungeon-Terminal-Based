@@ -30,7 +30,7 @@ std::string Golem::action(Player& player){
     switch(actionTaken) {
         case 1:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -40,7 +40,7 @@ std::string Golem::action(Player& player){
             break;
         case 2:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack * 1.5) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack * 1.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -50,7 +50,7 @@ std::string Golem::action(Player& player){
             break;
         case 3:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (-1 * defense) + variance;
+            valueToUpdate = (1 * defense) + variance;
             this->defense += valueToUpdate;
             str1 << valueToUpdate;
             outputNum = str1.str();

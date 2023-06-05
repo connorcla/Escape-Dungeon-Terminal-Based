@@ -31,7 +31,7 @@ std::string Skeleton::action(Player& player){
     switch(actionTaken) {
         case 1:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack * 0.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -41,7 +41,7 @@ std::string Skeleton::action(Player& player){
             break;
         case 2:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack * 1.5) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -51,7 +51,7 @@ std::string Skeleton::action(Player& player){
             break;
         case 3:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (-1 * attack * 2) + variance;
+            valueToUpdate = ((-1 * attack * 1.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -61,7 +61,7 @@ std::string Skeleton::action(Player& player){
             break;
         case 4:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (-1 * attack * 0.5) + variance;
+            valueToUpdate = (1 * attack * 0.5) + variance;
             this->attack += valueToUpdate;
             str1 << valueToUpdate;
             outputNum = str1.str();
@@ -70,8 +70,9 @@ std::string Skeleton::action(Player& player){
         case 5:
             variance = (rand() % 9) - 4;
             valueToUpdate = (-1 * attack) + variance;
-            statToUpdate = 10;
+            statToUpdate = 30;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The skeleton threw down a small object with a flash, reducing your sight and defense by " + outputNum + " points.";

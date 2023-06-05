@@ -13,6 +13,7 @@ public:
 
     // Getters and setters
     int getMagic() const;
+    void setMagic(int);
     void setName(std::string);
     void updateStat(int, int);
 };

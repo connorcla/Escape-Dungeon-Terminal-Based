@@ -72,7 +72,7 @@ void Room::setRmStatus(string status) {
 }
 
 bool Room::compareEnemies(Enemy* enemy1, Enemy* enemy2) {
-    return (*enemy1 < *enemy2);
+    return (*enemy1 > *enemy2);
 }
 
 void Room::sortEnemies() {
@@ -115,6 +115,62 @@ void Room::removeEnemy(const int enemyIndex){
     sortEnemies();
 }
 
+vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numValue) {
+    vector<string> turnOutputs;
+    string returnString = "";
+    bool playerTurnDone = false;
+    
+    for(unsigned int i = 0; i < enemies.size(); i++) {
+        if(enemies.at(i)->getSpeed() > player.getSpeed() || playerTurnDone == true) {
+            turnOutputs.push_back(enemies.at(i)->action(player));
+            if(i == enemies.size() - 1 && playerTurnDone == false) {
+                playerTurnDone = true;
+                goto playerLast;
+            }
+        }
+        else {
+            playerLast:
+            if(inventory.returnItem(numValue)->getID() / 100 == 3) {
+                int value = inventory.returnItem(numValue)->getProperty();
+                int outputValue = value;
+                std::string name = inventory.returnItem(numValue)->getName();
+                switch((inventory.returnItem(numValue)->getID() / 10) % 10) {
+                    case 1:
+                        if((player.getCurrHealth() + value) > player.getMaxHealth()) {
+                            outputValue = player.getMaxHealth() - player.getCurrHealth();
+                            player.setStats(player.getMaxHealth(), player.getMaxHealth()-value, player.getDefense(), player.getAttack(), player.getSpeed(), player.getExp(), player.getName());
+                        }
+                        returnString = "You used " + name + " and increased your health by " + to_string(outputValue) + " points.";
+                        break;
+                    case 2:
+                        returnString = "You used " + name + " and increased your attack by " + to_string(value) + " points.";
+                        break;
+                    case 3:
+                        returnString = "You used " + name + " and increased your defense by " + to_string(value) + " points.";
+                        break;
+                    case 4:
+                        returnString = "You used " + name + " and increased your defense by " + to_string(value) + " points.";
+                        break;
+                    case 5:
+                        returnString = "You used " + name + " and increased your defense by " + to_string(value) + " points.";
+                        break;
+                }
+                inventory.returnItem(numValue)->incrStat(player);
+                inventory.removeItem(numValue);
+            }
+            else {
+                returnString = "You tried to use an item that can't be used here! Fumbling in your bag created an opportunity for the enemies to attack!"; 
+            }
+            turnOutputs.push_back(returnString);
+            if(playerTurnDone == false) {
+                i--;
+                playerTurnDone = true;
+            }
+        }
+    }
+    return turnOutputs;
+}
+
 Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
     Enemy* enemy = nullptr;
     int variance = (indexScaler-1) * 5;
@@ -122,19 +178,19 @@ Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
     
     switch(randEnemy){
             case 1:{ 
-                enemy = new Witch("Witch",10+variance,30+variance,10+variance,15+variance,15+variance,30+variance); 
+                enemy = new Witch("Witch",10+variance,10+variance,5+variance,8+variance,6+variance,8+variance); 
                 break;
                 }
             case 2:{ 
-                enemy = new Spider("Spider",10+variance,30+variance,15+variance,10+variance,25+variance);
+                enemy = new Spider("Spider",10+variance,10+variance,8+variance,5+variance,10+variance);
                 break;
             }
             case 3:{ 
-                enemy = new Golem("Golem",10+variance,50+variance,7+variance,30+variance,10+variance);
+                enemy = new Golem("Golem",10+variance,15+variance,5+variance,12+variance,5+variance);
                 break;
             }
             case 4:{ 
-                enemy = new Skeleton("Skeleton",10+variance,25+variance,20+variance,18+variance,20+variance);
+                enemy = new Skeleton("Skeleton",10+variance,8+variance,10+variance,10+variance,8+variance);
                 break;
             }
             case 5:{
@@ -154,6 +210,10 @@ string Room::getEnemyName(const int enemyIndex) const {
         enemyName = enemies[enemyIndex]->getName();
     }
     return enemyName;
+}
+
+int Room::getEnemySpeed(const int enemyIndex) const {
+    return enemies.at(enemyIndex)->getSpeed();
 }
 
 void Room::setRoomInfo(string info) {
