@@ -115,7 +115,7 @@ void ScreenManager::roomIdle() {
                 case 5:
                     map.moveToNextRoom();
                     clearScreen();
-                    cout << "Moved to next room." << endl;
+                    cout << "As you enter the next room, monsters appear!!!" << endl;
                     battleMenu();
                     break;
                 default:
@@ -282,13 +282,14 @@ void ScreenManager::playerStats() {
 }
 
 void ScreenManager::battleMenu() {
-    unsigned int choice;
+    char choice;
+    int numChoice;
 
     do{
         cout << "Monsters block your path:" << endl << endl;
-        cout << "[Enemies]" << endl; //Replace with list of enemies
         //cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
         displayEnemies();
+        cout << endl;
         cout << "--------------------------------------" << endl;
         cout << "Health: [" << player.getCurrHealth() << "/" << player.getMaxHealth() << "]" << endl; //Replace with appropriate variables
         cout << "--------------------------------------" << endl;
@@ -300,13 +301,17 @@ void ScreenManager::battleMenu() {
 
         //Get user input validation, lots of output depending on choice
         cin >> choice;
+        numChoice = choice - 48;
 
-        while(choice != 1 && choice != 2 && choice != 3){
+        while(numChoice != 1 && numChoice != 2 && numChoice != 3){
             cout <<  "Invalid input! " << choice << " is not an option. Please try again." << endl;
+            cin.clear();
             cin >> choice;
+            numChoice = choice - 48;
         }
 
-        switch(choice){
+        std::vector<std::string> turnOutputs;
+        switch(numChoice){
             case 1: { break; } //Attack enemy
             case 2: {
                 std::string list = inventory.listInventory();
@@ -330,42 +335,17 @@ void ScreenManager::battleMenu() {
                     numValue = cInput - 48;
                 }
                 numValue -= 1;
+                clearScreen();
                 if(!(numValue >= 0 && numValue <= inventory.numItems() && inventory.numItems() != 0))
                 {
                     cout << "Invalid input, please try again." << endl << endl;
                 }
                 else {
-                    if(inventory.returnItem(numValue)->getID() / 100 == 3) {
-                        int value = inventory.returnItem(numValue)->getProperty();
-                        int outputValue = value;
-                        std::string name = inventory.returnItem(numValue)->getName();
-                        switch((inventory.returnItem(numValue)->getID() / 10) % 10) {
-                            case 1:
-                                if((player.getCurrHealth() + value) > player.getMaxHealth()) {
-                                    outputValue = player.getMaxHealth() - player.getCurrHealth();
-                                    player.setStats(player.getMaxHealth(), player.getMaxHealth()-value, player.getDefense(), player.getAttack(), player.getSpeed(), player.getExp(), player.getName());
-                                }
-                                cout << "You used " << name << " and increased your health by " << outputValue << " points." << endl;
-                                break;
-                            case 2:
-                                cout << "You used " << name << " and increased your attack by " << value << " points." << endl;
-                                break;
-                            case 3:
-                                cout << "You used " << name << " and increased your defense by " << value << " points." << endl;
-                                break;
-                            case 4:
-                                cout << "You used " << name << " and increased your speed by " << value << " points." << endl;
-                                break;
-                            case 5:
-                                cout << "You used " << name << " and increased your magic by " << value << " points." << endl;
-                                break;
-                        }
-                        inventory.returnItem(numValue)->incrStat(player);
-                        inventory.removeItem(numValue);
+                    turnOutputs = map.itemBattle(inventory, player, numValue);
+                    for(unsigned int i = 0; i < turnOutputs.size(); i++) {
+                        cout << turnOutputs.at(i) << endl;
                     }
-                    else {
-                        cout << "That item can't be used here! Fumbling in your bag created an opportunity for the enemies to attack!" << endl; 
-                    }
+                    cout << endl;
                     break;
                 }
                 }

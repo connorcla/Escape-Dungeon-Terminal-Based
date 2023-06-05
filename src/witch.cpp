@@ -31,6 +31,7 @@ std::string Witch::action(Player& player) {
             valueToUpdate = (-1 * magic) + variance;
             statToUpdate = 20;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The witch used a spell to decrease your attack by " + outputNum + " points.";
@@ -40,6 +41,7 @@ std::string Witch::action(Player& player) {
             valueToUpdate = (-1 * magic) + variance;
             statToUpdate = 50;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The witch cast spell to decrease your magic capabilities by " + outputNum + " points.";

@@ -50,6 +50,7 @@ std::string Spider::action(Player& player){
             valueToUpdate = (-1 * attack * 0.5) + variance;
             statToUpdate = 40;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The spider shot webs at you in attempt to slow you down and decreased speed by " + outputNum + " points.";

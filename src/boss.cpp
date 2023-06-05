@@ -58,7 +58,7 @@ std::string Boss::action(Player& player){
             break;
         case 4:
             variance = (rand() % 13) - 6;
-            valueToUpdate = (-1 * magic * 2) + variance;
+            valueToUpdate = (1 * magic * 2) + variance;
             this->attack += valueToUpdate;
             str1 << valueToUpdate;
             outputNum = str1.str();
@@ -69,6 +69,7 @@ std::string Boss::action(Player& player){
             valueToUpdate = (-1 * magic * 0.5) + variance;
             statToUpdate = 30;
             player.updateStat(statToUpdate, valueToUpdate);
+            valueToUpdate = valueToUpdate * -1;
             str1 << valueToUpdate;
             outputNum = str1.str();
             returnString = "The dark lord's magic focuses on you, lowering your defenses by " + outputNum + " points.";
