@@ -116,7 +116,7 @@ void ScreenManager::roomIdle() {
                     map.moveToNextRoom();
                     clearScreen();
                     cout << "Moved to next room." << endl;
-                    //battleMenu();
+                    battleMenu();
                     break;
                 default:
                     cout << "An error occurred." << endl;
@@ -176,13 +176,13 @@ void ScreenManager::inventoryMenu() {
 
         std::string list = inventory.listInventory();
         int size = inventory.numItems();
-        cout << list << endl << endl; //Would output the list of items in inventory object from Player
+        cout << list << endl << endl; 
 
         cout << "Equipped Weapon:" << endl;
         cout << inventory.outputWeapon() << endl << endl;
 
         cout << "Equip Slots:" << endl;
-        cout << inventory.outputEquipped() << endl << endl; //Change with actual equipped items
+        cout << inventory.outputEquipped() << endl << endl; 
         cout << "Enter item number (1-" << size << ") to view item, 0 to see your stats, or (b) to go back: ";
 
         char cInput;
@@ -290,7 +290,7 @@ void ScreenManager::battleMenu() {
         //cout << "Witch [23/40]   Golem [17/60]   Spider [24/30] " << endl; //Replace with each enemy's getHealth() return
         displayEnemies();
         cout << "--------------------------------------" << endl;
-        cout << "Health: [27/50]     Magic: [35/50]" << endl; //Replace with appropriate variables
+        cout << "Health: [" << player.getCurrHealth() << "/" << player.getMaxHealth() << "]" << endl; //Replace with appropriate variables
         cout << "--------------------------------------" << endl;
         cout << "What would you like to do?" << endl << endl;
         cout << "1. Attack an enemy" << endl;
@@ -308,15 +308,77 @@ void ScreenManager::battleMenu() {
 
         switch(choice){
             case 1: { break; } //Attack enemy
-            case 2: { break; } //Use an item
-            case 3: {
-                    clearScreen();
-                    cout << "You are now back in the previous room." << endl;
-                    cout << "Hurry! Find the items and weapons you need to combat the monsters in the next room...." <<  endl;
-                    map.fleeToPrevRoom();
-                    displayMap();
-                    return;
+            case 2: {
+                std::string list = inventory.listInventory();
+                int size = inventory.numItems();
+                cout << list << endl << endl; 
+                while(true) {
+                cout << "Enter item number of usable item (1-" << size << ") to use an item: ";
+
+                char cInput;
+                std::string input;
+                int numValue = 0;
+                cin >> input;
+                cout << endl;
+                if(input.size() > 1) {
+                    char cInput1 = input.at(0);
+                    char cInput2 = input.at(1);
+                    numValue = ((cInput1 - 48) * 10) + (cInput2 - 48);
                 }
+                else {
+                    cInput = input.at(0);
+                    numValue = cInput - 48;
+                }
+                numValue -= 1;
+                if(!(numValue >= 0 && numValue <= inventory.numItems() && inventory.numItems() != 0))
+                {
+                    cout << "Invalid input, please try again." << endl << endl;
+                }
+                else {
+                    if(inventory.returnItem(numValue)->getID() / 100 == 3) {
+                        int value = inventory.returnItem(numValue)->getProperty();
+                        int outputValue = value;
+                        std::string name = inventory.returnItem(numValue)->getName();
+                        switch((inventory.returnItem(numValue)->getID() / 10) % 10) {
+                            case 1:
+                                if((player.getCurrHealth() + value) > player.getMaxHealth()) {
+                                    outputValue = player.getMaxHealth() - player.getCurrHealth();
+                                    player.setStats(player.getMaxHealth(), player.getMaxHealth()-value, player.getDefense(), player.getAttack(), player.getSpeed(), player.getExp(), player.getName());
+                                }
+                                cout << "You used " << name << " and increased your health by " << outputValue << " points." << endl;
+                                break;
+                            case 2:
+                                cout << "You used " << name << " and increased your attack by " << value << " points." << endl;
+                                break;
+                            case 3:
+                                cout << "You used " << name << " and increased your defense by " << value << " points." << endl;
+                                break;
+                            case 4:
+                                cout << "You used " << name << " and increased your speed by " << value << " points." << endl;
+                                break;
+                            case 5:
+                                cout << "You used " << name << " and increased your magic by " << value << " points." << endl;
+                                break;
+                        }
+                        inventory.returnItem(numValue)->incrStat(player);
+                        inventory.removeItem(numValue);
+                    }
+                    else {
+                        cout << "That item can't be used here! Fumbling in your bag created an opportunity for the enemies to attack!" << endl; 
+                    }
+                    break;
+                }
+                }
+                break;
+             } //Use an item
+            case 3: {
+                clearScreen();
+                cout << "You are now back in the previous room." << endl;
+                cout << "Hurry! Find the items and weapons you need to combat the monsters in the next room...." <<  endl;
+                map.fleeToPrevRoom();
+                displayMap();
+                return;
+                } //Flee back to previous room
             default: { cout << "Error occurred in ScreenManager::battleMenu(). " << endl; }
                  
         }
