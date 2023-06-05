@@ -17,7 +17,7 @@ class ScreenManager {
         void inventoryMenu();   //Takes in Inventory argument *FIX LATER*
         void playerStats();
         void battleMenu();
-        void invalidInput(unsigned int*); //Messages 
+        void attackMenu();
         void displayEnemies();
         void winScreen();
         void gameOver();

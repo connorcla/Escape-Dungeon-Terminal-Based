@@ -14,6 +14,10 @@ Skeleton::Skeleton(std::string enemyName, int expVal, int health, int offense, i
 
 Skeleton::~Skeleton() {}
 
+/*oid Skeleton::attackedByPlayer() {
+    curr_health = curr_health - 5;
+}*/
+
 std::string Skeleton::action(Player& player){
     int actionTaken = (rand() % numActions) + 1;
     int valueToUpdate = 0;

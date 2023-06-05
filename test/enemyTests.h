@@ -91,15 +91,6 @@ TEST(WitchTests, AttackedByPlayer){
     EXPECT_EQ(villan->getCurrHealth(),25);
 }
 
-/*
-TEST(EnemyTests, getMagic){
-    int magic = 2;
-    Enemy* villan = new Witch("Witch",1,2,3,4,5,magic);
-
-    EXPECT_EQ(villan->getMagic(), magic);
-}
-*/
-
 /*********** Spider Tests **********/
 TEST(SpiderTests, testConstructor){
     Enemy* villan = nullptr;

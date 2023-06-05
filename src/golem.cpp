@@ -13,6 +13,10 @@ Golem::Golem(std::string enemyName, int expVal, int health, int offense, int gua
 }
 Golem::~Golem() {}
 
+/*void Golem::attackedByPlayer() {
+    curr_health = curr_health - 5;
+}*/
+
 std::string Golem::action(Player& player){
     int actionTaken = (rand() % numActions) + 1;
     int valueToUpdate = 0;

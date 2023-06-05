@@ -1,6 +1,9 @@
 #include "../header/map.h"
 #include <vector>
 #include <assert.h>
+
+#include <iostream> //DELETE THIS!!!
+
 using namespace std;
 
 Map::Map() {
@@ -134,6 +137,4 @@ void Map::fightScenario(Player& player, int enemyIndex) {
     if(0 > enemyIndex || enemyIndex > enemyQuantity){ throw "The 'enemyIndex' is out of limit bounds in Map::fightScenario()."; }
     
     rooms[currRoom].startBattle(player,enemyIndex);
-    
-    //assert(enemyIndex >= 0 && 4 >= enemyIndex && "ERROR! 'currRoom' has to be greater than 0 in Map::fightScenario().");
 }

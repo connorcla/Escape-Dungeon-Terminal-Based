@@ -11,7 +11,7 @@ class Enemy: public Entity{
 
        virtual std::string action(Player&)=0;
        bool operator<(Enemy&);
-       void attackedByPlayer();
+       virtual void attackedByPlayer();
 
     protected:
         int numActions;

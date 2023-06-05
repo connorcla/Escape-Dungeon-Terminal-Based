@@ -14,6 +14,10 @@ Spider::Spider(std::string enemyName, int expVal, int health, int offense, int g
 
 Spider::~Spider() {}
 
+/*void Spider::attackedByPlayer() {
+    curr_health = curr_health - 5;
+}*/
+
 std::string Spider::action(Player& player){
     int actionTaken = (rand() % numActions) + 1;
     int valueToUpdate = 0;

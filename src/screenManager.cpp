@@ -311,22 +311,10 @@ void ScreenManager::battleMenu() {
                     clearScreen();
                     cout << "Enemies: " << endl;
                     displayEnemies();
-
-                    int chooseEnemy;
-                    const unsigned int enemyQuantity = map.getEnemyQuantity();
-                    cout << endl << "Which enemy do you want to attack?" << endl << "(Example: Press '1' for " << map.getEnemyName(0) << ")" << endl;
-                    cout << player.getName() << ": ";
-                    cin >> chooseEnemy;
-
-                    while(0 >= chooseEnemy || chooseEnemy > enemyQuantity){
-                        cout << endl;
-                        cout << "Invalid input! " << chooseEnemy << " is not an option." << endl;
-                        cout << "Please try again, " << player.getName() << ": ";
-                        cin >> chooseEnemy;
-                    }
-
-                    map.fightScenario(player, (chooseEnemy-1));
-                    return; 
+                    attackMenu();
+                    clearScreen();
+                    if(map.getEnemyQuantity()==0){ cout << "CONGRATULATIONS " << player.getName() <<"!!! You've defeated all enemies in this room!" << endl; }
+                    break; 
                     }
             case 2: { break; } //Use an item
             case 3: {
@@ -343,6 +331,28 @@ void ScreenManager::battleMenu() {
 
     }while(choice > 0 || 3 >= choice);
     
+}
+
+void ScreenManager::attackMenu(){
+    const unsigned int enemyQuantity = map.getEnemyQuantity();
+    if(enemyQuantity == 0){
+        cout << "All enemies defeated in this room. GOOD JOB! " << endl;
+    }
+    else{
+        int chooseEnemy;
+        cout << endl << "Which enemy do you want to attack?" << endl << "(Example: Press '1' for " << map.getEnemyName(0) << ")" << endl;
+        cout << player.getName() << ": ";
+        cin >> chooseEnemy;
+
+        while(0 >= chooseEnemy || chooseEnemy > enemyQuantity){
+            cout << endl;
+            cout << "Invalid input! " << chooseEnemy << " is not an option." << endl;
+            cout << "Please try again, " << player.getName() << ": ";
+            cin >> chooseEnemy;
+        }
+
+        map.fightScenario(player, (chooseEnemy-1));
+    }
 }
 
 void ScreenManager::displayEnemies() {

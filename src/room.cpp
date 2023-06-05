@@ -9,7 +9,6 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-
 using namespace std;
 
 Room::Room() {}
@@ -101,12 +100,13 @@ void Room::startBattle(Player& player, int enemyIndex) {
     else{
         //Enemy attacks first!
         enemies[enemyIndex]->action(player);
-
+        
     }
 }
 
 void Room::removeEnemy(const int enemyIndex){
     assert(enemyIndex >= 0 && enemyIndex < 5 && "ERROR! 'enemyIndex' cannot be out of limit bounds 0 & 4 in Room::startBattle().");
+    
     std::vector<Enemy*>::iterator it;
     it = enemies.begin();
     it = it + enemyIndex;

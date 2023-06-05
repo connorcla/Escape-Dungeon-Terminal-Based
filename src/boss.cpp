@@ -15,6 +15,10 @@ Boss::Boss(std::string enemyName, int expVal, int health, int offense, int guard
 
 Boss::~Boss(){}
 
+/*void Boss::attackedByPlayer() {
+    curr_health = curr_health - 5;
+}*/
+
 std::string Boss::action(Player& player){
     int actionTaken = (rand() % numActions) + 1;
     int valueToUpdate = 0;
