@@ -91,7 +91,7 @@ vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numVal
     for(unsigned int i = 0; i < enemies.size(); i++) {
         if(enemies.at(i)->getSpeed() > player.getSpeed() || playerTurnDone == true) {
             turnOutputs.push_back(enemies.at(i)->action(player));
-            if(i == enemies.size() - 1) {
+            if(i == enemies.size() - 1 && playerTurnDone == false) {
                 playerTurnDone = true;
                 goto playerLast;
             }

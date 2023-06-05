@@ -27,7 +27,7 @@ std::string Skeleton::action(Player& player){
     switch(actionTaken) {
         case 1:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack * 0.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -37,7 +37,7 @@ std::string Skeleton::action(Player& player){
             break;
         case 2:
             variance = (rand() % 7) - 3;
-            valueToUpdate = ((-1 * attack * 1.5) / (player.getDefense() / 10)) + variance;
+            valueToUpdate = ((-1 * attack) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
@@ -47,7 +47,7 @@ std::string Skeleton::action(Player& player){
             break;
         case 3:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (-1 * attack * 2) + variance;
+            valueToUpdate = ((-1 * attack * 1.5) / ((player.getDefense() / 10) + 1)) + variance;
             statToUpdate = 10;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;

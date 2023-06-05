@@ -284,6 +284,11 @@ void ScreenManager::playerStats() {
 void ScreenManager::battleMenu() {
     char choice;
     int numChoice;
+    vector<int> savedPlayerStats;
+    savedPlayerStats.push_back(player.getAttack());
+    savedPlayerStats.push_back(player.getDefense());
+    savedPlayerStats.push_back(player.getMagic());
+    savedPlayerStats.push_back(player.getSpeed());
 
     do{
         cout << "Monsters block your path:" << endl << endl;
@@ -357,6 +362,8 @@ void ScreenManager::battleMenu() {
                 cout << "Hurry! Find the items and weapons you need to combat the monsters in the next room...." <<  endl;
                 map.fleeToPrevRoom();
                 displayMap();
+                player.setStats(player.getMaxHealth(), player.getCurrHealth(), savedPlayerStats.at(1), savedPlayerStats.at(0), savedPlayerStats.at(3), player.getExp(), player.getName());
+                player.setMagic(savedPlayerStats.at(2));
                 return;
                 } //Flee back to previous room
             default: { cout << "Error occurred in ScreenManager::battleMenu(). " << endl; }

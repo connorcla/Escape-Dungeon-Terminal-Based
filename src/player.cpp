@@ -19,6 +19,10 @@ int Player::getMagic() const {
     return magic;
 }
 
+void Player::setMagic(int magic) {
+    this->magic = magic;
+}
+
 void Player::setName(std::string name) {
     this->name = name;
 }
