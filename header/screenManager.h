@@ -22,7 +22,6 @@ class ScreenManager {
         void displayEnemies();
         void winScreen();
         void lostScreen();
-        void gameOver();
         void clearScreen();
 
     private:

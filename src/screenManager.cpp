@@ -454,15 +454,8 @@ void ScreenManager::lostScreen() {
     cout << endl << endl;
     cout << "OH NO, YOU DIED!!!" << endl;
     cout << "Enemies of the dungeon have killed you and taken your soul....RIP " << player.getName() << "...." << endl;
-    cout << endl << endl;
-}
-
-void ScreenManager::gameOver() {
-    cout << "GAME OVER" << endl << endl;
-    cout << "Your health has dropped to 0 and now your progress is lost to the dungeon once more..." << endl;
     cout << "Can you find the courage to attempt to escape again?" << endl << endl;
-    cout << "Enter anything to exit: ";
-    //User input to exit
+    cout << endl << endl;
 }
 
 void ScreenManager::clearScreen() {
