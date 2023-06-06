@@ -14,10 +14,10 @@ TEST(MapTests, testGetItem) {
     Map mapTest;
     
     vector<string> compareItem;
-    compareItem.push_back("Stone Sword");
-    compareItem.push_back("A short blade made out of stone. It has worn down over time. --- Damage: 10");
-    compareItem.push_back("10");
-    compareItem.push_back("121");
+    compareItem.push_back("Health Potion III");
+    compareItem.push_back("A superb red potion that restores a good portion of health. --- Heal: 50");
+    compareItem.push_back("50");
+    compareItem.push_back("312");
 
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());
 }
@@ -86,9 +86,10 @@ TEST(MapTests, getEnemyCURRNTHealthStatus){
 TEST(MapTests, fightScenario){
     Map map;
     Player player;
+    Inventory inventory;
     int enemyIndex = -1;
 
-    EXPECT_ANY_THROW(map.fightScenario(player, enemyIndex));
+    EXPECT_ANY_THROW(map.fightScenario(inventory, player, enemyIndex));
     //EXPECT_NO_THROW(map.fightScenario(player, enemyIndex));
 }
 

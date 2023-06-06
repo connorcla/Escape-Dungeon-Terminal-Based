@@ -80,28 +80,48 @@ void Room::sortEnemies() {
     std::sort(enemies.begin(), enemies.end(), compareEnemies);
 }
 
-void Room::startBattle(Player& player, int enemyIndex) {
+vector<string> Room::startBattle(Inventory& inventory, Player& player, int enemyIndex) {
     if(enemyIndex < 0 || enemyIndex > 4){ throw "ERROR! 'enemyIndex' cannot be out of limit bounds 0 & 4 in Room::startBattle()."; }
-    
-    if(player.getSpeed() > enemies[enemyIndex]->getSpeed()){
-        //Player attacks first!
-        enemies[enemyIndex]->attackedByPlayer();
-        int enemyDamage = enemies[enemyIndex]->getCurrHealth();
-        
-        assert(enemyDamage >= 0 && "ERROR! 'enemyDamage' cannot be less than 0 in Room::startBattle()." );
-        
-        if(enemyDamage == 0){
-            enemyQuantity--;
-            assert(enemyQuantity >= 0 && "ERROR! 'enemyQuantity' cannot be less than 0 in Room::startBattle().");
-            removeEnemy(enemyIndex);
-            //player has killed the enemy.
+
+    vector<string> turnOutputs;
+    string returnString = "";
+    bool playerTurnDone = false;
+
+    for(unsigned int i = 0; i < enemies.size(); i++) {
+        if(enemies.at(i)->getSpeed() > player.getSpeed() || playerTurnDone == true) {
+            turnOutputs.push_back(enemies.at(i)->action(player));
+            if(i == enemies.size() - 1 && playerTurnDone == false) {
+                playerTurnDone = true;
+                goto playerLast;
+            }
+        }
+        else {
+            playerLast:
+            int damageDealt = 0;
+            if((inventory.returnWeapon()->getID() / 10) % 10 == 2) {
+                damageDealt = enemies.at(enemyIndex)->attackedByPlayer(player.getAttack());
+            }
+            else if((inventory.returnWeapon()->getID() / 10) % 10 == 5) {
+                damageDealt = enemies.at(enemyIndex)->attackedByPlayer(player.getMagic());
+            }
+            returnString = "You attacked " + enemies.at(enemyIndex)->getName() + " and dealt " + to_string(damageDealt) + " damage with your " + inventory.returnWeapon()->getName() + "!";
+            turnOutputs.push_back(returnString);
+            if(enemies.at(enemyIndex)->getCurrHealth() <= 0) {
+                returnString = "You defeated the " + enemies.at(enemyIndex)->getName() + " and gained " + to_string(enemies.at(enemyIndex)->getExp()) + " EXP!";
+                turnOutputs.push_back(returnString);
+                player.gainExp(enemies.at(enemyIndex)->getExp());
+                enemyQuantity--;
+                assert(enemyQuantity >= 0 && "ERROR! 'enemyQuantity' cannot be less than 0 in Room::startBattle().");
+                removeEnemy(enemyIndex);
+                //player has killed the enemy.
+            }
+            if(playerTurnDone == false) {
+                i--;
+                playerTurnDone = true;
+            }
         }
     }
-    else{
-        //Enemy attacks first!
-        enemies[enemyIndex]->action(player);
-        
-    }
+    return turnOutputs;
 }
 
 void Room::removeEnemy(const int enemyIndex){
@@ -112,7 +132,6 @@ void Room::removeEnemy(const int enemyIndex){
     it = it + enemyIndex;
     delete enemies.at(enemyIndex);
     enemies.erase(it);
-    sortEnemies();
 }
 
 vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numValue) {
@@ -255,7 +274,7 @@ unsigned int Room::getEnemyMAXHealth(const int enemyIndex) const {
 void Room::generateItems(int randomQuantity) {
     ItemDatabase allitems;
     
-    int numItemsGenerated = ((rand() % (randomQuantity+1) * 2)) + 1;
+    int numItemsGenerated = ((rand() % (randomQuantity+1) * 2)) + 5;
     
     for(int i = 0; i < numItemsGenerated; i++) {
         int itemGenerated = (rand() % allitems.getSize());

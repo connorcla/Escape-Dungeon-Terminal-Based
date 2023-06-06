@@ -41,7 +41,7 @@ class Room{
         //Room specific functions
         void setRmStatus(string);
         void setRoomInfo(string);
-        void startBattle(Player&, int);
+        vector<string> startBattle(Inventory&, Player&, int);
         vector<string> itemBattle(Inventory&, Player&, int);
         string getRmStatus();  
         string getRoomInfo();
