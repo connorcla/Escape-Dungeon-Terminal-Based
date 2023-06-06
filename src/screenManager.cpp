@@ -266,20 +266,57 @@ void ScreenManager::inventoryMenu() {
 }
 
 void ScreenManager::playerStats() {
-    cout << player.getName() << "\'s Current Statistics:" << endl << endl;
-    cout << "Maximum Health: " << player.getMaxHealth() << endl; //Add variable
-    cout << "Magic: " << player.getMagic() << endl; //Add variable
-    cout << "Attack: " << player.getAttack() << endl; //Add variable
-    cout << "Defense: " << player.getDefense() << endl; //Add variable
-    cout << "Speed: " << player.getSpeed() << endl; //Add variable
-    cout << "EXP: " << player.getExp() << endl; //Add variable
-    cout << endl;
-    cout << "You can increase any statistic by 1 point by spending 10 EXP." << endl;
-    cout << "Enter which statistic you wish to increase (H,M,A,D,S) or enter (b) to go back to satchel: ";
-    char input;
-    std::cin >> input;
-    cout << endl;
-    //Get user input validation and apply change
+    while(true) {
+        cout << player.getName() << "\'s Current Statistics:" << endl << endl;
+        cout << "Maximum Health: " << player.getMaxHealth() << endl; //Add variable
+        cout << "Magic: " << player.getMagic() << endl; //Add variable
+        cout << "Attack: " << player.getAttack() << endl; //Add variable
+        cout << "Defense: " << player.getDefense() << endl; //Add variable
+        cout << "Speed: " << player.getSpeed() << endl; //Add variable
+        cout << "EXP: " << player.getExp() << endl; //Add variable
+        cout << endl;
+        cout << "You can increase any statistic by 5 points by spending 20 EXP." << endl;
+        cout << "Enter which statistic you wish to increase (H,M,A,D,S) or enter (b) to go back to satchel: ";
+
+        char input = getCharInput();
+        clearScreen();
+        if(input != 'H' && input != 'M' && input != 'A' && input != 'D' && input != 'S' && input != 'b') {
+            cout << "Invalid input, please try again." << endl << endl; 
+        }
+        else {
+            if(input == 'b') {
+                return;
+            }
+            if(player.getExp() < 20) {
+                cout << "You need at least 10 EXP to increase any statistic." << endl << endl;
+            }
+            else if (input == 'H') {
+                player.updateStat(60, 5);
+                player.gainExp(-20);
+                cout << "Permanently increased Max Health by 5 points!" << endl << endl;
+            }
+            else if (input == 'M') {
+                player.updateStat(50, 5);
+                player.gainExp(-20);
+                cout << "Permanently increased Magic by 5 points!" << endl << endl;
+            }
+            else if (input == 'A') {
+                player.updateStat(20, 5);
+                player.gainExp(-20);
+                cout << "Permanently increased Attack by 5 points!" << endl << endl;
+            }
+            else if (input == 'D') {
+                player.updateStat(30, 5);
+                player.gainExp(-20);
+                cout << "Permanently increased Defense by 5 points!" << endl << endl;
+            }
+            else if (input == 'S') {
+                player.updateStat(40, 5);
+                player.gainExp(-20);
+                cout << "Permanently increased Speed by 5 points!" << endl << endl;
+            }
+        }
+    }
 }
 
 void ScreenManager::battleMenu() {
