@@ -30,6 +30,7 @@ class Inventory {
         std::string outputEquipped() const;
         void equipWeapon(int, Player&);
         std::string outputWeapon() const;
+        Item* returnWeapon() const;
 };
 
 #endif

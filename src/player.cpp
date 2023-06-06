@@ -1,11 +1,11 @@
 #include "../header/player.h"
 
 Player::Player() {
-    this->max_health = 50;
-    this->curr_health = 50;
+    this->max_health = 100;
+    this->curr_health = 100;
     this->defense = 20;
     this->attack = 20;
-    this->speed = 40;
+    this->speed = 20;
     this->exp = 0;
     this->name = "default";
     this->magic = 20;
@@ -21,6 +21,10 @@ int Player::getMagic() const {
 
 void Player::setMagic(int magic) {
     this->magic = magic;
+}
+
+void Player::gainExp(int exp) {
+    this->exp += exp;
 }
 
 void Player::setName(std::string name) {

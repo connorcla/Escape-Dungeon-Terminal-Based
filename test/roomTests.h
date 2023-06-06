@@ -25,6 +25,7 @@ TEST(RoomTests, generateEnemies){
 TEST(RoomTests, SortEnemies){
     Room room(1);
     EXPECT_NO_THROW(room.sortEnemies());
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, compareEnemies){
@@ -36,6 +37,9 @@ TEST(RoomTests, compareEnemies){
     if(spider->getSpeed() > witch->getSpeed()){ spiderIsFaster = true; }
 
     EXPECT_TRUE(room.compareEnemies(spider,witch));
+    delete witch;
+    delete spider;
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getRandomNumberLTFive){
@@ -95,22 +99,30 @@ TEST(RoomTests, setRMStatus){
 TEST(RoomTests, StartBattle){ 
     Room room(1);
     Player player;
+    Inventory inventory;
+    ItemDatabase allItems;
     int enemyIndex = 0;
+    inventory.addItem(allItems.returnItem(0,0), allItems.returnItem(0,1), allItems.returnItem(0,2), allItems.returnItem(0,3));
+    inventory.equipWeapon(0, player);
 
-    EXPECT_NO_THROW(room.startBattle(player,enemyIndex));
+    EXPECT_NO_THROW(room.startBattle(inventory, player,enemyIndex));
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, StartBattleOUTOFBOUNDS){ 
     Room room(1);
     Player player;
+    Inventory inventory;
     int enemyIndex = 6;
 
-    EXPECT_ANY_THROW(room.startBattle(player,enemyIndex));
+    EXPECT_ANY_THROW(room.startBattle(inventory, player,enemyIndex));
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, RemoveEnemy){ 
     Room room(1);
     EXPECT_NO_THROW(room.removeEnemy(0));
+    room.deleteEnemies();
 }
 
 TEST(RoomTests, getRMStatus){
@@ -166,10 +178,10 @@ TEST(RoomTests, getItem) {
     Room room(2);
 
     vector<string> compareItem;
-    compareItem.push_back("Stone Sword");
-    compareItem.push_back("A short blade made out of stone. It has worn down over time. --- Damage: 10");
-    compareItem.push_back("10");
-    compareItem.push_back("121");
+    compareItem.push_back("Dog");
+    compareItem.push_back("A simple companion to cure all those worries. --- Heal: 50");
+    compareItem.push_back("50");
+    compareItem.push_back("314");
 
     EXPECT_EQ(compareItem, room.getItem());
     room.deleteEnemies();

@@ -50,7 +50,7 @@ std::string Golem::action(Player& player){
             break;
         case 3:
             variance = (rand() % 5) - 2;
-            valueToUpdate = (1 * defense) + variance;
+            valueToUpdate = (1 * attack * 0.5) + variance;
             this->defense += valueToUpdate;
             str1 << valueToUpdate;
             outputNum = str1.str();
