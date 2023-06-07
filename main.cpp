@@ -33,10 +33,12 @@ void gameStartManager(bool* playAgain) {
         
     if(choice == '1'){
         *playAgain = true;
+        cin.clear();
     }
     else{
+        *playAgain = false;
         cout << endl << endl;
-        cout << "GAME OVER!";
+        cout << "Come back soon!";
         cout << endl << endl;
     }
 }
