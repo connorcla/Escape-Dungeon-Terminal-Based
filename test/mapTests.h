@@ -15,8 +15,8 @@ TEST(MapTests, testGetItem) {
     
     vector<string> compareItem;
     compareItem.push_back("Health Potion III");
-    compareItem.push_back("A superb red potion that restores a good portion of health. --- Heal: 50");
-    compareItem.push_back("50");
+    compareItem.push_back("A superb red potion that restores a good portion of health. --- Heal: 80");
+    compareItem.push_back("80");
     compareItem.push_back("312");
 
     EXPECT_EQ(compareItem, mapTest.getItemFromCurrRoom());

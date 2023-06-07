@@ -179,8 +179,8 @@ TEST(RoomTests, getItem) {
 
     vector<string> compareItem;
     compareItem.push_back("Dog");
-    compareItem.push_back("A simple companion to cure all those worries. --- Heal: 50");
-    compareItem.push_back("50");
+    compareItem.push_back("A simple companion to cure all those worries. --- Heal: 70");
+    compareItem.push_back("70");
     compareItem.push_back("314");
 
     EXPECT_EQ(compareItem, room.getItem());

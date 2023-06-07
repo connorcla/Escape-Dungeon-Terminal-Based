@@ -193,7 +193,7 @@ vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numVal
 
 Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
     Enemy* enemy = nullptr;
-    int variance = (indexScaler-1) * 5;
+    int variance = (indexScaler-1) * 10;
     //unsigned int defaultExp, defaultHealth, defaultAttack, defaultDefense, defaultSpeed, defaultMagic; 
     
     switch(randEnemy){
@@ -214,7 +214,7 @@ Enemy* Room::getEnemy(int randEnemy, int indexScaler) {
                 break;
             }
             case 5:{
-                enemy = new Boss("Boss",100,100,50,50,50,15);
+                enemy = new Boss("Dark Lord",100,100,50,50,50,15);
                 break;
             }
             default: break;

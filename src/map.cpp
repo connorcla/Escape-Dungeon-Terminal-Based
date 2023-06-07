@@ -95,7 +95,7 @@ unsigned int Map::getEnemyQuantity() const{
 unsigned int Map::getEnemyCURRNTHealthStatus(const int enemyIndex) const {
     int enemyCurrHealth = 0;
     
-    if(currRoom < 9){
+    if(currRoom <= 9){
         enemyCurrHealth  = rooms[currRoom].getEnemyCURRNTHealth(enemyIndex);
     }
 
@@ -105,7 +105,7 @@ unsigned int Map::getEnemyCURRNTHealthStatus(const int enemyIndex) const {
 unsigned int Map::getEnemyMAXHealthStatus(const int enemyIndex) const {
     int enemyMAXHealth = 0;
     
-    if(currRoom < 9){
+    if(currRoom <= 9){
         enemyMAXHealth = rooms[currRoom].getEnemyMAXHealth(enemyIndex);
     }
 
@@ -120,7 +120,7 @@ string Map::getRoomStatus(const unsigned room) {
 string Map::getEnemyName(const int enemyIndex) const{
     string enemyName = " ";
 
-    if(currRoom < 9){
+    if(currRoom <= 9){
         enemyName = rooms[currRoom].getEnemyName(enemyIndex);
     }
 

@@ -38,21 +38,21 @@ allItems.push_back(singleItem("Gold Armor", "Heavy plating made of gold. These h
 allItems.push_back(singleItem("Dunce Cap", "A regular paper hat to wear. It does nothing, but you can\'t help but feel humiliated. --- Magic: -15", "-15", "251"));
 
 //Usables (30-44)
-allItems.push_back(singleItem("Health Potion I", "A simple red potion that restores some health. --- Heal: 10", "10", "310")); 
-allItems.push_back(singleItem("Health Potion II", "A stronger red potion that restores health. --- Heal: 25", "25", "311")); 
-allItems.push_back(singleItem("Health Potion III", "A superb red potion that restores a good portion of health. --- Heal: 50", "50", "312"));
-allItems.push_back(singleItem("Homemade Pie", "Granny is always there to help in a pinch. --- Heal: 30", "30", "313")); 
-allItems.push_back(singleItem("Dog", "A simple companion to cure all those worries. --- Heal: 50", "50", "314"));
-allItems.push_back(singleItem("Bottled Fairy", "It doesn\'t look happy in there, but I\'m sure they\'ll lend a hand for their freedom. --- Heal: 40", "40", "315"));
+allItems.push_back(singleItem("Health Potion I", "A simple red potion that restores some health. --- Heal: 25", "25", "310")); 
+allItems.push_back(singleItem("Health Potion II", "A stronger red potion that restores health. --- Heal: 50", "50", "311")); 
+allItems.push_back(singleItem("Health Potion III", "A superb red potion that restores a good portion of health. --- Heal: 80", "80", "312"));
+allItems.push_back(singleItem("Homemade Pie", "Granny is always there to help in a pinch. --- Heal: 60", "60", "313")); 
+allItems.push_back(singleItem("Dog", "A simple companion to cure all those worries. --- Heal: 70", "70", "314"));
+allItems.push_back(singleItem("Bottled Fairy", "It doesn\'t look happy in there, but I\'m sure they\'ll lend a hand for their freedom. --- Heal: 100", "100", "315"));
 allItems.push_back(singleItem("Magic Potion I", "A simple green potion that increases some magic. --- Magic: 10", "10", "350")); 
 allItems.push_back(singleItem("Magic Potion II", "A stronger green potion that increases magic. --- Magic: 20", "20", "351")); 
-allItems.push_back(singleItem("MTK: Burst", "A small burst of magic. --- Magic: 15", "15", "352"));
-allItems.push_back(singleItem("ATK: Burst", "A small burst of attack power. --- Attack: 15", "15", "320"));
+allItems.push_back(singleItem("MTK: Burst", "A small burst of magic. --- Magic: 30", "30", "352"));
+allItems.push_back(singleItem("ATK: Burst", "A small burst of attack power. --- Attack: 30", "30", "320"));
 allItems.push_back(singleItem("Chili Pepper", "A spicy snack. Get your blood pumping through the heat. --- Attack: 20", "20", "321"));
-allItems.push_back(singleItem("DEF: Burst", "A small burst of defense power. --- Defense: 15", "15", "330"));
+allItems.push_back(singleItem("DEF: Burst", "A small burst of defense power. --- Defense: 30", "30", "330"));
 allItems.push_back(singleItem("Ironskin Potion I", "A murky yellow potion. Makes your skin as tough as iron. --- Defense: 10", "10", "331"));
 allItems.push_back(singleItem("Ironskin Potion II", "A murky yellow potion. Makes your skin as tough as steel. --- Defense: 20", "20", "332"));
-allItems.push_back(singleItem("SPE: Burst", "A small burst of speed power. --- Speed: 15", "15", "340"));
+allItems.push_back(singleItem("SPE: Burst", "A small burst of speed power. --- Speed: 30", "30", "340"));
 }
 
 ItemDatabase::~ItemDatabase() {}

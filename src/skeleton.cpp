@@ -69,7 +69,7 @@ std::string Skeleton::action(Player& player){
             break;
         case 5:
             variance = (rand() % 9) - 4;
-            valueToUpdate = (-1 * attack) + variance;
+            valueToUpdate = (-1 * attack * 0.5) + variance;
             statToUpdate = 30;
             player.updateStat(statToUpdate, valueToUpdate);
             valueToUpdate = valueToUpdate * -1;
