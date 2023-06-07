@@ -9,6 +9,7 @@ class ScreenManager {
     public:
         ScreenManager();
         ~ScreenManager();
+
         void setUp();
         void mainMenu();
         void roomIdle();             //Takes in Room argument *FIX LATER*
@@ -20,9 +21,9 @@ class ScreenManager {
         void attackMenu();
         void displayEnemies();
         void winScreen();
-        void gameOver();
+        void lostScreen();
         void clearScreen();
-        
+
     private:
         Map map;
         Player player;

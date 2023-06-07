@@ -111,6 +111,7 @@ vector<string> Room::startBattle(Inventory& inventory, Player& player, int enemy
                 turnOutputs.push_back(returnString);
                 player.gainExp(enemies.at(enemyIndex)->getExp());
                 enemyQuantity--;
+                
                 assert(enemyQuantity >= 0 && "ERROR! 'enemyQuantity' cannot be less than 0 in Room::startBattle().");
                 removeEnemy(enemyIndex);
                 //player has killed the enemy.
