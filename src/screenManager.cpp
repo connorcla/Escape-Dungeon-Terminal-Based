@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 #include "../header/screenManager.h"
-#include "../header/inventory.h"
 
 using std::cout;
 using std::cin;
@@ -40,7 +39,9 @@ void ScreenManager::mainMenu() {
 
     cout << "Enter your name to begin: ";
     std::string nameInput = "";
-    getline(std::cin, nameInput);
+    cin.clear();
+    //getline(std::cin, nameInput);
+    cin >> nameInput;
     player.setName(nameInput);
 
     clearScreen();
@@ -120,6 +121,10 @@ void ScreenManager::roomIdle() {
                     cout << "As you enter the next room, monsters begin to appear!!!" << endl;
                     battleMenu();
                     if(player.getCurrHealth() <= 0){
+                        return;
+                    }
+                    if(map.getCurrRoom() == 9) {
+                        winScreen();
                         return;
                     }
                     break;
@@ -479,12 +484,14 @@ void ScreenManager::displayEnemies() {
 }
 
 void ScreenManager::winScreen() {
+    cout << endl << endl;
     cout << "CONGRATULATIONS!!!" << endl << endl;
     cout << "You have overcome the trials and tribulations set before you and escaped with only your wits and what you could find!" << endl; 
     cout << "But have you found all the secrets hidden in this dungeon or found every powerful item? Or maybe, the dungeon calls once more..."; 
     cout << endl << endl;
-    cout << "Enter anything to exit: ";
-    //User input to exit
+    cout << "Enter anything to continue: ";
+    char input = getCharInput();
+    cout << endl << endl;
 }
 
 void ScreenManager::lostScreen() {
