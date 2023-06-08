@@ -78,6 +78,16 @@ TEST(WitchTests, Action){
     Player player;
     string empty = " ";
 
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+
     EXPECT_NE(villan->action(player), empty);
     delete villan;
 }
@@ -160,6 +170,16 @@ TEST(SpiderTests, Action){
     Player player;
     string empty = "";
 
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+
     EXPECT_NE(villan->action(player), empty);
     delete villan;
 }
@@ -233,6 +253,16 @@ TEST(GolemTests, Action){
     Player player;
     string empty = "";
 
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+
     EXPECT_NE(villan->action(player), empty);
     delete villan;
 }
@@ -304,6 +334,16 @@ TEST(SkeletonTests, Action){
     Enemy* villan = new Skeleton("Skeleton",1,2,3,4,5);
     Player player;
     string empty = "";
+
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
 
     EXPECT_NE(villan->action(player), empty);
     delete villan;
@@ -377,6 +417,16 @@ TEST(BossTests, Action){
     Enemy* villan = new Boss("Boss",1,2,3,4,5,6);
     Player player;
     string empty = "";
+
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
+    villan->action(player);
 
     EXPECT_NE(villan->action(player), empty);
     delete villan;

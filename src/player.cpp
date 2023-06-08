@@ -25,6 +25,9 @@ void Player::setMagic(int magic) {
 
 void Player::gainExp(int exp) {
     this->exp += exp;
+    if(this->exp < 0) {
+        this->exp = 0;
+    }
 }
 
 void Player::setName(std::string name) {

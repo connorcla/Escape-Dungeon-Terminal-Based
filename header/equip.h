@@ -7,7 +7,6 @@
 class Equip : public Item {
     private:
     public:
-        Equip();
         Equip(std::string, std::string, int, int);
         ~Equip();
         virtual void incrStat(Player& player);

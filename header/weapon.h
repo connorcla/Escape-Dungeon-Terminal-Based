@@ -6,7 +6,6 @@
 class Weapon : public Item { 
     private:       
     public:
-        Weapon();
         Weapon(std::string, std::string, int, int);
         ~Weapon();
         virtual void incrStat(Player& player);

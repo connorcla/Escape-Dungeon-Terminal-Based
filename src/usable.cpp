@@ -2,14 +2,6 @@
 #include "../header/item.h"
 #include "../header/usable.h"
 
-Usable::Usable() {
-    this->name = "Default Usable";
-    this->description = "default usable description";
-    this->property = -1;
-    this->id = -1;
-    this->statChanged = -1;
-}
-
 Usable::Usable(std::string name, std::string description, int property, int id) {
     this->name = name;
     this->description = description;

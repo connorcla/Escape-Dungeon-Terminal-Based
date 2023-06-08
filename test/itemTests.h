@@ -72,4 +72,22 @@ TEST(ReturnItemID, ReturnID3) {
     EXPECT_EQ(id, 123); 
 }
 
+TEST(PlayerStats, IncreaseStats) {
+    ItemDatabase allItems;
+    Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
+    Player player;
+
+    testItem.incrStat(player);
+    EXPECT_EQ(player.getAttack(), 45);
+}
+
+TEST(PlayerStats, DecreaseStats) {
+    ItemDatabase allItems;
+    Item testItem(allItems.returnItem(3,0), allItems.returnItem(3,1), stoi(allItems.returnItem(3,2)), stoi(allItems.returnItem(3,3)));
+    Player player;
+
+    testItem.decrStat(player);
+    EXPECT_EQ(player.getAttack(), 1);
+}
+
 #endif
