@@ -10,14 +10,19 @@ class ScreenManager {
         ScreenManager();
         ~ScreenManager();
 
+        //Functions for Menus & specific displays:
         void setUp();
         void mainMenu();
         void idleRoomMenu();
+        void examineRoom();
         void mapMenu();  
         void displayMap();
+        void winScreen();
+        void lostScreen();
+        void clearScreen();
         
         //Functions for Inventory items:
-        void inventoryMenu();   //Takes in Inventory argument *FIX LATER*
+        void inventoryMenu();
         void invLogistics(unsigned int);
         void displayItem();
         void equipWeapon(char,unsigned int);
@@ -32,9 +37,6 @@ class ScreenManager {
         void battleMenu();
         void attackMenu();
         void displayEnemies();
-        void winScreen();
-        void lostScreen();
-        void clearScreen();
         void displayTurnOutputs(std::string,int);
 
         //Extended functions for validating user input:

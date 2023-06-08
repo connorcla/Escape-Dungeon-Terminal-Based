@@ -31,13 +31,14 @@ void ScreenManager::setUp() {
 }
 
 void ScreenManager::mainMenu() {
-    cout << "Escape Dungeon" << endl << endl;
+    cout << "*~*~*~*~*~*~*~*~*~*~*~*~ Welcome to Escape Dungeon *~*~*~*~*~*~*~*~*~*~*~*~*" << endl << endl;
     cout << "Can you:" << endl;
     cout << "Build your arsenal," << endl;
     cout << "Battle through enemies," << endl;
     cout << "Reach the end before you are stopped?" << endl;
 
     cout << "Enter your name to begin: ";
+
     std::string nameInput = "";
     getline(std::cin, nameInput);
     player.setName(nameInput);
@@ -63,37 +64,14 @@ void ScreenManager::idleRoomMenu() {
 
         checkIdleRoomChoice(&choice);
 
-        int itemFoundChance = (rand() % 2);
         switch(choice){
             case '1':
-                    if(inventory.numItems() == 30) {
-                        clearScreen();
-                        cout << "Sorry your inventory is full. To gather more items, you will have to remove other items from your inventory first." << endl;
-                    }
-                    else {
-                        if(itemFoundChance == 0) {
-                            clearScreen();
-                            cout << "No luck at finding any items this time. Are there even any more items in here?" << endl;
-                        }
-                        else if(itemFoundChance == 1) {
-                            std::vector<std::string> itemFound = map.getItemFromCurrRoom();
-
-                            if(itemFound.at(0) == " ") {
-                                clearScreen();
-                                cout << "No luck at finding any items this time. Are there even any more items in here?" << endl;
-                            }
-                            else {
-                                clearScreen();
-                                cout << "You found a " << itemFound.at(0) << "! This has been added to your inventory." << endl;
-                                inventory.addItem(itemFound.at(0), itemFound.at(1), itemFound.at(2), itemFound.at(3));
-                            }
-                        }
-                    }
-                    break;
+                examineRoom();
+                break;
             case '2':
                 cout << endl;
                 cout << map.getCurrInfo() << endl << endl;
-                cout << "Enter anything to continue: ";
+                cout << "Press any key to continue: ";
                 getCharInput();
                 clearScreen();
                 break;
@@ -117,6 +95,33 @@ void ScreenManager::idleRoomMenu() {
             break;
             default:
                 cout << "An error occurred." << endl;
+        }
+    }
+}
+
+void ScreenManager::examineRoom() {
+    int itemFoundChance = (rand() % 2);
+    if(inventory.numItems() == 30) {
+        clearScreen();
+        cout << "Sorry your inventory is full. To gather more items, you will have to remove other items from your inventory first." << endl;
+    }
+    else {
+        if(itemFoundChance == 0) {
+            clearScreen();
+            cout << "No luck at finding any items this time. Are there even any more items in here?" << endl;
+        }
+        else if(itemFoundChance == 1) {
+            std::vector<std::string> itemFound = map.getItemFromCurrRoom();
+            
+            if(itemFound.at(0) == " ") {
+                clearScreen();
+                cout << "No luck at finding any items this time. Are there even any more items in here?" << endl;
+            }
+            else {
+                clearScreen();
+                cout << "You found a " << itemFound.at(0) << "! This has been added to your inventory." << endl;
+                inventory.addItem(itemFound.at(0), itemFound.at(1), itemFound.at(2), itemFound.at(3));
+            }
         }
     }
 }
@@ -448,7 +453,7 @@ void ScreenManager::battleMenu() {
                 }
                 if(map.getEnemyQuantity()==0) {
                     cout << endl; 
-                    cout << "CONGRATULATIONS " << player.getName() <<"!!! You've defeated all enemies in this room!" << endl << endl; 
+                    cout << "CONGRATULATIONS " << player.getName() <<"!!! You've defeated all enemies in this room!" << endl << endl << endl; 
                     player.setStats(player.getMaxHealth(), player.getCurrHealth(), savedPlayerStats.at(1), savedPlayerStats.at(0), savedPlayerStats.at(3), player.getExp(), player.getName());
                     player.setMagic(savedPlayerStats.at(2));
                     return;
@@ -457,77 +462,25 @@ void ScreenManager::battleMenu() {
             }
             case '2': {
                 useItem();
-                clearScreen();
                 break;
             }
             case 'b': {
-
-            }
-        }
-
- /*    
-        std::vector<std::string> turnOutputs;
-        switch(numChoice){
-            case 2: {
-                std::string list = inventory.listInventory();
-                int size = inventory.numItems();
-                cout << list << endl << endl; 
-                
-                while(true) {
-                    cout << "Enter item number of usable item (1-" << size << ") to use an item: ";
-
-                    char cInput;
-                    std::string input;
-                    int numValue = 0;
-                    cin >> input;
-                    cout << endl;
-
-                    if(input.size() > 1) {
-                        char cInput1 = input.at(0);
-                        char cInput2 = input.at(1);
-                        numValue = ((cInput1 - 48) * 10) + (cInput2 - 48);
-                    }
-                    else {
-                        cInput = input.at(0);
-                        numValue = cInput - 48;
-                    }
-                    numValue -= 1;
-                    clearScreen();
-                    if(!(numValue >= 0 && numValue <= inventory.numItems() && inventory.numItems() != 0))
-                    {
-                        cout << "Invalid input, please try again." << endl << endl;
-                    }
-                    else {
-                        turnOutputs = map.itemBattle(inventory, player, numValue);
-                        for(unsigned int i = 0; i < turnOutputs.size(); i++) {
-                            cout << turnOutputs.at(i) << endl;
-                        }
-                        cout << endl;
-                        break;
-                    }
-                }
-                break;
-             }
-            case 3: {
                 clearScreen();
                 cout << "You are now back in the previous room." << endl;
-                cout << "Hurry! Find the items and weapons you need to combat the monsters in the next room...." <<  endl;
+                cout << "Hurry! Find items and weapons you need to combat the monsters in the next room...." <<  endl;
                 map.fleeToPrevRoom();
                 displayMap();
                 player.setStats(player.getMaxHealth(), player.getCurrHealth(), savedPlayerStats.at(1), savedPlayerStats.at(0), savedPlayerStats.at(3), player.getExp(), player.getName());
                 player.setMagic(savedPlayerStats.at(2));
                 return;
-                } 
-            default: { cout << "Error occurred in ScreenManager::battleMenu(). " << endl; }
-                 
+            }
+            default: { cout << "Error occurred in ScreenManager::battleMenu()."; }
         }
-
-    */
     }
 }
 
 void ScreenManager::checkBattleMenuChoice(char* choice) {
-    while(*choice != '1' && *choice != '2' && *choice != '3') {
+    while(*choice != '1' && *choice != '2' && *choice != 'b') {
         cout << endl;
         cout << "Invalid choice! [" << *choice <<"] is not an option. Please try again." << endl;
         cout << player.getName() <<": ";
@@ -546,7 +499,7 @@ void ScreenManager::attackMenu() {
         cout << endl <<"Here are the enemies to defeat in this room:" << endl;
         displayEnemies();
         cout << endl << "Which enemy do you want to attack?" << endl;
-        cout << "(Example: Press '1' for " << map.getEnemyName(0) << ")" << endl;
+        cout << "(Example: Press [1] for " << map.getEnemyName(0) << ") ";
         cout << player.getName() << ": ";
         enemy = getCharInput();
 
@@ -592,18 +545,17 @@ void ScreenManager::useItem(){
     cout << list << endl << endl; 
                 
     while(true) {
-        cout << "Enter item number of usable item (1-" << itemQuantity << ") to use an item. " << endl;
-        cout << player.getName() <<": ";
-        itemNumber = getCharInput();
-
         if(itemQuantity == 0){
             cout << endl;
             cout << player.getName() << ", unfortunately you are out of items." << endl << endl;
             break;
         }
         else{
+            if(itemQuantity != 0)
+            cout << "Enter item number of usable item (1-" << itemQuantity << ") to use an item. " << endl;
+            cout << player.getName() <<": ";
+            itemNumber = getCharInput();
             checkUseItemChoice(&itemNumber);
-
             int choice = static_cast<int>(itemNumber);
             displayTurnOutputs("Item Battle",choice); 
             cout << endl;
