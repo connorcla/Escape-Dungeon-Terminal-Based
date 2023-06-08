@@ -2,12 +2,6 @@
 #include "../header/item.h"
 #include "../header/equip.h"
 
-Equip::Equip() {
-    this->name = "Default Equip";
-    this->description = "default equip description";
-    this->property = -1;
-    this->id = -1;
-}
 
 Equip::Equip(std::string name, std::string description, int property, int id) {
     this->name = name;

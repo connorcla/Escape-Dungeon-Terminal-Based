@@ -2,8 +2,6 @@
 #include <vector>
 #include <assert.h>
 
-#include <iostream>//DELETE THIS
-
 using namespace std;
 
 Map::Map() {
@@ -27,9 +25,6 @@ void Map::generateRooms(){
         rooms.push_back(rm);
         if(room == 0){
             rooms[room].setRmStatus("Start ");
-        }
-        else if(room == currRoom){
-            rooms[room].setRmStatus("Here ");
         }
         else if(room != (NUMOFROOMS-1)){
             rooms[room].setRmStatus(" ?  ");

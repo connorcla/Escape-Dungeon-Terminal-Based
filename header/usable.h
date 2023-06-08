@@ -8,7 +8,6 @@ class Usable : public Item {
     private:
         int statChanged;
     public:
-        Usable();
         Usable(std::string, std::string, int, int);
         ~Usable();
         virtual void incrStat(Player& player);

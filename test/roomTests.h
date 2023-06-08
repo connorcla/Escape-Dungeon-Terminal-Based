@@ -187,4 +187,33 @@ TEST(RoomTests, getItem) {
     room.deleteEnemies();
 }
 
+TEST(RoomTests, getItemEmpty) {
+    srand(0);
+    Room room(1);
+
+    room.getItem();
+    room.getItem();
+    room.getItem();
+    room.getItem();
+    room.getItem();
+    room.getItem();
+    room.getItem();
+    room.getItem();
+
+    vector<string> compareVector;
+    compareVector.push_back(" ");
+
+    EXPECT_EQ(compareVector, room.getItem());
+    room.deleteEnemies();
+}
+
+TEST(RoomTests, EnemySpeed) {
+    Room room(0);
+
+    int enemySpeed = room.getEnemySpeed(0);
+
+    EXPECT_EQ(enemySpeed, 8);
+    room.deleteEnemies();
+}
+
 #endif

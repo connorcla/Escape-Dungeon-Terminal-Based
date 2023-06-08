@@ -27,6 +27,12 @@ TEST(MapTests, moveToNextRoom){
     EXPECT_NO_THROW(mapTest.moveToNextRoom());
 }
 
+TEST(MapTests, moveToNextRoomTwice){
+    Map mapTest;
+    mapTest.moveToNextRoom();
+    EXPECT_NO_THROW(mapTest.moveToNextRoom());
+}
+
 TEST(MapTests, moveToPREVRoom){
     Map mapTest;
     mapTest.moveToNextRoom();
@@ -83,14 +89,36 @@ TEST(MapTests, getEnemyCURRNTHealthStatus){
     EXPECT_NE(map.getEnemyCURRNTHealthStatus(0),0);
 }
 
-TEST(MapTests, fightScenario){
+TEST(MapTests, getEnemyMaxHealthStatus){
+    Map map;
+    EXPECT_NE(map.getEnemyMAXHealthStatus(0),0);
+}
+
+TEST(MapTests, getEnemyName){
+    Map map;
+    EXPECT_NE(map.getEnemyName(0),"");
+}
+
+TEST(MapTests, getEnemySpeed){
+    Map map;
+    EXPECT_NE(map.getEnemySpeed(0),0);
+}
+
+TEST(MapTests, fightScenarioThrow){
     Map map;
     Player player;
     Inventory inventory;
     int enemyIndex = -1;
 
     EXPECT_ANY_THROW(map.fightScenario(inventory, player, enemyIndex));
-    //EXPECT_NO_THROW(map.fightScenario(player, enemyIndex));
+}
+
+
+TEST(MapTests, getRoomInfo) {
+    Map map;
+    std::string info = map.getCurrInfo();
+
+    EXPECT_EQ(info, "You just woke up in this room. There is only a dim light from a door frame which appears to be the only way forward.");
 }
 
 //TEST(MapTests, testGetItemFromCurrRoom){}

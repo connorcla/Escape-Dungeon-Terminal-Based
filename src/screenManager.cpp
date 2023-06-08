@@ -234,6 +234,9 @@ void ScreenManager::inventoryMenu() {
                         inventory.equipWeapon(numValue-1,player);
                     }
                     else if(cInput == 'r') {
+                        int expFromItem = (inventory.returnItem(numValue-1)->getProperty())/2;
+                        cout << "You gained " << expFromItem << " EXP." << endl;
+                        player.gainExp(expFromItem);
                         inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
                     }
@@ -248,6 +251,9 @@ void ScreenManager::inventoryMenu() {
                         inventory.equipItem(numValue-1,player);
                     }
                     else if(cInput == 'r') {
+                        int expFromItem = (inventory.returnItem(numValue-1)->getProperty())/2;
+                        cout << "You gained " << expFromItem << " EXP." << endl;
+                        player.gainExp(expFromItem);
                         inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
                     }
@@ -258,6 +264,9 @@ void ScreenManager::inventoryMenu() {
                     cout << endl << endl;
                     clearScreen();
                     if(cInput == 'r') {
+                        int expFromItem = (inventory.returnItem(numValue-1)->getProperty())/2;
+                        cout << "You gained " << expFromItem << " EXP." << endl;
+                        player.gainExp(expFromItem);
                         inventory.removeItem(numValue-1);
                         cout << "Item removed." << endl << endl;
                     }
@@ -293,7 +302,7 @@ void ScreenManager::playerStats() {
                 return;
             }
             if(player.getExp() < 20) {
-                cout << "You need at least 10 EXP to increase any statistic." << endl << endl;
+                cout << "You need at least 20 EXP to increase any statistic." << endl << endl;
             }
             else if (input == 'H') {
                 player.updateStat(60, 5);
