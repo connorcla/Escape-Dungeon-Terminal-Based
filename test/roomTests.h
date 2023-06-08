@@ -119,6 +119,16 @@ TEST(RoomTests, StartBattleOUTOFBOUNDS){
     room.deleteEnemies();
 }
 
+TEST(RoomTests, itemBattleOUTOFBOUNDS){ 
+    Room room(1);
+    Player player;
+    Inventory inventory;
+    int enemyIndex = 6;
+
+    EXPECT_ANY_THROW(room.itemBattle(inventory, player,enemyIndex));
+    room.deleteEnemies();
+}
+
 TEST(RoomTests, RemoveEnemy){ 
     Room room(1);
     EXPECT_NO_THROW(room.removeEnemy(0));

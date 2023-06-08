@@ -7,7 +7,7 @@
 class Enemy: public Entity{
     public:
         Enemy();
-        ~Enemy();
+        virtual ~Enemy();
 
        virtual std::string action(Player&)=0;
        int attackedByPlayer(int);

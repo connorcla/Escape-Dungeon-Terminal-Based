@@ -276,4 +276,26 @@ TEST(InventoryEquip, Weapon2) {
     EXPECT_EQ(inv.outputWeapon(), "| Stone Sword |");
 }
 
+TEST(InventoryUse, IncreaseAttack) {
+    ItemDatabase allItems;
+    Inventory inv;
+    Player player;
+    inv.addItem(allItems.returnItem(39,0), allItems.returnItem(39,1), allItems.returnItem(39,2), allItems.returnItem(39,3));
+
+    inv.returnItem(0)->incrStat(player);
+
+    EXPECT_EQ(player.getAttack(), 50);
+}
+
+TEST(InventoryUse, DecreaseAttack) {
+    ItemDatabase allItems;
+    Inventory inv;
+    Player player;
+    inv.addItem(allItems.returnItem(39,0), allItems.returnItem(39,1), allItems.returnItem(39,2), allItems.returnItem(39,3));
+
+    inv.returnItem(0)->decrStat(player);
+
+    EXPECT_EQ(player.getAttack(), 1);
+}
+
 #endif

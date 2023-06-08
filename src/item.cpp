@@ -39,6 +39,10 @@ bool Item::operator<(Item& other) {
     return this->name < other.name;
 }
 
-void Item::incrStat(Player& player) {}
+void Item::incrStat(Player& player) {
+    player.updateStat(id, property);
+}
 
-void Item::decrStat(Player& player) {}
+void Item::decrStat(Player& player) {
+    player.updateStat(id, -1 * property);
+}
