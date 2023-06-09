@@ -338,7 +338,7 @@ The interface segregation principle was implemented by analyzing the similaritie
 
 
  ## I![Uploading Screenshot 2023-06-08 at 11.18.49 PM.png…]()
-nstallation/Usage
+Installation/Usage
  > Instructions on installing and running your application:
  > Open the terminal in VSCode. 
  > In the terminal, type the following commands:
