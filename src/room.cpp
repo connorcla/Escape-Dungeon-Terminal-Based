@@ -169,10 +169,10 @@ vector<string> Room::itemBattle(Inventory& inventory, Player& player, int numVal
                         returnString = "You used " + name + " and increased your defense by " + to_string(value) + " points.";
                         break;
                     case 4:
-                        returnString = "You used " + name + " and increased your defense by " + to_string(value) + " points.";
+                        returnString = "You used " + name + " and increased your speed by " + to_string(value) + " points.";
                         break;
                     case 5:
-                        returnString = "You used " + name + " and increased your defense by " + to_string(value) + " points.";
+                        returnString = "You used " + name + " and increased your magic by " + to_string(value) + " points.";
                         break;
                 }
                 inventory.returnItem(numValue)->incrStat(player);

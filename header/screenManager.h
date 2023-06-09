@@ -48,7 +48,7 @@ class ScreenManager {
         void checkPlayerStatsChoice(char*);
         void checkBattleMenuChoice(char*);
         void checkAttackMenuChoice(char*);
-        void checkUseItemChoice(char*);
+        void checkUseItemChoice(std::string*);
 
     private:
         Map map;

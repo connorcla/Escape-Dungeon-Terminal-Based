@@ -24,7 +24,7 @@ void gameStartManager(bool* playAgain) {
     cout << "Would you like to play again?" << endl;
     cout << "\t Press [1] to play again" << endl;
     cout << "\t Press [2] to quit game" << endl;
-    cout << ">Entere here: ";
+    cout << ">Enter here: ";
     cin >> choice;
 
     while(choice != '1' && choice != '2'){
