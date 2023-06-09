@@ -312,10 +312,42 @@ The interface segregation principle was implemented by analyzing the similaritie
  ## Screenshots
  > Screnshots of the input/output after running your application
  > <img width="795" alt="Screenshot 2023-06-08 at 11 18 49 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/22b407ce-8c74-4add-9a18-e74e0f08efca">
+ > <img width="1117" alt="Screenshot 2023-06-08 at 11 20 03 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7a824592-87ad-43aa-8a92-881394f13296">
+ > <img width="1117" alt="Screenshot 2023-06-08 at 11 20 34 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/97bc2528-bceb-434e-8842-4fa965d1b896">
+ > <img width="1133" alt="Screenshot 2023-06-08 at 11 22 05 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/6b36b84b-fd2a-4e87-844b-9654a0f30d0e">
+ > <img width="1131" alt="Screenshot 2023-06-08 at 11 35 57 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/04d844ed-f871-4c59-928a-6ea1908fa2d2">
+ > <img width="1103" alt="Screenshot 2023-06-08 at 11 36 43 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7175e43a-eea9-4487-b3af-1611dca097f6">
+ > <img width="827" alt="Screenshot 2023-06-08 at 11 38 26 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/6b45deb3-f119-4615-b9cc-00f0d8788139">
+ > <img width="882" alt="Screenshot 2023-06-08 at 11 49 20 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7f0ea996-dfdb-439d-9ac5-cce7550a4863">
+ > <img width="914" alt="Screenshot 2023-06-08 at 11 51 46 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/62bdd1f7-fbba-478f-9897-762367895044">
+ > <img width="539" alt="Screenshot 2023-06-08 at 11 52 45 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9401b89b-ebcd-4597-a813-f30679f2e266">
+ > <img width="1113" alt="Screenshot 2023-06-08 at 11 54 26 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/425985da-c554-42b4-8821-3074c3023b2d">
+ ><img width="808" alt="Screenshot 2023-06-08 at 11 54 54 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d5b946eb-a684-4798-b8c5-c21241c72b67">
+ > <img width="1106" alt="Screenshot 2023-06-08 at 11 55 19 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/f870f99c-295e-48ec-b984-cd0b5f2075a2">
+ > <img width="797" alt="Screenshot 2023-06-08 at 11 55 40 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/c5c5e688-9e90-4620-9c72-6373aeb36bfb">
+ > <img width="457" alt="Screenshot 2023-06-08 at 11 57 16 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fc83468a-728d-4dc8-9dd4-0fab85c3542e">
+ > <img width="895" alt="Screenshot 2023-06-08 at 11 58 50 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9eefc02f-1f07-4cbe-a45b-dadc3cb5b029">
+ > <img width="590" alt="Screenshot 2023-06-08 at 11 59 25 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/ee727bd5-9e0b-4765-95b0-01f0890f12fb">
+ > <img width="970" alt="Screenshot 2023-06-08 at 11 59 52 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d4b603b2-9c60-49c4-9afc-eae5183c5705">
+ > Once you defeated all enemies in the room, Player is prompt back to the Idle Room Menu. Now, the Player can scan choose any option from the menu to investigate the room. 
+ > <img width="1112" alt="Screenshot 2023-06-09 at 12 05 07 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fea9be4d-8fac-4a73-994d-65826c23e1e5">
+ > When Player is finished examining the room, pressing [5] again takes player to the next room. The map updates to the next room. 
+ > <img width="798" alt="Screenshot 2023-06-09 at 12 06 19 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/595dd35d-70a4-4ff6-9292-bf087cfa36b7">
+ > In the event the Player looses a fight battle with one of the enemies, a message will display to the Player and the game will end bu asking the Player if they want to play again.
+ > <img width="753" alt="Screenshot 2023-06-09 at 12 09 40 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/8d5d8f2a-78c1-4ef9-96c6-112228264761">
+
 
  ## I![Uploading Screenshot 2023-06-08 at 11.18.49 PM.png…]()
 nstallation/Usage
- > Instructions on installing and running your application
+ > Instructions on installing and running your application:
+ > Open the terminal in VSCode. 
+ > In the terminal, type the following commands:
+ > 	git clone https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031.git
+ > 	camke .
+ > 	make
+ > 	./bin/runMain
+ > The program will run and the should display in the terminal.  
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ > How was your project tested/validated?
+ > 	The project's memcheck was validated through valgrind and the code coverage was validated with g++'s built in gcov and lcov.
  
