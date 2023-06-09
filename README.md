@@ -346,7 +346,8 @@ nstallation/Usage
  > * camke .
  > * make
  > * ./bin/runMain
- > The program will run and the should display in the terminal.  
+ > 
+ The program will run and the should display in the terminal.  
  ## Testing
  > How was your project tested/validated?
  > 	The project's memcheck was validated through valgrind and the code coverage was validated with g++'s built in gcov and lcov.
