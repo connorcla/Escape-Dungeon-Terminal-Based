@@ -310,8 +310,11 @@ The interface segregation principle was implemented by analyzing the similaritie
  > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
- ## Installation/Usage
+ > Screnshots of the input/output after running your application
+ > <img width="795" alt="Screenshot 2023-06-08 at 11 18 49 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/22b407ce-8c74-4add-9a18-e74e0f08efca">
+
+ ## I![Uploading Screenshot 2023-06-08 at 11.18.49 PM.png…]()
+nstallation/Usage
  > Instructions on installing and running your application
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
