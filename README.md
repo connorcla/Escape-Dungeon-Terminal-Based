@@ -342,10 +342,10 @@ nstallation/Usage
  > Instructions on installing and running your application:
  > Open the terminal in VSCode. 
  > In the terminal, type the following commands:
- > 	git clone https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031.git
- > 	camke .
- > 	make
- > 	./bin/runMain
+ > * git clone https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031.git
+ > * camke .
+ > * make
+ > * ./bin/runMain
  > The program will run and the should display in the terminal.  
  ## Testing
  > How was your project tested/validated?
