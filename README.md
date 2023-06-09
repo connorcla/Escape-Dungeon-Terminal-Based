@@ -329,11 +329,11 @@ The interface segregation principle was implemented by analyzing the similaritie
  > <img width="895" alt="Screenshot 2023-06-08 at 11 58 50 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9eefc02f-1f07-4cbe-a45b-dadc3cb5b029">
  > <img width="590" alt="Screenshot 2023-06-08 at 11 59 25 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/ee727bd5-9e0b-4765-95b0-01f0890f12fb">
  > <img width="970" alt="Screenshot 2023-06-08 at 11 59 52 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d4b603b2-9c60-49c4-9afc-eae5183c5705">
- > Once you defeated all enemies in the room, Player is prompt back to the Idle Room Menu. Now, the Player can scan choose any option from the menu to investigate the room. 
+ > Once you defeated all enemies in the room, Player is prompt back to the Idle Room Menu. Now, the Player can choose any option from this menu to investigate the room for extra items and weapons. 
  > <img width="1112" alt="Screenshot 2023-06-09 at 12 05 07 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fea9be4d-8fac-4a73-994d-65826c23e1e5">
- > When Player is finished examining the room, pressing [5] again takes player to the next room. The map updates to the next room. 
+ > When Player is finished examining the room, pressing [5] again takes player to the next room. The map updates to the next room and displayed to the player. 
  > <img width="798" alt="Screenshot 2023-06-09 at 12 06 19 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/595dd35d-70a4-4ff6-9292-bf087cfa36b7">
- > In the event the Player looses a fight battle with one of the enemies, a message will display to the Player and the game will end bu asking the Player if they want to play again.
+ > In the event the Player looses a fight battle with one of the enemies, a message will display to the Player and the game will end by asking the Player if they want to play again.
  > <img width="753" alt="Screenshot 2023-06-09 at 12 09 40 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/8d5d8f2a-78c1-4ef9-96c6-112228264761">
 
 
@@ -350,5 +350,5 @@ Installation/Usage
  The program will run and the should display in the terminal.  
  ## Testing
  > How was your project tested/validated?
- > 	The project's memcheck was validated through valgrind and the code coverage was validated with g++'s built in gcov and lcov.
+ > 	The project's memcheck was validated through valgrind and the code coverage was validated with g++'s built in gcov and lcov. We were also reviewing each other's code via pull requests and anotating any discrepancies. We'd also play the game repeatedly to verify that the program is performing as expected. 
  
