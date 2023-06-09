@@ -22,8 +22,9 @@ void gameStartManager(bool* playAgain) {
 
     char choice;
     cout << "Would you like to play again?" << endl;
-    cout <<"\t Press [1] to play again" << endl;
-    cout <<"\t Press [2] to quit game" << endl;
+    cout << "\t Press [1] to play again" << endl;
+    cout << "\t Press [2] to quit game" << endl;
+    cout << ">Enter here: ";
     cin >> choice;
 
     while(choice != '1' && choice != '2'){
@@ -34,6 +35,7 @@ void gameStartManager(bool* playAgain) {
     if(choice == '1'){
         *playAgain = true;
         cin.clear();
+        cin.ignore();
     }
     else{
         *playAgain = false;
