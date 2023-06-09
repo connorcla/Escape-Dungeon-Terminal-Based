@@ -28,14 +28,14 @@ A lot of software today is involved in some sort of entertainment with a large m
 **CMake**: Allows us as developers to specify build processes, manage dependencies, and organize our project’s source code. In the context of an RPG game, it could help manage any external libraries we may use and specify build types for debugging purposes. Seeing that the project is also a collaborative project, CMake’s ability to organize the source code into logical modules makes it easier to manage the scale of the project 
 
 ### Input/Output of Project?
-**Input**: A user will be prompted by Terminal to select menu options (i.e. “1-Talk to the tavern owner, 2 - Open quest log, 3- Open inventory) etc.) The story will progress differently and the user may pick alternate endings depending on the user’s inputs (i.e. failing to use a heal item when needed could result in character death). 
+**Input**: A user will be prompted by Terminal to select menu options (i.e. “1-Look for items, 2 - Open Map, 3- Open inventory) etc.) The story will progress differently and the user may pick alternate endings depending on the user’s inputs (i.e. failing to use a heal item when needed could result in the player's death). 
 
-**Output**: The output will be on Terminal such as dialogue, storyline, menu options for the next user input, and maybe even combining symbols to create backgrounds or characters.
+**Output**: The output will be on Terminal such as dialogue, storyline, menu options for the next user input, and the output of player an enemy actions during battle.
 
 ### Project Features
-Players should be able to select and/or create their character they want to use to navigate through the dungeon. They will be able to view and manage their player’s statistics and choose which skills to increase or level up as the game progresses. Along with this character management, heal and magic counters will be shown to let the player know of any available resources as well as menus showing different options or actions their player can take.
+Players should be able to name their character they want to use to navigate through the dungeon. They will be able to view and manage their player’s statistics and choose which skills to increase or level up as the game progresses. Along with this character management, heal and magic counters will be shown to let the player know of any available resources as well as menus showing different options or actions their player can take during battle such as attacking, using an item, or moving back to a previous room to prepare for the next battle. 
 
-As players navigate through the dungeon, they  will be able to access and view a map of the dungeon including the rooms visited, any significant characters, and any unchecked rooms. Players can choose which direction to explore in and can investigate or use different actions around rooms prompting different responses. By navigating, players can find other characters that can help them on their journey, or give them information about the place they are attempting to escape from.
+As players navigate through the dungeon, they  will be able to access and view a map of the dungeon including the rooms visited, any significant characters, and any unchecked rooms. Players can choose which direction to explore in and can investigate or use different actions around rooms prompting different responses. By navigating, players can find items that can help them on their journey, or give them information about the place they are attempting to escape from.
 
 Through their journey players can obtain and use items that will aid them in fights or navigating through the rooms. Items will be obtained by defeating enemies or finding special rooms and can be viewed in an inventory. These items will be able to be used either in battle against enemies or in the map in order to aid in navigating.
 
@@ -189,13 +189,13 @@ ________________________________________________________________________________
 
 
 ## Class Diagram
-![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagramV2.png)
+![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagramV3.png)
 
 ### Description of the UML CLass Diagram: 
 **ScreenManager class**
 <br>A class that is created and called when the program starts in order to set up the maps and current rooms loaded in addition to moving between the screens.
 
-This class implements functions that print each screen and determines what will be displayed on those particular screens. When the program is first started, the ScreenManager will be created and display the main menu, awaiting input from the player to move to the next screen depending on the input. Depending on the input, corresponding objects will be created or updated then the next screen will be printed such as the roomIdle screen, battle menu, or inventory. This class will manage the main inputs, prompting the player to input their choice, then take the input and pass it to other classes such as the Map, Room, or Inventory classes.
+This class implements functions that print each screen and determines what will be displayed on those particular screens. When the program is first started, the ScreenManager will be created and display the main menu, awaiting input from the player to move to the next screen depending on the input. Depending on the input, corresponding objects will be created or updated then the next screen will be printed such as the roomIdle screen, battle menu, or inventory. This class will manage the main inputs, prompting the player to input their choice, then take the input and pass it to other classes such as the Map, Room, or Inventory classes. This class is the main navigation and contains all the data which will need to be passed to appropriate classes for updates such as an Item being collected from a Room and moving to the Inventory. 
 
 <br>**Map class**
 <br>There is only one Map class present during the program which will contain a vector of Room objects that will be the line of Rooms the player will have to travel through in addition to an index indicating the current Room the player is in. 
@@ -238,7 +238,7 @@ The useItem function is implemented by passing in a Player object which will the
 The implemented functions will include getters for all individual statistic variables and one setter function that will take in arguments for each of the statistics gathered from player’s choices or equipable times. An updateHealth function will also take an integer as an argument which will be called any time damage is dealt or a heal item is used and will update the Entity’s health accordingly.
 
 <br>**Player class that inherits from Entity**
-<br>The Player class has a string name that will be input upon construction of the object in addition to an Inventory that is linked to the Player which they will be able to access through this item. In addition to other statistics, the Player also has maximum and current magic through integers that will be the cost for certain items. 
+<br>The Player class has a string name that will be input upon construction of the object. In addition to other statistics, the Player also has maximum and current magic through integers that will be the cost for certain items. 
 
 The Player constructor takes the Player name as the only argument to initialize the Player object. Getter functions are implemented in order to retrieve any extra statistics that would be needed to be used in battle functions and a setter is implemented through the updateStat function which takes two integers as arguments indicating the stat that would be changed and the value that it is changed by. Finally, the chooseAction function is implemented by allowing input for the Player to choose an action from accessing their inventory, to attacking with a weapon, or attempting to flee.
 
@@ -278,14 +278,9 @@ A Boss has an implementation of the action where it has a certain number of poss
 
 The Inventory class displays the players inventory, which will be sorted alphabetically through the implementation of displayInventory which will help print to the screen. Then there will be slots where the player can equip items to bring to battle with them through the selectItem where they can view the descriptions and choose certain items through output on the screen. 
 
-<br>**BattleManager**
-<br>The BattleManager class has a vector of Entity pointers which is a list of all Entities (Player and Enemies) currently in battle which are sorted by their speed stat. It also has an integer numTurns to indicate how many turns have passed in the battle.
-
-The startTurn function is implemented by taking the action from the argument Player and going through the list of sorted Entities, performing their actions in that specific order. The getPlayerInput will assist in prompting and printing choices for the player in battle and taking that input and applying it accordingly for actions, inventory, or fleeing.
-
  
  ## SOLID Modifications
- ![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagramV2.png)
+ ![UML Class Diagram](Documents/CS100_FinalProject_UMLDiagramV3.png)
  
  ### Single Responsibility Principle
 
@@ -299,56 +294,54 @@ Liskov’s substitution principle is applied in this new class diagram by better
 
 The interface segregation principle was implemented by analyzing the similarities and functions in common between the base class of Entity and its derived classes of Player and Enemy. Before, the Player and Enemy classes had separate variables and getter functions for each of their specific names and exp values. This was done before because it was thought that these variables would be created and used in different and unique applications, however after further deliberation, the only purpose that the name and exp variables need is to store the specific values and need to get their values in order which would then be manipulated by another function. They serve the same purpose between both derived classes so it would make more sense to be in the base class. This is more of an inversion of the interface segregation principle as we are taking two separate variables among derived classes and combining them in the base class because the function is the same over the two classes. However, this does make the code better as we don’t have the same implementation of two variables over two derived classes when we could easily have one implementation in the base class which the two derived classes can still access. 
 
+  ## Screenshots
+ Screnshots of the input/output after running your application
+ <br>
+<img width="795" alt="Screenshot 2023-06-08 at 11 18 49 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/22b407ce-8c74-4add-9a18-e74e0f08efca">
+<img width="1117" alt="Screenshot 2023-06-08 at 11 20 03 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7a824592-87ad-43aa-8a92-881394f13296">
+<img width="1117" alt="Screenshot 2023-06-08 at 11 20 34 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/97bc2528-bceb-434e-8842-4fa965d1b896">
+<img width="1133" alt="Screenshot 2023-06-08 at 11 22 05 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/6b36b84b-fd2a-4e87-844b-9654a0f30d0e">
+<img width="1131" alt="Screenshot 2023-06-08 at 11 35 57 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/04d844ed-f871-4c59-928a-6ea1908fa2d2">
+<img width="1103" alt="Screenshot 2023-06-08 at 11 36 43 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7175e43a-eea9-4487-b3af-1611dca097f6">
+<img width="827" alt="Screenshot 2023-06-08 at 11 38 26 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/6b45deb3-f119-4615-b9cc-00f0d8788139">
+<img width="882" alt="Screenshot 2023-06-08 at 11 49 20 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7f0ea996-dfdb-439d-9ac5-cce7550a4863">
+<img width="914" alt="Screenshot 2023-06-08 at 11 51 46 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/62bdd1f7-fbba-478f-9897-762367895044">
+<img width="539" alt="Screenshot 2023-06-08 at 11 52 45 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9401b89b-ebcd-4597-a813-f30679f2e266">
+<img width="1113" alt="Screenshot 2023-06-08 at 11 54 26 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/425985da-c554-42b4-8821-3074c3023b2d">
+<img width="808" alt="Screenshot 2023-06-08 at 11 54 54 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d5b946eb-a684-4798-b8c5-c21241c72b67">
+<img width="1106" alt="Screenshot 2023-06-08 at 11 55 19 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/f870f99c-295e-48ec-b984-cd0b5f2075a2">
+<img width="797" alt="Screenshot 2023-06-08 at 11 55 40 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/c5c5e688-9e90-4620-9c72-6373aeb36bfb">
+<img width="457" alt="Screenshot 2023-06-08 at 11 57 16 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fc83468a-728d-4dc8-9dd4-0fab85c3542e">
+<img width="895" alt="Screenshot 2023-06-08 at 11 58 50 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9eefc02f-1f07-4cbe-a45b-dadc3cb5b029">
+<img width="590" alt="Screenshot 2023-06-08 at 11 59 25 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/ee727bd5-9e0b-4765-95b0-01f0890f12fb">
+<img width="970" alt="Screenshot 2023-06-08 at 11 59 52 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d4b603b2-9c60-49c4-9afc-eae5183c5705">
+Once you defeated all enemies in the room, Player is prompt back to the Idle Room Menu. Now, the Player can choose any option from this menu to investigate the room for extra items and weapons. 
+<br>
+<img width="1112" alt="Screenshot 2023-06-09 at 12 05 07 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fea9be4d-8fac-4a73-994d-65826c23e1e5">
+When Player is finished examining the room, pressing [5] again takes player to the next room. The map updates to the next room and displayed to the player.
+<br>
+<img width="798" alt="Screenshot 2023-06-09 at 12 06 19 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/595dd35d-70a4-4ff6-9292-bf087cfa36b7">
+In the event the Player looses a fight battle with one of the enemies, a message will display to the Player and the game will end by asking the Player if they want to play again.
+<br>
+<img width="753" alt="Screenshot 2023-06-09 at 12 09 40 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/8d5d8f2a-78c1-4ef9-96c6-112228264761">
 
+## Installation/Usage
+Instructions on installing and running your application:
+Open the terminal in VSCode. 
+In the terminal, type the following commands:
+* git clone https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031.git
+* cmake .
+* make
+* ./bin/runMain
+The program will run and the should display in the terminal.  
 
- 
- > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
- 
- ## Screenshots
- > Screnshots of the input/output after running your application
- > <img width="795" alt="Screenshot 2023-06-08 at 11 18 49 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/22b407ce-8c74-4add-9a18-e74e0f08efca">
- > <img width="1117" alt="Screenshot 2023-06-08 at 11 20 03 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7a824592-87ad-43aa-8a92-881394f13296">
- > <img width="1117" alt="Screenshot 2023-06-08 at 11 20 34 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/97bc2528-bceb-434e-8842-4fa965d1b896">
- > <img width="1133" alt="Screenshot 2023-06-08 at 11 22 05 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/6b36b84b-fd2a-4e87-844b-9654a0f30d0e">
- > <img width="1131" alt="Screenshot 2023-06-08 at 11 35 57 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/04d844ed-f871-4c59-928a-6ea1908fa2d2">
- > <img width="1103" alt="Screenshot 2023-06-08 at 11 36 43 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7175e43a-eea9-4487-b3af-1611dca097f6">
- > <img width="827" alt="Screenshot 2023-06-08 at 11 38 26 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/6b45deb3-f119-4615-b9cc-00f0d8788139">
- > <img width="882" alt="Screenshot 2023-06-08 at 11 49 20 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/7f0ea996-dfdb-439d-9ac5-cce7550a4863">
- > <img width="914" alt="Screenshot 2023-06-08 at 11 51 46 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/62bdd1f7-fbba-478f-9897-762367895044">
- > <img width="539" alt="Screenshot 2023-06-08 at 11 52 45 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9401b89b-ebcd-4597-a813-f30679f2e266">
- > <img width="1113" alt="Screenshot 2023-06-08 at 11 54 26 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/425985da-c554-42b4-8821-3074c3023b2d">
- ><img width="808" alt="Screenshot 2023-06-08 at 11 54 54 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d5b946eb-a684-4798-b8c5-c21241c72b67">
- > <img width="1106" alt="Screenshot 2023-06-08 at 11 55 19 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/f870f99c-295e-48ec-b984-cd0b5f2075a2">
- > <img width="797" alt="Screenshot 2023-06-08 at 11 55 40 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/c5c5e688-9e90-4620-9c72-6373aeb36bfb">
- > <img width="457" alt="Screenshot 2023-06-08 at 11 57 16 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fc83468a-728d-4dc8-9dd4-0fab85c3542e">
- > <img width="895" alt="Screenshot 2023-06-08 at 11 58 50 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/9eefc02f-1f07-4cbe-a45b-dadc3cb5b029">
- > <img width="590" alt="Screenshot 2023-06-08 at 11 59 25 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/ee727bd5-9e0b-4765-95b0-01f0890f12fb">
- > <img width="970" alt="Screenshot 2023-06-08 at 11 59 52 PM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/d4b603b2-9c60-49c4-9afc-eae5183c5705">
- > Once you defeated all enemies in the room, Player is prompt back to the Idle Room Menu. Now, the Player can choose any option from this menu to investigate the room for extra items and weapons. 
- > <img width="1112" alt="Screenshot 2023-06-09 at 12 05 07 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/fea9be4d-8fac-4a73-994d-65826c23e1e5">
- > When Player is finished examining the room, pressing [5] again takes player to the next room. The map updates to the next room and displayed to the player. 
- > <img width="798" alt="Screenshot 2023-06-09 at 12 06 19 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/595dd35d-70a4-4ff6-9292-bf087cfa36b7">
- > In the event the Player looses a fight battle with one of the enemies, a message will display to the Player and the game will end by asking the Player if they want to play again.
- > <img width="753" alt="Screenshot 2023-06-09 at 12 09 40 AM" src="https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/32427334/8d5d8f2a-78c1-4ef9-96c6-112228264761">
-
-
- ## I![Uploading Screenshot 2023-06-08 at 11.18.49 PM.png…]()
-Installation/Usage
- > Instructions on installing and running your application:
- > Open the terminal in VSCode. 
- > In the terminal, type the following commands:
- > * git clone https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031.git
- > * camke .
- > * make
- > * ./bin/runMain
- > 
- The program will run and the should display in the terminal.  
- ## Testing
- > How was your project tested/validated?
- > 	The project's memcheck was validated through valgrind and the code coverage was validated with g++'s built in gcov and lcov. We were also reviewing each other's code via pull requests and anotating any discrepancies. We'd also play the game repeatedly to verify that the program is performing as expected. 
+## Testing
+How was your project tested/validated?
+* Memory leaks and other errors: The project's memcheck was validated through valgrind in order to verify that all allocated memory 
+![image](https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/93848694/4b5970c1-75aa-48b7-b00a-d2ba32fe21fc)
+* The actual code was tested through unit tests and gtest. The testing files are located in the /test folder each classes tests are separated by header files in the test folder. However, only one test executable is generated which runs all tests from all classes and suites.
+![image](https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/93848694/b0273e4a-1625-47ec-ab24-35d14f790640)
+* Code coverage was monitored and validated with g++'s built in gcov and lcov. These monitored the non-UI portions of the program with a coverage of about 90%. 
+![image](https://github.com/cs100/final-project-jhoan070-elee-cclab002-gvasq031/assets/93848694/e56c18f1-d5db-4382-9dcf-fc1ff74b4182)
+* Manual testing: The game was played repeatedly to verify that the UI and the program are performing as expected including navigation and data management.
  
